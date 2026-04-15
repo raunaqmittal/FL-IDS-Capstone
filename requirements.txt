@@ -1,0 +1,36 @@
+# FL-IDS Core dependencies
+# Install with: pip install -r requirements.txt
+
+# ─── Federated Learning ──────────────────────────────
+flwr[simulation]>=1.8.0         # Flower FL framework with Ray-based simulation mode
+
+# ─── Deep Learning ───────────────────────────────────
+torch>=2.2.0                    # PyTorch — client-side MLP training
+torchvision>=0.17.0             # Optional: unused on clients but needed by some torch extensions
+
+# ─── Numerical & Scientific Computing ────────────────
+numpy>=1.26.0                   # Server-side defense math (MAD, simplex projection, EMA)
+scipy>=1.12.0                   # pdist/squareform cosine similarity, truncated SVD (svds)
+
+# ─── Data Processing ─────────────────────────────────
+pandas>=2.2.0                   # Loading & preprocessing CIC-IDS2017 CSVs
+scikit-learn>=1.4.0             # StandardScaler, F1-score, confusion matrix, SMOTE
+
+# ─── Experiment & Config ─────────────────────────────
+pyyaml>=6.0.1                   # Parsing config.yaml
+python-dotenv>=1.0.0            # Loading .env secrets at runtime
+
+# ─── Plotting & Visualization ────────────────────────
+matplotlib>=3.8.0               # F1 / ASR curves, confusion matrices
+seaborn>=0.13.0                 # Trust score heatmaps, styled comparison plots
+
+# ─── Logging ─────────────────────────────────────────
+colorlog>=6.8.0                 # Colored console log output per log level
+
+# ─── Testing ─────────────────────────────────────────
+pytest>=8.0.0                   # Unit test runner
+pytest-cov>=5.0.0               # Test coverage reporting
+
+# ─── Notebooks ───────────────────────────────────────
+jupyter>=1.0.0                  # Jupyter notebook server
+ipykernel>=6.29.0               # Python kernel for Jupyter

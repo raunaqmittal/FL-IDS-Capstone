@@ -1,0 +1,77 @@
+# ═══════════════════════════════════════════════════════════════════
+# FL-IDS Master Configuration File
+# ═══════════════════════════════════════════════════════════════════
+# All hyperparameters for the entire pipeline are centralized here.
+# Loaded by src/configs/config.py at startup.
+
+# ─── Model Architecture (PyTorch MLP) ────────────────────────────
+model:
+  input_dim: 78               # Raw CIC-IDS2017 features (reduced to ~40-50 after selection)
+  hidden_dims: [128, 64, 32]  # Hidden layer neuron counts
+  output_dim: 2               # Binary: Benign vs Malicious
+  dropout_rate: 0.3
+
+# ─── Federated Learning ──────────────────────────────────────────
+federated:
+  num_clients: 50             # Total simulated IoT edge gateways
+  sample_fraction: 0.4        # Fraction of clients sampled per round (C=20)
+  num_rounds: 30              # Total FL communication rounds
+  local_epochs: 5             # Local training epochs per client per round
+  learning_rate: 0.001
+  batch_size: 64
+  optimizer: "adam"
+
+# ─── Data Partitioning ───────────────────────────────────────────
+data:
+  partition_mode: "non_iid"   # "iid" or "non_iid"
+  alpha_dirichlet: 0.5        # Dirichlet concentration (lower = more heterogeneous)
+  val_split_ratio: 0.2        # Validation split per client
+  random_seed: 42
+  num_workers: 4
+
+# ─── Attack Configuration ────────────────────────────────────────
+attack:
+  attacker_ratio: 0.3         # Fraction of malicious clients (0.0, 0.10, 0.30, 0.50)
+  attack_start_round: 11      # Byzantine injection begins after clean baseline rounds
+  attack_type: "label_flip"   # "label_flip" | "backdoor" | "both"
+  # Label-flip settings
+  source_class: 1             # Class index to flip FROM (e.g., DDoS)
+  target_class: 0             # Class index to flip TO (e.g., Benign)
+  # Backdoor trigger settings
+  trigger_feature_idx: [0, 5] # Feature indices used as trigger pattern
+  trigger_values: [999999, 1] # Exact values injected (Flow_Duration, ACK_Flag_Count)
+  inject_ratio: 0.1           # Fraction of local data poisoned with trigger
+  scale_to_benign_norm: true  # Whether to stealth-scale gradient to match benign L2 norm
+
+# ─── Defense Pipeline (Server-Side) ──────────────────────────────
+defense:
+  # Gap 1: Layer-Wise Cosine Similarity + MAD
+  anomaly_threshold_tau: 3.0  # MAD Z-score threshold for flagging adversarial clients
+  analyze_layers: "final"     # "final" = only last FC layer, "final_two" = last two layers
+  
+  # Gap 2: Capped Simplex Projection
+  max_byzantine_fraction: 0.3 # b_f: max tolerated fraction for cap_t calculation
+  sparsity_s: null            # L0 sparsity constraint (null = auto from b_f)
+  
+  # Gap 3: EMA Trust Scoring
+  ema_decay_mu: 0.9           # Momentum decay factor (0.90 = moderate memory)
+  temperature_tau: 2.0        # Softmax temperature (higher = sharper trust discrimination)
+  initial_reputation: 0.0     # Starting reputation for new clients
+
+# ─── Evaluation ───────────────────────────────────────────────────
+evaluation:
+  metrics: ["macro_f1", "accuracy", "asr", "fpr"]
+  save_confusion_matrix: true
+  plot_every_n_rounds: 1
+
+# ─── Experiment Phases ────────────────────────────────────────────
+experiment:
+  phase1_clean_rounds: 10     # Rounds 1-10: no attackers (baseline convergence)
+  phase2_attack_rounds: 20    # Rounds 11-30: attackers active
+  baseline_strategies: ["fedavg", "trimmed_mean", "krum"]
+
+# ─── Logging ──────────────────────────────────────────────────────
+logging:
+  log_level: "INFO"
+  log_to_file: true
+  log_dir: "artifacts/results"

@@ -1,0 +1,48 @@
+# FL-IDS — Gitignore
+
+# ─── Python ──────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# ─── Virtual Environment ─────────────────────────────
+venv/
+.venv/
+env/
+
+# ─── Environment Secrets ─────────────────────────────
+.env
+
+# ─── Artifacts (large files — track with Git LFS if needed) ──────
+artifacts/models/*.pth
+artifacts/data/*.npz
+artifacts/plots/*.png
+
+# Keep directory structure
+!artifacts/models/.gitkeep
+!artifacts/results/.gitkeep
+!artifacts/plots/.gitkeep
+!artifacts/data/.gitkeep
+
+# ─── Raw CIC-IDS2017 Data (too large for git) ────────
+data/raw/
+
+# ─── Jupyter ─────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ─── IDE / OS ────────────────────────────────────────
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# ─── Coverage ────────────────────────────────────────
+.coverage
+htmlcov/
