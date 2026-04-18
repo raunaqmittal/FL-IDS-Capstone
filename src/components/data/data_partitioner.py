@@ -18,12 +18,12 @@
 # ═══════════════════════════════════════════════════════
 
 import sys
-import os
 import numpy as np
 from typing import List, Tuple
 from src.logging.logger import logging
 from src.exception.exception import FLIDSException
 from src.configs.config import CONFIG
+from src.configs.paths import DATA_DIR
 
 
 def partition_iid(
@@ -66,21 +66,20 @@ def partition_non_iid(
         raise FLIDSException(e, sys)
 
 
-def save_partitions(partitions: List[Tuple[np.ndarray, np.ndarray]], output_dir: str) -> None:
+def save_partitions(partitions: List[Tuple[np.ndarray, np.ndarray]], output_dir) -> None:
     try:
-        os.makedirs(output_dir, exist_ok=True)
+        output_dir = DATA_DIR if output_dir is None else output_dir
+        output_dir.mkdir(parents=True, exist_ok=True)
         for i, (X, y) in enumerate(partitions):
-            path = os.path.join(output_dir, f"client_{i:04d}.npz")
-            np.savez_compressed(path, X=X, y=y)
+            np.savez_compressed(output_dir / f"client_{i:04d}.npz", X=X, y=y)
         logging.info(f"Saved {len(partitions)} partitions to {output_dir}")
     except Exception as e:
         raise FLIDSException(e, sys)
 
 
-def load_partition(client_id: int, data_dir: str) -> Tuple[np.ndarray, np.ndarray]:
+def load_partition(client_id: int) -> Tuple[np.ndarray, np.ndarray]:
     try:
-        path = os.path.join(data_dir, f"client_{client_id:04d}.npz")
-        data = np.load(path)
+        data = np.load(DATA_DIR / f"client_{client_id:04d}.npz")
         return data["X"], data["y"]
     except Exception as e:
         raise FLIDSException(e, sys)
@@ -95,7 +94,6 @@ def run_partitioning(X: np.ndarray, y: np.ndarray) -> None:
         mode = cfg_data["partition_mode"]
         alpha = cfg_data["alpha_dirichlet"]
         seed = cfg_data["random_seed"]
-        output_dir = os.path.join("artifacts", "data")
 
         np.random.seed(seed)
 
@@ -104,7 +102,7 @@ def run_partitioning(X: np.ndarray, y: np.ndarray) -> None:
         else:
             partitions = partition_non_iid(X, y, num_clients, alpha)
 
-        save_partitions(partitions, output_dir)
+        save_partitions(partitions, DATA_DIR)
     except Exception as e:
         raise FLIDSException(e, sys)
 

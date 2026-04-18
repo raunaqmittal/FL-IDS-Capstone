@@ -23,6 +23,9 @@ env/
 artifacts/models/*.pth
 artifacts/data/*.npz
 artifacts/plots/*.png
+artifacts/raw/
+artifacts/preprocessed/
+artifacts/preprocessed/*.parquet
 
 # Keep directory structure
 !artifacts/models/.gitkeep

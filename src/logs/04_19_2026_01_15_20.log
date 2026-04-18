@@ -1,0 +1,22 @@
+[2026-04-19 01:15:21,372] 17 root - INFO - Data pipeline started
+[2026-04-19 01:15:21,372] 10 root - INFO - Loading CIC-IDS2017 from HuggingFace
+[2026-04-19 01:15:22,087] 1025 httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/bvk/CICIDS-2017/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+[2026-04-19 01:15:22,108] 1025 httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/bvk/CICIDS-2017/b9515d5c95c0c0e7312274760acff3d54fe5ff41/README.md "HTTP/1.1 200 OK"
+[2026-04-19 01:15:22,385] 1025 httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/bvk/CICIDS-2017/resolve/b9515d5c95c0c0e7312274760acff3d54fe5ff41/CICIDS-2017.py "HTTP/1.1 404 Not Found"
+[2026-04-19 01:15:23,916] 1025 httpx - INFO - HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/bvk/CICIDS-2017/bvk/CICIDS-2017.py "HTTP/1.1 404 Not Found"
+[2026-04-19 01:15:23,917] 105 huggingface_hub.repocard - WARNING - Repo card metadata block was not found. Setting CardData to empty.
+[2026-04-19 01:15:24,332] 1025 httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/bvk/CICIDS-2017/revision/b9515d5c95c0c0e7312274760acff3d54fe5ff41 "HTTP/1.1 200 OK"
+[2026-04-19 01:15:24,632] 1025 httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/bvk/CICIDS-2017/resolve/b9515d5c95c0c0e7312274760acff3d54fe5ff41/.huggingface.yaml "HTTP/1.1 404 Not Found"
+[2026-04-19 01:15:25,045] 1025 httpx - INFO - HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=bvk/CICIDS-2017 "HTTP/1.1 200 OK"
+[2026-04-19 01:15:25,461] 1025 httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/bvk/CICIDS-2017/tree/b9515d5c95c0c0e7312274760acff3d54fe5ff41/data?recursive=true&expand=false "HTTP/1.1 404 Not Found"
+[2026-04-19 01:15:25,880] 1025 httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/bvk/CICIDS-2017/tree/b9515d5c95c0c0e7312274760acff3d54fe5ff41?recursive=false&expand=false "HTTP/1.1 200 OK"
+[2026-04-19 01:15:26,278] 1025 httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/bvk/CICIDS-2017/resolve/b9515d5c95c0c0e7312274760acff3d54fe5ff41/dataset_infos.json "HTTP/1.1 404 Not Found"
+[2026-04-19 01:15:26,874] 13 root - INFO - Dataset loaded: 2099971 rows, 89 columns
+[2026-04-19 01:15:33,887] 26 root - INFO - Raw data saved \u2192 C:\Users\rauna\Videos\FL IDS\artifacts\raw\cicids2017_raw.parquet
+[2026-04-19 01:15:33,887] 44 root - INFO - Starting preprocessing
+[2026-04-19 01:16:08,370] 55 root - INFO - Preprocessing done: 2099971 rows, 57 features, 27 classes
+[2026-04-19 01:16:14,762] 34 root - INFO - Preprocessed data saved \u2192 C:\Users\rauna\Videos\FL IDS\artifacts\preprocessed\cicids2017_preprocessed.parquet
+[2026-04-19 01:16:23,268] 59 root - INFO - Scaler and test set saved \u2192 C:\Users\rauna\Videos\FL IDS\artifacts\preprocessed
+[2026-04-19 01:16:23,850] 63 root - INFO - Non-IID partitioning done: 50 clients, alpha=0.5
+[2026-04-19 01:16:36,035] 75 root - INFO - Saved 50 partitions to C:\Users\rauna\Videos\FL IDS\artifacts\data
+[2026-04-19 01:16:36,063] 64 root - INFO - Data pipeline completed
