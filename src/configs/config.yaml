@@ -70,8 +70,21 @@ experiment:
   phase2_attack_rounds: 20    # Rounds 11-30: attackers active
   baseline_strategies: ["fedavg", "trimmed_mean", "krum"]
 
-# ─── Logging ──────────────────────────────────────────────────────
+# ─── Logging ──────────────────────────────────────────────────────────────────
 logging:
   log_level: "INFO"
   log_to_file: true
   log_dir: "artifacts/results"
+
+# ─── Centralized Baseline Training ───────────────────────────────────────────
+centralized:
+  hidden_dims: [64, 32, 16]    # Funnel topology: research-optimized for CIC-IDS2017
+  dropout_rate: 0.2             # Moderate dropout on reduced feature set
+  epochs: 50
+  batch_size: 256               # Large enough to sample minority classes per batch
+  learning_rate: 0.001          # Adam default; proven for tabular NIDS
+  weight_decay: 0.00001         # L2 regularization for residual multicollinearity
+  weight_cap: 10.0              # Cap on inverse-frequency class weights (prevents gradient explosion)
+  scheduler_patience: 5         # ReduceLROnPlateau: epochs to wait before halving LR
+  scheduler_factor: 0.5         # ReduceLROnPlateau: LR multiplier on plateau
+  save_path: "artifacts/models/baseline_mlp.pth"
