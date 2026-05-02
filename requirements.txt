@@ -34,3 +34,7 @@ pytest-cov>=5.0.0               # Test coverage reporting
 # ─── Notebooks ───────────────────────────────────────
 jupyter>=1.0.0                  # Jupyter notebook server
 ipykernel>=6.29.0               # Python kernel for Jupyter
+
+seaborn
+
+

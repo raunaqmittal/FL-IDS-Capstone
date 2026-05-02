@@ -6,85 +6,91 @@
 
 # ─── Model Architecture (PyTorch MLP) ────────────────────────────
 model:
-  input_dim: 78               # Raw CIC-IDS2017 features (reduced to ~40-50 after selection)
-  hidden_dims: [128, 64, 32]  # Hidden layer neuron counts
-  output_dim: 2               # Binary: Benign vs Malicious
-  dropout_rate: 0.3
+  input_dim: 57               # Features after preprocessing (variance + correlation filter)
+  hidden_dims: [256, 128, 64] # Wider funnel: context.md spec, supports 27-class head
+  num_classes: 27             # CIC-IDS2017 fine-grained multi-class (BENIGN + 26 attacks)
+  dropout_rate: 0.2           # Matches centralized baseline (notebook 06)
 
 # ─── Federated Learning ──────────────────────────────────────────
 federated:
   num_clients: 50             # Total simulated IoT edge gateways
-  sample_fraction: 0.4        # Fraction of clients sampled per round (C=20)
+  clients_per_round: 20       # Clients sampled per round (40% of 50)
   num_rounds: 30              # Total FL communication rounds
-  local_epochs: 5             # Local training epochs per client per round
-  learning_rate: 0.001
-  batch_size: 64
+  local_epochs: 3             # Local training epochs per client per round
+  learning_rate: 0.001        # Adam default; matches centralized baseline
+  batch_size: 256             # Large enough to sample minority classes per batch
   optimizer: "adam"
 
 # ─── Data Partitioning ───────────────────────────────────────────
 data:
   partition_mode: "non_iid"   # "iid" or "non_iid"
   alpha_dirichlet: 0.5        # Dirichlet concentration (lower = more heterogeneous)
-  val_split_ratio: 0.2        # Validation split per client
+  val_split_ratio: 0.2        # Validation split per client (local 80/20)
   random_seed: 42
   num_workers: 4
 
 # ─── Attack Configuration ────────────────────────────────────────
 attack:
-  attacker_ratio: 0.3         # Fraction of malicious clients (0.0, 0.10, 0.30, 0.50)
-  attack_start_round: 11      # Byzantine injection begins after clean baseline rounds
+  attacker_ratio: 0.0         # Start at 0.0 for Phase 1; set to 0.10 / 0.30 / 0.50 for Phase 2
+  attack_start_round: 11      # Byzantine injection begins after clean Phase 1 rounds
   attack_type: "label_flip"   # "label_flip" | "backdoor" | "both"
-  # Label-flip settings
-  source_class: 1             # Class index to flip FROM (e.g., DDoS)
-  target_class: 0             # Class index to flip TO (e.g., Benign)
+  # Label-flip settings (Targeted Semantic Attack: DDoS → Benign)
+  source_class: 3             # Class index to flip FROM (DDoS = 3 after LabelEncoder)
+  target_class: 0             # Class index to flip TO  (BENIGN = 0 after LabelEncoder)
   # Backdoor trigger settings
   trigger_feature_idx: [0, 5] # Feature indices used as trigger pattern
   trigger_values: [999999, 1] # Exact values injected (Flow_Duration, ACK_Flag_Count)
   inject_ratio: 0.1           # Fraction of local data poisoned with trigger
-  scale_to_benign_norm: true  # Whether to stealth-scale gradient to match benign L2 norm
+  scale_to_benign_norm: true  # Stealth-scale gradient L2-norm to match benign average
 
 # ─── Defense Pipeline (Server-Side) ──────────────────────────────
 defense:
-  # Gap 1: Layer-Wise Cosine Similarity + MAD
-  anomaly_threshold_tau: 3.0  # MAD Z-score threshold for flagging adversarial clients
-  analyze_layers: "final"     # "final" = only last FC layer, "final_two" = last two layers
-  
-  # Gap 2: Capped Simplex Projection
-  max_byzantine_fraction: 0.3 # b_f: max tolerated fraction for cap_t calculation
-  sparsity_s: null            # L0 sparsity constraint (null = auto from b_f)
-  
-  # Gap 3: EMA Trust Scoring
-  ema_decay_mu: 0.9           # Momentum decay factor (0.90 = moderate memory)
-  temperature_tau: 2.0        # Softmax temperature (higher = sharper trust discrimination)
-  initial_reputation: 0.0     # Starting reputation for new clients
+  # Gap 1: Layer-Wise Cosine Similarity + MAD Anomaly Scoring (Variant A — AL-CMT)
+  mad_threshold: -3.0         # Flag client as adversarial if MAD Z-score < -3.0
+  analyze_layers: "final"     # "final" = only last FC layer (skips Non-IID early layers)
+
+  # Gap 2: Capped Simplex Projection  O(K log K)
+  max_byzantine_fraction: 0.3 # b_f: max tolerated fraction → cap_t = 1/(K - b_f)
+  sparsity_s: null            # L0 sparsity constraint (null = auto-derived from b_f)
+
+  # Gap 3: EMA Momentum Trust Scoring
+  ema_momentum: 0.9           # mu_d decay factor (0.90 = moderate memory across rounds)
+  temperature: 2.0            # Softmax temperature (higher = sharper trust discrimination)
+  initial_reputation: 0.0     # Starting reputation score for all clients at Round 1
+
+  # Variant B: AE Scorer (cs-arf) — implement after Phase 1 data available
+  ae_hidden_factor: 4         # Bottleneck = layer_dim // ae_hidden_factor
+  ae_train_epochs: 5          # AE refit epochs per round on trusted weight vectors
 
 # ─── Evaluation ───────────────────────────────────────────────────
 evaluation:
-  metrics: ["macro_f1", "accuracy", "asr", "fpr"]
+  metrics: ["macro_f1", "weighted_f1", "accuracy", "asr", "fpr"]
+  primary_metric: "macro_f1"  # Baseline target to beat: 0.546 (notebook 06)
   save_confusion_matrix: true
   plot_every_n_rounds: 1
 
 # ─── Experiment Phases ────────────────────────────────────────────
 experiment:
-  phase1_clean_rounds: 10     # Rounds 1-10: no attackers (baseline convergence)
-  phase2_attack_rounds: 20    # Rounds 11-30: attackers active
+  phase1_clean_rounds: 10     # Rounds 1-10:  no attackers (baseline convergence + AE warm-up)
+  phase2_attack_rounds: 20    # Rounds 11-30: attackers active at configured attacker_ratio
+  attacker_ratios: [0.10, 0.30, 0.50]   # Run full sweep for paper results
   baseline_strategies: ["fedavg", "trimmed_mean", "krum"]
 
-# ─── Logging ──────────────────────────────────────────────────────────────────
+# ─── Logging ──────────────────────────────────────────────────────
 logging:
   log_level: "INFO"
   log_to_file: true
   log_dir: "artifacts/results"
 
-# ─── Centralized Baseline Training ───────────────────────────────────────────
+# ─── Centralized Baseline Training ───────────────────────────────
 centralized:
-  hidden_dims: [64, 32, 16]    # Funnel topology: research-optimized for CIC-IDS2017
-  dropout_rate: 0.2             # Moderate dropout on reduced feature set
+  hidden_dims: [256, 128, 64]  # Upgraded from [64,32,16] (notebook 06 baseline was under-capacity)
+  dropout_rate: 0.2            # Moderate dropout on reduced feature set
   epochs: 50
-  batch_size: 256               # Large enough to sample minority classes per batch
-  learning_rate: 0.001          # Adam default; proven for tabular NIDS
-  weight_decay: 0.00001         # L2 regularization for residual multicollinearity
-  weight_cap: 10.0              # Cap on inverse-frequency class weights (prevents gradient explosion)
-  scheduler_patience: 5         # ReduceLROnPlateau: epochs to wait before halving LR
-  scheduler_factor: 0.5         # ReduceLROnPlateau: LR multiplier on plateau
+  batch_size: 256              # Large enough to sample minority classes per batch
+  learning_rate: 0.001         # Adam default; proven for tabular NIDS
+  weight_decay: 0.00001        # L2 regularization for residual multicollinearity
+  weight_cap: 10.0             # Cap on inverse-frequency class weights (prevents gradient explosion)
+  scheduler_patience: 5        # ReduceLROnPlateau: epochs to wait before halving LR
+  scheduler_factor: 0.5        # ReduceLROnPlateau: LR multiplier on plateau
   save_path: "artifacts/models/baseline_mlp.pth"

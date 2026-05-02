@@ -49,3 +49,5 @@ Thumbs.db
 # ─── Coverage ────────────────────────────────────────
 .coverage
 htmlcov/
+
+torch-2.6.0+cu124-cp313-cp313-win_amd64.whl

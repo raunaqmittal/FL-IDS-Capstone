@@ -161,3 +161,7 @@ def run_centralized_training():
 
     except Exception as e:
         raise FLIDSException(e, sys)
+
+if __name__ == "__main__":
+    run_centralized_training()
+    
