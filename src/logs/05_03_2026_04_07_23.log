@@ -6,3 +6,5 @@
 [2026-05-03 04:07:28,736] 29 root - INFO - Class weights (capped at 10.0): {0: 0.049146109257574226, 1: 10.0, 2: 10.0, 3: 0.8174648010685586, 4: 10.0, 5: 10.0, 6: 0.49080515983824236, 7: 10.0, 8: 10.0, 9: 10.0, 10: 10.0, 11: 10.0, 12: 10.0, 13: 10.0, 14: 10.0, 15: 10.0, 16: 10.0, 17: 1.0837499056543525, 18: 0.48895769320435145, 19: 10.0, 20: 10.0, 21: 10.0, 22: 10.0, 23: 10.0, 24: 10.0, 25: 10.0, 26: 10.0}
 [2026-05-03 04:08:18,519] 135 root - INFO - Epoch 01/50 | Train Loss: 0.1849 | Val Loss: 0.0891 | Val Macro F1: 0.5057
 [2026-05-03 04:08:18,531] 153 root - INFO -   \u2705 New best saved \u2192 C:\Users\rauna\Videos\FL IDS\artifacts\models\baseline_mlp.pth
+[2026-05-03 04:09:12,466] 135 root - INFO - Epoch 02/50 | Train Loss: 0.1021 | Val Loss: 0.0762 | Val Macro F1: 0.5285
+[2026-05-03 04:09:12,475] 153 root - INFO -   \u2705 New best saved \u2192 C:\Users\rauna\Videos\FL IDS\artifacts\models\baseline_mlp.pth
