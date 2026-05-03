@@ -1,7 +1,7 @@
 # FL-IDS Capstone — Master Context File
 
 > **Purpose:** Give a new AI (or future session) full project context in one file.
-> Last updated: 2026-04-19 (updated: dual scoring module decision)
+> Last updated: 2026-05-03 (updated: baseline MLP retrained with [256, 128, 64] — Macro F1 = 0.7463)
 
 ---
 
@@ -60,7 +60,7 @@ FL IDS/
 │       │   ├── data_partitioner.py  ✅ IMPLEMENTED
 │       │   └── torch_dataset.py     ✅ IMPLEMENTED
 │       ├── model/
-│       │   └── model.py             🔲 STUB (design only, not coded)
+│       │   └── model.py             ✅ IMPLEMENTED (MLPClassifier [256,128,64])
 │       ├── client/
 │       │   ├── client.py            🔲 STUB (design only, not coded)
 │       │   └── attacker.py          🔲 STUB (design only, not coded)
@@ -145,6 +145,8 @@ def set_model_parameters(model, parameters) -> None: ...  # NumPy list → state
 ```
 
 Architecture: `input_dim → [256, 128, 64] → output_dim`, ReLU + Dropout. Lightweight for IoT.
+
+> ✅ **IMPLEMENTED & TRAINED** — Centralized baseline trained on CIC-IDS2017. Test Macro F1 = **0.7463**, Accuracy = 0.9880. See `docs/baseline_model_analysis.md` for full per-class breakdown.
 
 ### 4.2 FL Client — `src/components/client/client.py`
 
@@ -310,7 +312,7 @@ For comparison in experiments:
 **Network:** N=50 clients total, C=20 sampled per round
 
 **Implementation order:**
-1. Centralized MLP baseline (verify model architecture works)
+1. ✅ Centralized MLP baseline — **DONE.** Architecture `[256,128,64]`, Test Macro F1 = **0.7463**, Accuracy = 0.9880. FL target to beat.
 2. Flower simulation + Variant A (AL-CMT)
 3. Attack injection (label-flip + backdoor)
 4. Variant B (AE scorer) — after Phase 1 data available
