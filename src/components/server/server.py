@@ -1,31 +1,107 @@
-# server.py — Flower server entry point and custom Strategy wiring.
-#
-# Responsibilities:
-#   - Instantiates the custom RobustFLIDSStrategy (from aggregator.py)
-#   - Configures the Flower server with the strategy and server-side evaluation function
-#   - Provides the initial global model parameters to broadcast in round 0
-#   - Defines the on_fit_config_fn to push hyperparameters to clients each round
-#   - Defines the evaluate_fn for optional server-side global model evaluation
-#
-# Key functions / objects:
-#   def get_initial_parameters() -> flwr.common.Parameters:
-#       """Serialize a freshly initialized MLPClassifier's weights as the
-#          starting global model to be broadcast before round 1."""
-#
-#   def get_fit_config(server_round: int) -> dict:
-#       """Return per-round config dict sent to every client before local training.
-#          Includes: local_epochs, learning_rate, attacker_ratio (from config.yaml),
-#          and whether Byzantine injection should be active this round."""
-#
-#   def server_evaluate_fn(server_round, parameters, config):
-#       """Optional: load a held-out evaluation set on the server side and
-#          compute global macro F1-score and Attack Success Rate (ASR) after each round.
-#          Results are logged to artifacts/results/ via the custom logger."""
-#
-# Entry point:
-#   if __name__ == "__main__":
-#       flwr.server.start_server(
-#           server_address=...,
-#           config=flwr.server.ServerConfig(num_rounds=...),
-#           strategy=RobustFLIDSStrategy(...)
-#       )
+import sys
+from typing import Dict, Optional, Tuple
+
+import flwr as fl
+import numpy as np
+import torch
+from flwr.common import Parameters, Scalar, ndarrays_to_parameters, parameters_to_ndarrays
+from sklearn.metrics import f1_score
+
+from src.configs.config import CONFIG
+from src.configs.paths import PREPROCESSED_DIR, MODELS_DIR
+from src.logging.logger import logging
+from src.exception.exception import FLIDSException
+from src.components.model.model import MLPClassifier, get_model_parameters, set_model_parameters
+from src.components.server.aggregator import RobustFLIDSStrategy
+
+
+def get_initial_parameters() -> Parameters:
+    try:
+        model_cfg = CONFIG["model"]
+        model = MLPClassifier(
+            input_dim=model_cfg["input_dim"],
+            hidden_dims=model_cfg["hidden_dims"],
+            num_classes=model_cfg["num_classes"],
+            dropout_rate=model_cfg["dropout_rate"],
+        )
+
+        checkpoint = MODELS_DIR / "baseline_mlp.pth"
+        if checkpoint.exists():
+            saved = torch.load(checkpoint, map_location="cpu")
+            state_dict = saved.get("model_state_dict", saved)
+            model.load_state_dict(state_dict)
+            logging.info(f"[Server] Loaded baseline checkpoint from {checkpoint}")
+        else:
+            logging.info("[Server] No checkpoint found — using random initial parameters.")
+
+        return ndarrays_to_parameters(get_model_parameters(model))
+
+    except Exception as e:
+        raise FLIDSException(e, sys)
+
+
+def server_evaluate_fn(
+    server_round: int,
+    parameters: Parameters,
+    config: Dict[str, Scalar],
+) -> Optional[Tuple[float, Dict[str, Scalar]]]:
+    try:
+        test_path = PREPROCESSED_DIR / "test_set.npz"
+        if not test_path.exists():
+            return None
+
+        data = np.load(test_path)
+        X_test = data["X_test"].astype(np.float32)
+        y_test = data["y_test"].astype(np.int64)
+
+        model_cfg = CONFIG["model"]
+        model = MLPClassifier(
+            input_dim=model_cfg["input_dim"],
+            hidden_dims=model_cfg["hidden_dims"],
+            num_classes=model_cfg["num_classes"],
+            dropout_rate=model_cfg["dropout_rate"],
+        )
+        set_model_parameters(model, parameters_to_ndarrays(parameters))
+        model.eval()
+
+        with torch.no_grad():
+            logits = model(torch.tensor(X_test))
+            preds = torch.argmax(logits, dim=1).numpy()
+
+        loss = float(
+            torch.nn.CrossEntropyLoss()(
+                logits,
+                torch.tensor(y_test),
+            ).item()
+        )
+
+        macro_f1 = float(f1_score(y_test, preds, average="macro", zero_division=0))
+        accuracy = float((preds == y_test).mean())
+
+        logging.info(
+            f"[Server] Round {server_round} — loss={loss:.4f}, macro_f1={macro_f1:.4f}, acc={accuracy:.4f}"
+        )
+
+        return loss, {"macro_f1": macro_f1, "accuracy": accuracy, "round": server_round}
+
+    except Exception as e:
+        raise FLIDSException(e, sys)
+
+
+def build_strategy() -> RobustFLIDSStrategy:
+    initial_parameters = get_initial_parameters()
+    return RobustFLIDSStrategy(initial_parameters=initial_parameters)
+
+
+if __name__ == "__main__":
+    try:
+        strategy = build_strategy()
+
+        fl.server.start_server(
+            server_address="0.0.0.0:8080",
+            config=fl.server.ServerConfig(num_rounds=CONFIG["federated"]["num_rounds"]),
+            strategy=strategy,
+        )
+
+    except Exception as e:
+        raise FLIDSException(e, sys)

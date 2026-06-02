@@ -3,11 +3,14 @@ import flwr as fl
 from src.components.model.model import MLPClassifier
 from src.components.client.client import FLIDSClient
 from src.components.data.data_partitioner import load_partition_dataloaders
+from src.configs.config import CONFIG
 
-
-NUM_CLIENTS = 3
-INPUT_DIM = 78
-BATCH_SIZE = 8
+# Dimensions read from CONFIG to match real preprocessed data.
+# Requires data_pipeline to have been run first (artifacts/data/*.npz must exist).
+NUM_CLIENTS  = 3
+INPUT_DIM    = CONFIG["model"]["input_dim"]    # 57 after variance + correlation filter
+NUM_CLASSES  = CONFIG["model"]["num_classes"]  # 27 fine-grained CIC-IDS2017 classes
+BATCH_SIZE   = 8
 
 
 def client_fn(cid: str):
@@ -20,8 +23,8 @@ def client_fn(cid: str):
 
     model = MLPClassifier(
         input_dim=INPUT_DIM,
-        hidden_dims=[64, 32, 16],
-        num_classes=2,
+        hidden_dims=CONFIG["model"]["hidden_dims"],  # [256, 128, 64]
+        num_classes=NUM_CLASSES,
     )
 
     client = FLIDSClient(

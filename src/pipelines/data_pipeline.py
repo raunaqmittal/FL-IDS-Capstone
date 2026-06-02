@@ -37,7 +37,7 @@ def run_data_pipeline():
             X, y, test_size=0.2, stratify=y, random_state=42
         )
 
-        np.savez_compressed(PREPROCESSED_DIR / "test_set.npz", X=X_test, y=y_test)
+        np.savez_compressed(PREPROCESSED_DIR / "test_set.npz", X_test=X_test, y_test=y_test)
 
         run_partitioning(X_train, y_train)
 
