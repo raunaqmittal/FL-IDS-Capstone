@@ -4,3 +4,20 @@
 [2026-06-02 19:10:39,578] 93 root - INFO - [Pipeline] Starting manual FL loop — 50 clients, 20 per round, 30 rounds.
 [2026-06-02 19:10:39,578] 101 root - INFO - 
 [Pipeline] ===== Round 1/30 =====
+[2026-06-02 19:10:44,544] 131 root - INFO -   [Client 40] loss=0.0162 acc=0.9937
+[2026-06-02 19:10:53,403] 131 root - INFO -   [Client 7] loss=0.0113 acc=0.9964
+[2026-06-02 19:10:53,761] 131 root - INFO -   [Client 1] loss=0.0581 acc=0.9798
+[2026-06-02 19:11:00,236] 131 root - INFO -   [Client 17] loss=0.0123 acc=0.9961
+[2026-06-02 19:11:01,730] 131 root - INFO -   [Client 15] loss=0.3692 acc=0.9184
+[2026-06-02 19:11:03,366] 131 root - INFO -   [Client 14] loss=0.0290 acc=0.9894
+[2026-06-02 19:11:05,687] 131 root - INFO -   [Client 8] loss=0.0416 acc=0.9832
+[2026-06-02 19:11:07,148] 131 root - INFO -   [Client 6] loss=0.0358 acc=0.9862
+[2026-06-02 19:11:07,901] 131 root - INFO -   [Client 34] loss=0.0479 acc=0.9852
+[2026-06-02 19:11:09,749] 131 root - INFO -   [Client 5] loss=0.0147 acc=0.9951
+[2026-06-02 19:11:12,167] 131 root - INFO -   [Client 37] loss=0.0123 acc=0.9965
+[2026-06-02 19:11:13,804] 131 root - INFO -   [Client 27] loss=0.0176 acc=0.9944
+[2026-06-02 19:11:17,420] 131 root - INFO -   [Client 2] loss=0.0116 acc=0.9965
+[2026-06-02 19:11:18,866] 131 root - INFO -   [Client 47] loss=0.9647 acc=0.8314
+[2026-06-02 19:11:19,099] 131 root - INFO -   [Client 49] loss=0.2047 acc=0.9393
+[2026-06-02 19:11:19,467] 131 root - INFO -   [Client 13] loss=0.2857 acc=0.9254
+[2026-06-02 19:11:20,124] 131 root - INFO -   [Client 44] loss=0.2660 acc=0.9184
