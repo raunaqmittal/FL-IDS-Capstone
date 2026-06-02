@@ -51,8 +51,9 @@ def server_evaluate_fn(
             return None
 
         data = np.load(test_path)
-        X_test = data["X_test"].astype(np.float32)
-        y_test = data["y_test"].astype(np.int64)
+        keys = list(data.keys())
+        X_test = data["X_test"].astype(np.float32) if "X_test" in keys else data["X"].astype(np.float32)
+        y_test = data["y_test"].astype(np.int64) if "y_test" in keys else data["y"].astype(np.int64)
 
         model_cfg = CONFIG["model"]
         model = MLPClassifier(
