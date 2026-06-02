@@ -1,0 +1,37 @@
+[2026-05-31 11:16:21,876] 268 flwr - WARNING - DEPRECATED FEATURE: flwr.simulation.start_simulation() is deprecated.
+	Instead, use the `flwr run` CLI command to start a local simulation in your Flower app, as shown for example below:
+
+		$ flwr new  # Create a new Flower app from a template
+
+		$ flwr run  # Run the Flower app in Simulation Mode
+
+	Using `start_simulation()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2026-05-31 11:16:21,878] 241 flwr - INFO - Starting Flower simulation, config: num_rounds=1, no round_timeout
+[2026-05-31 11:16:29,955] 264 flwr - INFO - Flower VCE: Ray initialized with resources: {'object_store_memory': 2726443008.0, 'GPU': 1.0, 'memory': 6361700352.0, 'accelerator_type:G': 1.0, 'node:127.0.0.1': 1.0, 'node:__internal_head__': 1.0, 'CPU': 6.0}
+[2026-05-31 11:16:29,955] 270 flwr - INFO - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2026-05-31 11:16:29,956] 278 flwr - INFO - No `client_resources` specified. Using minimal resources for clients.
+[2026-05-31 11:16:29,956] 293 flwr - INFO - Flower VCE: Resources for each Virtual Client: {'num_cpus': 1, 'num_gpus': 0.0}
+[2026-05-31 11:16:29,969] 339 flwr - INFO - Flower VCE: Creating VirtualClientEngineActorPool with 6 actors
+[2026-05-31 11:16:29,970] 91 flwr - INFO - [INIT]
+[2026-05-31 11:16:29,970] 276 flwr - INFO - Requesting initial parameters from one random client
+[2026-05-31 11:16:34,093] 283 flwr - INFO - Received initial parameters from one random client
+[2026-05-31 11:16:34,093] 93 flwr - INFO - Starting evaluation of initial global parameters
+[2026-05-31 11:16:34,093] 105 flwr - INFO - Evaluation returned no results (`None`)
+[2026-05-31 11:16:34,093] 111 flwr - INFO - 
+[2026-05-31 11:16:34,093] 112 flwr - INFO - [ROUND 1]
+[2026-05-31 11:16:34,094] 221 flwr - INFO - configure_fit: strategy sampled 3 clients (out of 3)
+[2026-05-31 11:16:39,977] 235 flwr - INFO - aggregate_fit: received 3 results and 0 failures
+[2026-05-31 11:16:39,980] 251 flwr - WARNING - No fit_metrics_aggregation_fn provided
+[2026-05-31 11:16:39,981] 175 flwr - INFO - configure_evaluate: strategy sampled 3 clients (out of 3)
+[2026-05-31 11:16:40,010] 189 flwr - INFO - aggregate_evaluate: received 3 results and 0 failures
+[2026-05-31 11:16:40,011] 282 flwr - WARNING - No evaluate_metrics_aggregation_fn provided
+[2026-05-31 11:16:40,011] 491 flwr - INFO - 
+[2026-05-31 11:16:40,011] 492 flwr - INFO - [SUMMARY]
+[2026-05-31 11:16:40,011] 493 flwr - INFO - Run finished 1 round(s) in 5.92s
+[2026-05-31 11:16:40,011] 495 flwr - INFO - 	History (loss, distributed):
+[2026-05-31 11:16:40,011] 495 flwr - INFO - 		round 1: 5.549435476462047
+[2026-05-31 11:16:40,011] 496 flwr - INFO - 

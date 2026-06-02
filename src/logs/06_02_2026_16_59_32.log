@@ -1,0 +1,2 @@
+[2026-06-02 16:59:32,868] 65 root - INFO - Non-IID partitioning done: 3 clients, alpha=0.5
+[2026-06-02 16:59:32,883] 93 root - INFO - Saved 3 train/val partitions to C:\Users\Aarush\FL-IDS-Capstone\artifacts\data
