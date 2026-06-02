@@ -1,13 +1,13 @@
 import sys
 import math
+import random
 
-import flwr as fl
 import numpy as np
 import torch
 from flwr.common import ndarrays_to_parameters, parameters_to_ndarrays
 
 from src.configs.config import CONFIG
-from src.configs.paths import DATA_DIR, MODELS_DIR, PREPROCESSED_DIR, ensure_dirs
+from src.configs.paths import DATA_DIR, MODELS_DIR, ensure_dirs
 from src.logging.logger import logging
 from src.exception.exception import FLIDSException
 from src.components.model.model import MLPClassifier, get_model_parameters, set_model_parameters
@@ -15,13 +15,56 @@ from src.components.data.data_partitioner import load_partition
 from src.components.data.torch_dataset import make_dataloader
 from src.components.client.client import FLIDSClient
 from src.components.server.aggregator import RobustFLIDSStrategy
-from src.components.server.server import server_evaluate_fn
+from src.components.server.server import get_initial_parameters, server_evaluate_fn
 
 
 def _select_malicious_ids(num_clients: int, attacker_ratio: float, seed: int = 42) -> set:
     num_attackers = int(math.floor(num_clients * attacker_ratio))
-    rng = np.random.RandomState(seed)
-    return set(rng.choice(num_clients, size=num_attackers, replace=False).tolist())
+    rng = random.Random(seed)
+    population = list(range(num_clients))
+    return set(rng.sample(population, num_attackers))
+
+
+def _make_client(cid: int, is_poisoned: bool, model_cfg: dict, fed_cfg: dict, attack_cfg: dict) -> FLIDSClient:
+    X_train, y_train, X_val, y_val = load_partition(cid)
+
+    batch_size = fed_cfg["batch_size"]
+    train_loader = make_dataloader(X_train, y_train, batch_size=batch_size, shuffle=True)
+    val_loader = make_dataloader(X_val, y_val, batch_size=batch_size, shuffle=False)
+
+    model = MLPClassifier(
+        input_dim=model_cfg["input_dim"],
+        hidden_dims=model_cfg["hidden_dims"],
+        num_classes=model_cfg["num_classes"],
+        dropout_rate=model_cfg["dropout_rate"],
+    )
+
+    client_config = {
+        "device": "cuda" if torch.cuda.is_available() else "cpu",
+        "local_epochs": fed_cfg["local_epochs"],
+        "lr": fed_cfg["learning_rate"],
+        "weight_decay": 1e-5,
+        "is_poisoned": is_poisoned,
+        "attack_type": attack_cfg["attack_type"],
+        "attack_start_round": attack_cfg["attack_start_round"],
+        "source_class": attack_cfg["source_class"],
+        "target_class": attack_cfg["target_class"],
+        "trigger_feature_idx": attack_cfg["trigger_feature_idx"],
+        "trigger_values": attack_cfg["trigger_values"],
+        "inject_ratio": attack_cfg["inject_ratio"],
+        "scale_to_benign_norm": attack_cfg["scale_to_benign_norm"],
+        "benign_norm_target": 1.0,
+    }
+
+    return FLIDSClient(
+        cid=str(cid),
+        train_loader=train_loader,
+        val_loader=val_loader,
+        model=model,
+        config=client_config,
+        X_train_raw=X_train if is_poisoned else None,
+        y_train_raw=y_train if is_poisoned else None,
+    )
 
 
 def run_experiment() -> None:
@@ -33,100 +76,114 @@ def run_experiment() -> None:
         attack_cfg = CONFIG["attack"]
 
         num_clients = fed_cfg["num_clients"]
+        clients_per_round = fed_cfg["clients_per_round"]
         num_rounds = fed_cfg["num_rounds"]
-        batch_size = fed_cfg["batch_size"]
-
         attacker_ratio = float(attack_cfg["attacker_ratio"])
-        malicious_ids = _select_malicious_ids(num_clients, attacker_ratio)
 
+        malicious_ids = _select_malicious_ids(num_clients, attacker_ratio)
         if malicious_ids:
             logging.info(f"[Pipeline] Malicious client IDs: {sorted(malicious_ids)}")
         else:
-            logging.info("[Pipeline] No malicious clients this run (attacker_ratio=0).")
+            logging.info("[Pipeline] Phase 1 — no malicious clients (attacker_ratio=0.0).")
 
-        # Build initial model
-        model = MLPClassifier(
-            input_dim=model_cfg["input_dim"],
-            hidden_dims=model_cfg["hidden_dims"],
-            num_classes=model_cfg["num_classes"],
-            dropout_rate=model_cfg["dropout_rate"],
-        )
-
-        checkpoint = MODELS_DIR / "baseline_mlp.pth"
-        if checkpoint.exists():
-            model.load_state_dict(torch.load(checkpoint, map_location="cpu"))
-            logging.info("[Pipeline] Warm-starting from baseline checkpoint.")
-
-        initial_parameters = ndarrays_to_parameters(get_model_parameters(model))
-
-        # Client factory for Flower simulation
-        def client_fn(cid: str) -> fl.client.NumPyClient:
-            cid_int = int(cid)
-            X_train, y_train, X_val, y_val = load_partition(cid_int)
-
-            train_loader = make_dataloader(X_train, y_train, batch_size=batch_size, shuffle=True)
-            val_loader = make_dataloader(X_val, y_val, batch_size=batch_size, shuffle=False)
-
-            client_model = MLPClassifier(
-                input_dim=model_cfg["input_dim"],
-                hidden_dims=model_cfg["hidden_dims"],
-                num_classes=model_cfg["num_classes"],
-                dropout_rate=model_cfg["dropout_rate"],
-            )
-
-            is_poisoned = cid_int in malicious_ids
-
-            client_config = {
-                "device": "cuda" if torch.cuda.is_available() else "cpu",
-                "local_epochs": fed_cfg["local_epochs"],
-                "lr": fed_cfg["learning_rate"],
-                "weight_decay": 1e-5,
-                "is_poisoned": is_poisoned,
-                "attack_type": attack_cfg["attack_type"],
-                "attack_start_round": attack_cfg["attack_start_round"],
-                "source_class": attack_cfg["source_class"],
-                "target_class": attack_cfg["target_class"],
-                "trigger_feature_idx": attack_cfg["trigger_feature_idx"],
-                "trigger_values": attack_cfg["trigger_values"],
-                "inject_ratio": attack_cfg["inject_ratio"],
-                "scale_to_benign_norm": attack_cfg["scale_to_benign_norm"],
-                "benign_norm_target": 1.0,
-            }
-
-            return FLIDSClient(
-                cid=cid,
-                train_loader=train_loader,
-                val_loader=val_loader,
-                model=client_model,
-                config=client_config,
-                X_train_raw=X_train if is_poisoned else None,
-                y_train_raw=y_train if is_poisoned else None,
-            )
-
+        initial_parameters = get_initial_parameters()
         strategy = RobustFLIDSStrategy(initial_parameters=initial_parameters)
+        global_params = parameters_to_ndarrays(initial_parameters)
 
         logging.info(
-            f"[Pipeline] Starting FL simulation — {num_clients} clients, "
-            f"{num_rounds} rounds, {len(malicious_ids)} attackers."
+            f"[Pipeline] Starting manual FL loop — {num_clients} clients, "
+            f"{clients_per_round} per round, {num_rounds} rounds."
         )
 
-        fl.simulation.start_simulation(
-            client_fn=client_fn,
-            num_clients=num_clients,
-            config=fl.server.ServerConfig(num_rounds=num_rounds),
-            strategy=strategy,
-            client_resources={"num_cpus": 1, "num_gpus": 0.0},
-        )
+        rng = random.Random(CONFIG["data"]["random_seed"])
+
+        for server_round in range(1, num_rounds + 1):
+            logging.info(f"\n[Pipeline] ===== Round {server_round}/{num_rounds} =====")
+
+            # Sample clients for this round
+            sampled_ids = rng.sample(range(num_clients), clients_per_round)
+
+            fit_config = {
+                "server_round": server_round,
+                "local_epochs": fed_cfg["local_epochs"],
+                "lr": fed_cfg["learning_rate"],
+                "batch_size": fed_cfg["batch_size"],
+            }
+
+            current_params = ndarrays_to_parameters(global_params)
+
+            # Collect fit results from sampled clients
+            results = []
+            for cid in sampled_ids:
+                client = _make_client(
+                    cid=cid,
+                    is_poisoned=(cid in malicious_ids),
+                    model_cfg=model_cfg,
+                    fed_cfg=fed_cfg,
+                    attack_cfg=attack_cfg,
+                )
+                client_params, num_examples, metrics = client.fit(global_params, fit_config)
+                results.append((cid, client_params, num_examples, metrics))
+
+                if metrics.get("attack_active"):
+                    logging.info(f"  [Client {cid}] ATTACK ACTIVE | loss={metrics['train_loss']:.4f}")
+                else:
+                    logging.info(f"  [Client {cid}] loss={metrics['train_loss']:.4f} acc={metrics['train_accuracy']:.4f}")
+
+            # Build fake FitRes-like objects for aggregator
+            from flwr.common import FitRes, Status, Code
+            from flwr.server.client_proxy import ClientProxy
+
+            class SimpleProxy(ClientProxy):
+                def __init__(self, cid):
+                    super().__init__(cid)
+                def reconnect(self, *a, **kw): pass
+                def get_properties(self, *a, **kw): pass
+                def get_parameters(self, *a, **kw): pass
+                def fit(self, *a, **kw): pass
+                def evaluate(self, *a, **kw): pass
+
+            flower_results = []
+            for cid, client_params, num_examples, metrics in results:
+                proxy = SimpleProxy(str(cid))
+                fit_res = FitRes(
+                    status=Status(code=Code.OK, message=""),
+                    parameters=ndarrays_to_parameters(client_params),
+                    num_examples=num_examples,
+                    metrics=metrics,
+                )
+                flower_results.append((proxy, fit_res))
+
+            # Aggregate
+            aggregated, agg_metrics = strategy.aggregate_fit(server_round, flower_results, [])
+            if aggregated is not None:
+                global_params = parameters_to_ndarrays(aggregated)
+                logging.info(
+                    f"[Pipeline] Round {server_round} aggregated — "
+                    f"flagged={agg_metrics.get('flagged', 0)}, "
+                    f"min_trust={agg_metrics.get('min_trust', 0):.4f}, "
+                    f"max_trust={agg_metrics.get('max_trust', 0):.4f}"
+                )
+
+            # Server-side evaluation every round
+            eval_result = server_evaluate_fn(server_round, ndarrays_to_parameters(global_params), {})
+            if eval_result:
+                loss, eval_metrics = eval_result
+                logging.info(
+                    f"[Pipeline] Round {server_round} eval — "
+                    f"macro_f1={eval_metrics.get('macro_f1', 0):.4f}, "
+                    f"acc={eval_metrics.get('accuracy', 0):.4f}, "
+                    f"loss={loss:.4f}"
+                )
 
         # Save final global model
-        final_params = parameters_to_ndarrays(strategy.initial_parameters)
         final_model = MLPClassifier(
             input_dim=model_cfg["input_dim"],
             hidden_dims=model_cfg["hidden_dims"],
             num_classes=model_cfg["num_classes"],
             dropout_rate=model_cfg["dropout_rate"],
         )
-        set_model_parameters(final_model, final_params)
+        set_model_parameters(final_model, global_params)
         save_path = MODELS_DIR / "fl_global_model.pth"
         torch.save(final_model.state_dict(), save_path)
         logging.info(f"[Pipeline] Final global model saved to {save_path}")

@@ -99,12 +99,19 @@ def save_partitions(partitions: List[Tuple[np.ndarray, np.ndarray]], output_dir)
 def load_partition(client_id: int):
     try:
         data = np.load(DATA_DIR / f"client_{client_id:04d}.npz")
-        return (
-            data["X_train"],
-            data["y_train"],
-            data["X_val"],
-            data["y_val"],
-        )
+        keys = list(data.keys())
+
+        if "X_train" in keys:
+            return (data["X_train"], data["y_train"], data["X_val"], data["y_val"])
+
+        # Old format: only X and y — split inline
+        X, y = data["X"], data["y"]
+        val_ratio = CONFIG["data"].get("val_split_ratio", 0.2)
+        indices = np.random.permutation(len(X))
+        val_size = int(len(X) * val_ratio)
+        val_idx, train_idx = indices[:val_size], indices[val_size:]
+        return (X[train_idx], y[train_idx], X[val_idx], y[val_idx])
+
     except Exception as e:
         raise FLIDSException(e, sys)
 
