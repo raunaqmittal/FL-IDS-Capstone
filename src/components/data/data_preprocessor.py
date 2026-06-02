@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 from src.logging.logger import logging
 from src.exception.exception import FLIDSException
@@ -13,7 +13,9 @@ def drop_unusable(df: pd.DataFrame) -> pd.DataFrame:
     df = df.drop(columns=[c for c in DROP_COLS if c in df.columns])
     df = df.dropna(axis=1, how="all")                              # Step 1: remove all-NaN cols
     num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-    return df[num_cols + ["Label"]]                                 # keep numeric + label only
+    if "Label" not in df.columns:
+        raise ValueError("Label column not found in dataset")
+    return df[num_cols + ["Label"]]                              # keep numeric + label only
 
 
 def impute(df: pd.DataFrame) -> pd.DataFrame:
@@ -52,8 +54,18 @@ def preprocess(df: pd.DataFrame):
 
         df, le = encode_labels(df)
 
-        logging.info(f"Preprocessing done: {df.shape[0]} rows, {len(feature_cols)} features, {len(le.classes_)} classes")
-        return df, feature_cols, le
+        scaler = StandardScaler()
+        df[feature_cols] = scaler.fit_transform(df[feature_cols])
+
+        X = df[feature_cols].to_numpy(dtype=np.float32)
+        y = df["Label"].to_numpy(dtype=np.int64)
+
+        logging.info(
+            f"Preprocessing done: {X.shape[0]} rows, "
+            f"{X.shape[1]} features, {len(le.classes_)} classes"
+        )
+
+        return X, y, feature_cols, le, scaler
 
     except Exception as e:
         raise FLIDSException(e, sys)

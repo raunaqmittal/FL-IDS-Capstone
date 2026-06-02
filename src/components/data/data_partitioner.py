@@ -19,6 +19,8 @@
 
 import sys
 import numpy as np
+import torch
+from torch.utils.data import TensorDataset, DataLoader
 from typing import List, Tuple
 from src.logging.logger import logging
 from src.exception.exception import FLIDSException
@@ -70,19 +72,76 @@ def save_partitions(partitions: List[Tuple[np.ndarray, np.ndarray]], output_dir)
     try:
         output_dir = DATA_DIR if output_dir is None else output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
+
+        val_split_ratio = CONFIG["data"].get("val_split_ratio", 0.2)
+
         for i, (X, y) in enumerate(partitions):
-            np.savez_compressed(output_dir / f"client_{i:04d}.npz", X=X, y=y)
-        logging.info(f"Saved {len(partitions)} partitions to {output_dir}")
+            indices = np.random.permutation(len(X))
+            val_size = int(len(X) * val_split_ratio)
+
+            val_idx = indices[:val_size]
+            train_idx = indices[val_size:]
+
+            np.savez_compressed(
+                output_dir / f"client_{i:04d}.npz",
+                X_train=X[train_idx],
+                y_train=y[train_idx],
+                X_val=X[val_idx],
+                y_val=y[val_idx],
+            )
+
+        logging.info(f"Saved {len(partitions)} train/val partitions to {output_dir}")
+
     except Exception as e:
         raise FLIDSException(e, sys)
 
 
-def load_partition(client_id: int) -> Tuple[np.ndarray, np.ndarray]:
+def load_partition(client_id: int):
     try:
         data = np.load(DATA_DIR / f"client_{client_id:04d}.npz")
-        return data["X"], data["y"]
+        return (
+            data["X_train"],
+            data["y_train"],
+            data["X_val"],
+            data["y_val"],
+        )
     except Exception as e:
         raise FLIDSException(e, sys)
+
+
+def load_partition_dataloaders(client_id: int, batch_size: int = 64):
+    try:
+        X_train, y_train, X_val, y_val = load_partition(client_id)
+
+        train_dataset = TensorDataset(
+            torch.tensor(X_train, dtype=torch.float32),
+            torch.tensor(y_train, dtype=torch.long),
+        )
+
+        val_dataset = TensorDataset(
+            torch.tensor(X_val, dtype=torch.float32),
+            torch.tensor(y_val, dtype=torch.long),
+        )
+
+        train_loader = DataLoader(
+            train_dataset,
+            batch_size=batch_size,
+            shuffle=True,
+            drop_last=True,
+        )
+
+        val_loader = DataLoader(
+            val_dataset,
+            batch_size=batch_size,
+            shuffle=False,
+            drop_last=False,
+        )
+
+        return train_loader, val_loader
+
+    except Exception as e:
+        raise FLIDSException(e, sys)
+
 
 
 def run_partitioning(X: np.ndarray, y: np.ndarray) -> None:
