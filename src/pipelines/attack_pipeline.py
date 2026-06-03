@@ -1,34 +1,53 @@
-# attack_pipeline.py — Configures and manages Byzantine client injection.
-#
-# Determines which client IDs are poisoned, which attack type they execute,
-# and at which FL round the attacks begin.
-#
-# Key functions to implement:
-#
-#   def select_malicious_clients(
-#       num_clients: int,
-#       attacker_ratio: float,
-#       seed: int = 42
-#   ) -> List[int]:
-#       """Randomly select a fixed set of client IDs that will act as Byzantine.
-#          Returns list of integer client IDs, e.g., [3, 7, 12, ...].
-#          Selection is deterministic for reproducibility."""
-#
-#   def is_attack_active(server_round: int, attack_start_round: int) -> bool:
-#       """Return True if current round >= attack_start_round."""
-#
-#   def get_attack_config(client_id: int, malicious_ids: List[int],
-#                         server_round: int, config) -> dict:
-#       """Return an attack config dict for a given client:
-#          - If client_id is NOT in malicious_ids → return {"is_malicious": False}
-#          - If attack is not yet active → return {"is_malicious": False}
-#          - Otherwise → return full attack params (type, source_class, etc.)
-#       """
-#
-#   def run_attack_sweep(config_path: str) -> None:
-#       """Run the full training pipeline multiple times with different
-#          attacker_ratio values [0.0, 0.1, 0.3, 0.5] and save separate
-#          result CSVs for each scenario. Used for the comparative analysis."""
-#
-#   if __name__ == "__main__":
-#       run_attack_sweep()
+import random
+import math
+
+from src.configs.config import CONFIG
+from src.logging.logger import logging
+
+
+def select_malicious_clients(num_clients: int, attacker_ratio: float, seed: int = 42) -> list:
+    num_attackers = int(math.floor(num_clients * attacker_ratio))
+    rng = random.Random(seed)
+    return sorted(rng.sample(range(num_clients), num_attackers))
+
+
+def is_attack_active(server_round: int, attack_start_round: int) -> bool:
+    return server_round >= attack_start_round
+
+
+def get_attack_config(client_id: int, malicious_ids: list, server_round: int) -> dict:
+    attack_cfg = CONFIG["attack"]
+
+    if client_id not in malicious_ids:
+        return {"is_poisoned": False}
+
+    if not is_attack_active(server_round, attack_cfg["attack_start_round"]):
+        return {"is_poisoned": False}
+
+    return {
+        "is_poisoned": True,
+        "attack_type": attack_cfg["attack_type"],
+        "attack_start_round": attack_cfg["attack_start_round"],
+        "source_class": attack_cfg["source_class"],
+        "target_class": attack_cfg["target_class"],
+        "trigger_feature_idx": attack_cfg["trigger_feature_idx"],
+        "trigger_values": attack_cfg["trigger_values"],
+        "inject_ratio": attack_cfg["inject_ratio"],
+        "scale_to_benign_norm": attack_cfg["scale_to_benign_norm"],
+    }
+
+
+def run_attack_sweep() -> None:
+    from src.pipelines.training_pipeline import run_experiment
+
+    ratios = CONFIG["experiment"]["attacker_ratios"]
+    for ratio in ratios:
+        logging.info(f"\n[AttackSweep] Running experiment with attacker_ratio={ratio}")
+        CONFIG["attack"]["attacker_ratio"] = ratio
+        run_experiment(results_suffix=f"_ratio_{int(ratio * 100):02d}pct")
+
+    logging.info("[AttackSweep] All sweeps complete.")
+
+
+if __name__ == "__main__":
+    run_attack_sweep()

@@ -4,10 +4,11 @@ import random
 
 import numpy as np
 import torch
-from flwr.common import ndarrays_to_parameters, parameters_to_ndarrays
+from flwr.common import FitRes, Status, Code, ndarrays_to_parameters, parameters_to_ndarrays
+from flwr.server.client_proxy import ClientProxy
 
 from src.configs.config import CONFIG
-from src.configs.paths import DATA_DIR, MODELS_DIR, ensure_dirs
+from src.configs.paths import DATA_DIR, MODELS_DIR, RESULTS_DIR, ensure_dirs
 from src.logging.logger import logging
 from src.exception.exception import FLIDSException
 from src.components.model.model import MLPClassifier, get_model_parameters, set_model_parameters
@@ -16,13 +17,23 @@ from src.components.data.torch_dataset import make_dataloader
 from src.components.client.client import FLIDSClient
 from src.components.server.aggregator import RobustFLIDSStrategy
 from src.components.server.server import get_initial_parameters, server_evaluate_fn
+from src.components.evaluation.evaluator import log_round_results, log_trust_scores
+
+
+class _SimpleProxy(ClientProxy):
+    def __init__(self, cid):
+        super().__init__(cid)
+    def reconnect(self, *a, **kw): pass
+    def get_properties(self, *a, **kw): pass
+    def get_parameters(self, *a, **kw): pass
+    def fit(self, *a, **kw): pass
+    def evaluate(self, *a, **kw): pass
 
 
 def _select_malicious_ids(num_clients: int, attacker_ratio: float, seed: int = 42) -> set:
     num_attackers = int(math.floor(num_clients * attacker_ratio))
     rng = random.Random(seed)
-    population = list(range(num_clients))
-    return set(rng.sample(population, num_attackers))
+    return set(rng.sample(range(num_clients), num_attackers))
 
 
 def _make_client(cid: int, is_poisoned: bool, model_cfg: dict, fed_cfg: dict, attack_cfg: dict) -> FLIDSClient:
@@ -67,9 +78,10 @@ def _make_client(cid: int, is_poisoned: bool, model_cfg: dict, fed_cfg: dict, at
     )
 
 
-def run_experiment() -> None:
+def run_experiment(results_suffix: str = "") -> None:
     try:
         ensure_dirs()
+        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
         model_cfg = CONFIG["model"]
         fed_cfg = CONFIG["federated"]
@@ -90,8 +102,11 @@ def run_experiment() -> None:
         strategy = RobustFLIDSStrategy(initial_parameters=initial_parameters)
         global_params = parameters_to_ndarrays(initial_parameters)
 
+        results_file = f"round_results{results_suffix}.csv"
+        trust_file = f"trust_scores{results_suffix}.csv"
+
         logging.info(
-            f"[Pipeline] Starting manual FL loop — {num_clients} clients, "
+            f"[Pipeline] Starting FL loop — {num_clients} clients, "
             f"{clients_per_round} per round, {num_rounds} rounds."
         )
 
@@ -100,7 +115,6 @@ def run_experiment() -> None:
         for server_round in range(1, num_rounds + 1):
             logging.info(f"\n[Pipeline] ===== Round {server_round}/{num_rounds} =====")
 
-            # Sample clients for this round
             sampled_ids = rng.sample(range(num_clients), clients_per_round)
 
             fit_config = {
@@ -110,10 +124,8 @@ def run_experiment() -> None:
                 "batch_size": fed_cfg["batch_size"],
             }
 
-            current_params = ndarrays_to_parameters(global_params)
-
             # Collect fit results from sampled clients
-            results = []
+            raw_results = []
             for cid in sampled_ids:
                 client = _make_client(
                     cid=cid,
@@ -123,29 +135,17 @@ def run_experiment() -> None:
                     attack_cfg=attack_cfg,
                 )
                 client_params, num_examples, metrics = client.fit(global_params, fit_config)
-                results.append((cid, client_params, num_examples, metrics))
+                raw_results.append((cid, client_params, num_examples, metrics))
 
                 if metrics.get("attack_active"):
                     logging.info(f"  [Client {cid}] ATTACK ACTIVE | loss={metrics['train_loss']:.4f}")
                 else:
                     logging.info(f"  [Client {cid}] loss={metrics['train_loss']:.4f} acc={metrics['train_accuracy']:.4f}")
 
-            # Build fake FitRes-like objects for aggregator
-            from flwr.common import FitRes, Status, Code
-            from flwr.server.client_proxy import ClientProxy
-
-            class SimpleProxy(ClientProxy):
-                def __init__(self, cid):
-                    super().__init__(cid)
-                def reconnect(self, *a, **kw): pass
-                def get_properties(self, *a, **kw): pass
-                def get_parameters(self, *a, **kw): pass
-                def fit(self, *a, **kw): pass
-                def evaluate(self, *a, **kw): pass
-
+            # Build Flower FitRes objects for aggregator
             flower_results = []
-            for cid, client_params, num_examples, metrics in results:
-                proxy = SimpleProxy(str(cid))
+            for cid, client_params, num_examples, metrics in raw_results:
+                proxy = _SimpleProxy(str(cid))
                 fit_res = FitRes(
                     status=Status(code=Code.OK, message=""),
                     parameters=ndarrays_to_parameters(client_params),
@@ -165,7 +165,10 @@ def run_experiment() -> None:
                     f"max_trust={agg_metrics.get('max_trust', 0):.4f}"
                 )
 
-            # Server-side evaluation every round
+                # Log trust scores for heatmap
+                log_trust_scores(server_round, strategy.reputation_scores, filename=trust_file)
+
+            # Server-side evaluation + CSV logging
             eval_result = server_evaluate_fn(server_round, ndarrays_to_parameters(global_params), {})
             if eval_result:
                 loss, eval_metrics = eval_result
@@ -175,6 +178,7 @@ def run_experiment() -> None:
                     f"acc={eval_metrics.get('accuracy', 0):.4f}, "
                     f"loss={loss:.4f}"
                 )
+                log_round_results(server_round, eval_metrics, filename=results_file)
 
         # Save final global model
         final_model = MLPClassifier(
@@ -184,7 +188,7 @@ def run_experiment() -> None:
             dropout_rate=model_cfg["dropout_rate"],
         )
         set_model_parameters(final_model, global_params)
-        save_path = MODELS_DIR / "fl_global_model.pth"
+        save_path = MODELS_DIR / f"fl_global_model{results_suffix}.pth"
         torch.save(final_model.state_dict(), save_path)
         logging.info(f"[Pipeline] Final global model saved to {save_path}")
 

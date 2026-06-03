@@ -1,7 +1,7 @@
 # FL-IDS Capstone — Master Context File
 
 > **Purpose:** Give a new AI (or future session) full project context in one file.
-> Last updated: 2026-06-02 (updated: `client.py` + `attacker.py` implemented; smoke test fixed)
+> Last updated: 2026-06-04 — All components implemented. Phase 1 FL experiment (30 rounds, 0% attackers) completed successfully. Final global model: Macro F1=0.5435, Acc=99.28%.
 
 ---
 
@@ -59,9 +59,9 @@ FL IDS/
 │   ├── pipelines/
 │   │   ├── data_pipeline.py                  ✅ IMPLEMENTED
 │   │   ├── centralized_training_pipeline.py  ✅ IMPLEMENTED
-│   │   ├── attack_pipeline.py                🔲 STUB
-│   │   ├── training_pipeline.py              ✅ IMPLEMENTED
-│   │   └── evaluation_pipeline.py            🔲 STUB
+│   │   ├── attack_pipeline.py                ✅ IMPLEMENTED
+│   │   ├── training_pipeline.py              ✅ IMPLEMENTED (manual FL loop + evaluator wired)
+│   │   └── evaluation_pipeline.py            ✅ IMPLEMENTED
 │   └── components/
 │       ├── data/
 │       │   ├── data_loader.py                ✅ IMPLEMENTED
@@ -75,14 +75,15 @@ FL IDS/
 │       │   └── attacker.py                   ✅ IMPLEMENTED (flip_labels, inject_backdoor_trigger, scale_gradient_to_norm)
 │       ├── server/
 │       │   ├── aggregator.py                 ✅ IMPLEMENTED (Variant A — AL-CMT)
-│       │   ├── baselines.py                  🔲 STUB
-│       │   ├── server.py                     ✅ IMPLEMENTED (Flower server entry point)
-│       │   ├── ae_scorer.py                  🔲 NOT CREATED YET (implement after Phase 1)
-│       │   └── ssfg_aggregator.py            🔲 NOT CREATED YET (implement after Variant A)
+│       │   ├── baselines.py                  ✅ IMPLEMENTED (FedAvg, TrimmedMean, Krum)
+│       │   ├── server.py                     ✅ IMPLEMENTED
+│       │   ├── ae_scorer.py                  ✅ IMPLEMENTED (Variant B — AE anomaly scorer)
+│       │   └── ssfg_aggregator.py            ✅ IMPLEMENTED (Variant C — SVD spectral filter)
 │       └── evaluation/
-│           └── evaluator.py                  🔲 STUB
+│           └── evaluator.py                  ✅ IMPLEMENTED
 └── tests/
-    ├── flower_smoke_test.py         ✅ IMPLEMENTED (uses CONFIG dims — needs data pipeline run first)
+    ├── flower_smoke_test.py         ✅ (legacy — uses Ray, skip on Python 3.13)
+    ├── test_aggregator.py           ✅ IMPLEMENTED (8 tests, all passing)
     ├── test_client.py               ✅ IMPLEMENTED
     ├── test_model.py                ✅ IMPLEMENTED
     └── test_partitioner.py          ✅ IMPLEMENTED
@@ -295,58 +296,116 @@ def server_evaluate_fn(server_round, parameters, config) -> Optional[Tuple[float
 
 ### 3.13 Training Pipeline — `src/pipelines/training_pipeline.py`
 
+Manual FL round loop (replaces `flwr.simulation` — Ray not available on Python 3.13):
+
 ```python
-def run_experiment() -> None
-    # Orchestrates end-to-end simulation using flwr.simulation.start_simulation()
-    # Wires in client_fn factory, malicious client selection, and robust strategy
+def run_experiment(results_suffix: str = "") -> None
+    # Runs N rounds: sample clients → fit → aggregate → server_evaluate_fn
+    # After each round: log_round_results() → round_results{suffix}.csv
+    #                   log_trust_scores()  → trust_scores{suffix}.csv
+    # results_suffix used by attack sweep to write separate CSVs per attacker_ratio
+```
+
+> ✅ **Phase 1 complete** — 30 rounds, 0% attackers, ~64 min runtime on CPU.
+> Final global model: Macro F1=**0.5435**, Acc=**99.28%**, saved to `artifacts/models/fl_global_model.pth`
+
+---
+
+### 3.14 Baseline Aggregators — `src/components/server/baselines.py`
+
+```python
+class FedAvgBaseline(fl.server.strategy.Strategy)
+    # Uniform weighted average of all client updates (1/K weights)
+
+class FedTrimmedMeanBaseline(fl.server.strategy.Strategy)
+    # Per-parameter: sort clients, trim top+bottom beta=20%, average rest
+
+class KrumBaseline(fl.server.strategy.Strategy)
+    # Select top multi_k clients by minimum sum of squared distances to neighbours
+
+def get_baseline_strategy(name: str) -> Strategy
+    # Factory: "fedavg" | "trimmed_mean" | "krum"
 ```
 
 ---
 
-## 4. What Is STUB (design spec in comments only — no executable code)
-
-### 4.1 Baseline Aggregators — `src/components/server/baselines.py`
-
-```python
-class FedAvgBaseline(flwr.server.strategy.Strategy)
-class FedTrimmedMeanBaseline(flwr.server.strategy.Strategy)   # beta=0.2
-class KrumBaseline(flwr.server.strategy.Strategy)             # num_byzantine, multi_k
-def get_baseline_strategy(name, config) -> Strategy           # factory
-```
-
-### 4.2 AE Scorer — `src/components/server/ae_scorer.py` *(NOT YET CREATED)*
-
-Variant B — implement AFTER Phase 1 (10 clean rounds) data is available.
+### 3.15 AE Scorer — `src/components/server/ae_scorer.py` (Variant B)
 
 ```python
 class AEScorer:
-    def __init__(self, layer_dim: int)          # D → D//2 → D//4 → D//2 → D
-    def update(self, clean_vectors: np.ndarray) # train on trusted updates
-    def score(self, vectors: np.ndarray)        # return MSE per client
+    def __init__(self, input_dim, hidden_factor=4, train_epochs=5, lr=1e-3)
+    def fit(self, vectors: np.ndarray) -> None
+        # Trains encoder→decoder on final-layer weight vectors from trusted clients
+    def score(self, vectors: np.ndarray) -> np.ndarray
+        # Returns -reconstruction_error per client (high anomaly = lowest score)
+        # Drop-in compatible with MAD score convention in RobustFLIDSStrategy
 ```
 
-### 4.3 SSFG Aggregator — `src/components/server/ssfg_aggregator.py` *(NOT YET CREATED)*
+---
 
-Variant C — implement after Variant A (AL-CMT) is working end-to-end.
+### 3.16 SSFG Aggregator — `src/components/server/ssfg_aggregator.py` (Variant C)
 
 ```python
-class RobustSSFGStrategy(flwr.server.strategy.Strategy):
-    # aggregate_fit(): stack updates → truncated SVD → reconstruct benign subspace
+class SSFGAggregator(fl.server.strategy.Strategy):
+    # Extends Variant A by applying SVD spectral filtering before cosine similarity
+    # _spectral_filter(): SVD → keep top 90% singular values → reconstruct
+    # Suppresses low-rank adversarial perturbations that bypass MAD
+    # Reuses all Variant A helpers (extract_final_layer, cosine sim, MAD, softmax, simplex)
 ```
 
-### 4.4 Evaluation — `src/components/evaluation/evaluator.py`
+---
+
+### 3.17 Evaluator — `src/components/evaluation/evaluator.py`
 
 ```python
-def compute_metrics(y_true, y_pred)                           -> dict
-def compute_asr(model, trigger_test_loader, benign_class_idx) -> float
-def log_round_results(server_round, metrics, results_path)    -> None
-def log_trust_scores(server_round, trust_scores, results_path)-> None
+def compute_metrics(y_true, y_pred) -> dict
+    # Returns: accuracy, macro_f1, weighted_f1, fpr, confusion_matrix
+
+def compute_asr(model, trigger_loader, benign_class_idx=0) -> float
+    # Attack Success Rate: fraction of backdoor-triggered samples classified as benign
+
+def log_round_results(server_round, metrics, filename="round_results.csv") -> None
+    # Appends row to artifacts/results/{filename}
+
+def log_trust_scores(server_round, trust_scores, filename="trust_scores.csv") -> None
+    # Appends per-client EMA reputation per round (for heatmap)
 ```
 
-### 4.5 Pipelines (stubs)
+---
 
-- `attack_pipeline.py` — `select_malicious_clients()`, `is_attack_active()`, `get_attack_config()`, `run_attack_sweep()`
-- `evaluation_pipeline.py` — `run_evaluation()`: loads CSVs, generates comparison plots
+### 3.18 Attack Pipeline — `src/pipelines/attack_pipeline.py`
+
+```python
+def select_malicious_clients(num_clients, attacker_ratio, seed=42) -> list
+def is_attack_active(server_round, attack_start_round) -> bool
+def get_attack_config(client_id, malicious_ids, server_round) -> dict
+def run_attack_sweep() -> None
+    # Iterates attacker_ratios from CONFIG, calls run_experiment(results_suffix=...)
+```
+
+---
+
+### 3.19 Evaluation Pipeline — `src/pipelines/evaluation_pipeline.py`
+
+```python
+def run_evaluation() -> None
+    # Loads round_results.csv for each strategy
+    # Plots: macro_f1_vs_rounds.png, accuracy_vs_rounds.png, fpr_vs_rounds.png
+    # Plots: trust_heatmap.png (client reputation across rounds)
+    # Prints final-round summary table to console
+```
+
+---
+
+## 4. Known Constraints & Bugs Fixed
+
+| Issue | Fix |
+|-------|-----|
+| `ray` not available on Python 3.13 | Replaced `flwr.simulation.start_simulation()` with manual FL loop |
+| `baseline_mlp.pth` saves `{model_state_dict, epoch, ...}` not raw state_dict | `saved.get("model_state_dict", saved)` in `server.py` and `training_pipeline.py` |
+| Old partition `.npz` files have keys `X`, `y` (not `X_train`/`X_val`) | `load_partition()` checks key names and splits inline if old format |
+| `test_set.npz` saved with `X`/`y` keys, `server.py` expected `X_test`/`y_test` | `server_evaluate_fn` now tries both key names |
+| `project_capped_simplex` original rho-search was incorrect | Replaced with binary search on Lagrange multiplier `gamma` |
 
 ---
 
@@ -397,18 +456,24 @@ def log_trust_scores(server_round, trust_scores, results_path)-> None
 
 **Network:** N=50 clients total, C=20 sampled per round
 
-**Implementation order:**
-1. ✅ Data pipeline — **DONE**
-2. ✅ MLPClassifier model — **DONE + trained** (Macro F1=0.7463). FL target to beat.
-3. ✅ FLIDSClient (Flower NumPyClient) — **DONE**
-4. ✅ attacker.py (flip_labels, inject_backdoor_trigger, scale_gradient_to_norm) — **DONE**
-5. ✅ `server.py` + `aggregator.py` (Variant A — AL-CMT) — **DONE**
-6. ✅ `training_pipeline.py` — `run_experiment()` with `flwr.simulation.start_simulation()` — **DONE**
-7. **→ NEXT:** `baselines.py` — FedAvg, TrimmedMean, Krum
-8. `attack_pipeline.py` — `run_attack_sweep()` for paper experiments
-9. `evaluator.py` + `evaluation_pipeline.py` — metrics + plots
-10. Variant B (`ae_scorer.py`) — after Phase 1 data available
-11. Variant C (`ssfg_aggregator.py`) — SVD subspace filtering
+**Implementation order — ALL COMPLETE:**
+1. ✅ Data pipeline
+2. ✅ MLPClassifier — trained (centralized Macro F1=0.7463)
+3. ✅ FLIDSClient — Flower NumPyClient with attack gate
+4. ✅ attacker.py — flip_labels, inject_backdoor_trigger, scale_gradient_to_norm
+5. ✅ server.py + aggregator.py — Variant A AL-CMT
+6. ✅ training_pipeline.py — manual FL loop (Ray workaround)
+7. ✅ baselines.py — FedAvg, TrimmedMean, Krum
+8. ✅ attack_pipeline.py — select_malicious_clients, get_attack_config, run_attack_sweep
+9. ✅ evaluator.py — compute_metrics, compute_asr, log_round_results, log_trust_scores
+10. ✅ evaluation_pipeline.py — comparison plots + summary table
+11. ✅ ae_scorer.py — Variant B AE anomaly scorer
+12. ✅ ssfg_aggregator.py — Variant C SVD spectral filter
+
+**→ NEXT STEPS:**
+- Run Phase 2 experiments (attacker_ratio 0.10, 0.30, 0.50)
+- Run baseline comparison sweep via `run_attack_sweep()`
+- Run `evaluation_pipeline.py` to generate plots
 
 ---
 

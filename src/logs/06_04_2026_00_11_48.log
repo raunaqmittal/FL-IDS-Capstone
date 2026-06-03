@@ -1,0 +1,9 @@
+[2026-06-04 00:11:50,810] 37 alembic.runtime.plugins - INFO - setup plugin alembic.autogenerate.schemas
+[2026-06-04 00:11:50,812] 37 alembic.runtime.plugins - INFO - setup plugin alembic.autogenerate.tables
+[2026-06-04 00:11:50,812] 37 alembic.runtime.plugins - INFO - setup plugin alembic.autogenerate.types
+[2026-06-04 00:11:50,812] 37 alembic.runtime.plugins - INFO - setup plugin alembic.autogenerate.constraints
+[2026-06-04 00:11:50,812] 37 alembic.runtime.plugins - INFO - setup plugin alembic.autogenerate.defaults
+[2026-06-04 00:11:50,812] 37 alembic.runtime.plugins - INFO - setup plugin alembic.autogenerate.comments
+[2026-06-04 00:11:59,675] 33 root - INFO - [Server] Loaded baseline checkpoint from C:\Users\rauna\Videos\FL IDS\artifacts\models\baseline_mlp.pth
+[2026-06-04 00:11:59,682] 33 root - INFO - [Server] Loaded baseline checkpoint from C:\Users\rauna\Videos\FL IDS\artifacts\models\baseline_mlp.pth
+[2026-06-04 00:11:59,686] 33 root - INFO - [Server] Loaded baseline checkpoint from C:\Users\rauna\Videos\FL IDS\artifacts\models\baseline_mlp.pth
