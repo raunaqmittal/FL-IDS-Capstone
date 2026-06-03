@@ -37,14 +37,15 @@ def get_attack_config(client_id: int, malicious_ids: list, server_round: int) ->
     }
 
 
-def run_attack_sweep() -> None:
+def run_attack_sweep(strategy_name: str = "robust") -> None:
     from src.pipelines.training_pipeline import run_experiment
 
     ratios = CONFIG["experiment"]["attacker_ratios"]
     for ratio in ratios:
-        logging.info(f"\n[AttackSweep] Running experiment with attacker_ratio={ratio}")
+        logging.info(f"\n[AttackSweep] strategy={strategy_name} attacker_ratio={ratio}")
         CONFIG["attack"]["attacker_ratio"] = ratio
-        run_experiment(results_suffix=f"_ratio_{int(ratio * 100):02d}pct")
+        suffix = f"_{strategy_name}_ratio_{int(ratio * 100):02d}pct"
+        run_experiment(results_suffix=suffix, strategy_name=strategy_name)
 
     logging.info("[AttackSweep] All sweeps complete.")
 

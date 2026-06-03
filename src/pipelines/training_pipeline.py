@@ -16,6 +16,8 @@ from src.components.data.data_partitioner import load_partition
 from src.components.data.torch_dataset import make_dataloader
 from src.components.client.client import FLIDSClient
 from src.components.server.aggregator import RobustFLIDSStrategy
+from src.components.server.baselines import get_baseline_strategy
+from src.components.server.ssfg_aggregator import SSFGAggregator
 from src.components.server.server import get_initial_parameters, server_evaluate_fn
 from src.components.evaluation.evaluator import log_round_results, log_trust_scores
 
@@ -78,7 +80,16 @@ def _make_client(cid: int, is_poisoned: bool, model_cfg: dict, fed_cfg: dict, at
     )
 
 
-def run_experiment(results_suffix: str = "") -> None:
+def _build_strategy(strategy_name: str, initial_parameters):
+    if strategy_name == "robust":
+        return RobustFLIDSStrategy(initial_parameters=initial_parameters)
+    elif strategy_name == "ssfg":
+        return SSFGAggregator(initial_parameters=initial_parameters)
+    else:
+        return get_baseline_strategy(strategy_name)
+
+
+def run_experiment(results_suffix: str = "", strategy_name: str = "robust") -> None:
     try:
         ensure_dirs()
         RESULTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -99,7 +110,8 @@ def run_experiment(results_suffix: str = "") -> None:
             logging.info("[Pipeline] Phase 1 — no malicious clients (attacker_ratio=0.0).")
 
         initial_parameters = get_initial_parameters()
-        strategy = RobustFLIDSStrategy(initial_parameters=initial_parameters)
+        strategy = _build_strategy(strategy_name, initial_parameters)
+        logging.info(f"[Pipeline] Strategy: {strategy_name}")
         global_params = parameters_to_ndarrays(initial_parameters)
 
         results_file = f"round_results{results_suffix}.csv"
@@ -165,8 +177,9 @@ def run_experiment(results_suffix: str = "") -> None:
                     f"max_trust={agg_metrics.get('max_trust', 0):.4f}"
                 )
 
-                # Log trust scores for heatmap
-                log_trust_scores(server_round, strategy.reputation_scores, filename=trust_file)
+                # Log trust scores for heatmap (only for strategies that track reputation)
+                if hasattr(strategy, "reputation_scores"):
+                    log_trust_scores(server_round, strategy.reputation_scores, filename=trust_file)
 
             # Server-side evaluation + CSV logging
             eval_result = server_evaluate_fn(server_round, ndarrays_to_parameters(global_params), {})
