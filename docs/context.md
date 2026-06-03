@@ -35,13 +35,20 @@ FL IDS/
 ├── requirements.txt
 ├── setup.py
 ├── pytest.ini
+├── run_all_experiments.py          # ✅ AUTOMATION SCRIPT for Phase 2
 ├── docs/
 │   ├── context.md                  ← THIS FILE
 │   ├── ProjectOverview.md
 │   ├── baseline_model_analysis.md
 │   └── ...
 ├── notebooks/
-│   └── 02_non_iid_partition_visualization.py
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_non_iid_partition_visualization.ipynb
+│   ├── 03_centralized_baseline.ipynb
+│   ├── 04_fl_phase1_analysis.ipynb
+│   ├── 05_attack_analysis.ipynb
+│   ├── 06_strategy_comparison.ipynb
+│   └── 07_aggregator_internals.ipynb
 ├── artifacts/
 │   ├── raw/                        # cicids2017_raw.parquet (generated)
 │   ├── preprocessed/               # label_encoder.pkl, feature_cols.pkl, scaler.pkl, test_set.npz
@@ -428,7 +435,12 @@ def run_evaluation() -> None
 | `test_model.py` | ✅ | `MLPClassifier` forward/backward, `get/set_model_parameters` |
 | `test_client.py` | ✅ | `FLIDSClient` fit/evaluate cycle (synthetic 2-class — intentional simplification) |
 | `test_partitioner.py` | ✅ | `partition_non_iid`, `save_partitions`, `load_partition`, `load_partition_dataloaders` |
-| `flower_smoke_test.py` | ✅ | End-to-end Flower `start_simulation` with 3 clients, 1 round, FedAvg — **uses CONFIG dims** — requires data pipeline to have been run |
+| `test_baselines.py` | ✅ | `FedAvgBaseline`, `FedTrimmedMeanBaseline`, `KrumBaseline` aggregation logic |
+| `test_ae_scorer.py` | ✅ | `AEScorer` autoencoder training and anomaly scoring |
+| `test_ssfg.py` | ✅ | `SSFGAggregator` and `_spectral_filter` logic |
+| `test_evaluator.py` | ✅ | `compute_metrics` and CSV logging functions |
+| `test_attack_pipeline.py` | ✅ | `select_malicious_clients` determinism and `get_attack_config` |
+| `flower_smoke_test.py` | ✅ | End-to-end Flower `start_simulation` (legacy — uses Ray, skip on Python 3.13) |
 
 > **Note on test dims:** `test_client.py` and `test_model.py` use `num_classes=2` / `input_dim=78` intentionally — they are pure unit tests using synthetic data and don't require the real dataset. `flower_smoke_test.py` uses CONFIG values to match production.
 
@@ -470,10 +482,9 @@ def run_evaluation() -> None
 11. ✅ ae_scorer.py — Variant B AE anomaly scorer
 12. ✅ ssfg_aggregator.py — Variant C SVD spectral filter
 
-**→ NEXT STEPS:**
-- Run Phase 2 experiments (attacker_ratio 0.10, 0.30, 0.50)
-- Run baseline comparison sweep via `run_attack_sweep()`
-- Run `evaluation_pipeline.py` to generate plots
+**→ NEXT STEPS (The Big Run):**
+- Run `python run_all_experiments.py` to automatically execute the full Phase 2 experiment matrix (RobustFL sweep + all baselines at 30% attackers). This will take ~7 hours on CPU.
+- After the script finishes, open the Jupyter notebooks in `notebooks/` (specifically 05 and 06) and run them to generate the final plots and tables for the capstone report.
 
 ---
 
