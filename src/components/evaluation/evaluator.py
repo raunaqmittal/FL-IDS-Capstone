@@ -11,18 +11,25 @@ def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
     acc = accuracy_score(y_true, y_pred)
     macro_f1 = f1_score(y_true, y_pred, average="macro", zero_division=0)
     weighted_f1 = f1_score(y_true, y_pred, average="weighted", zero_division=0)
+    per_class_f1 = f1_score(y_true, y_pred, average=None, zero_division=0)
 
     cm = confusion_matrix(y_true, y_pred)
-    benign_idx = 0
-    tn = cm[benign_idx, benign_idx]
-    fp = cm[benign_idx, :].sum() - tn
-    fpr = fp / (fp + tn) if (fp + tn) > 0 else 0.0
+    n_classes = cm.shape[0]
+    fprs = []
+    for c in range(n_classes):
+        tp = cm[c, c]
+        fp = cm[:, c].sum() - tp
+        tn = cm.sum() - cm[c, :].sum() - cm[:, c].sum() + tp
+        fpr_c = fp / (fp + tn) if (fp + tn) > 0 else 0.0
+        fprs.append(fpr_c)
+    macro_fpr = float(np.mean(fprs))
 
     return {
         "accuracy": float(acc),
         "macro_f1": float(macro_f1),
         "weighted_f1": float(weighted_f1),
-        "fpr": float(fpr),
+        "fpr": macro_fpr,
+        "per_class_f1": per_class_f1,
         "confusion_matrix": cm,
     }
 
