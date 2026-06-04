@@ -5,3 +5,1352 @@
 [2026-06-04 14:37:04,345] 122 root - INFO - [Pipeline] Starting FL loop — 50 clients, 20 per round, 50 rounds.
 [2026-06-04 14:37:04,345] 130 root - INFO - 
 [Pipeline] ===== Round 1/50 =====
+[2026-06-04 14:37:10,584] 157 root - INFO -   [Client 40] loss=0.0149 acc=0.9948
+[2026-06-04 14:37:32,266] 157 root - INFO -   [Client 7] loss=0.0101 acc=0.9968
+[2026-06-04 14:37:33,124] 157 root - INFO -   [Client 1] loss=0.0564 acc=0.9803
+[2026-06-04 14:37:46,315] 157 root - INFO -   [Client 17] loss=0.0117 acc=0.9961
+[2026-06-04 14:37:49,297] 157 root - INFO -   [Client 15] loss=0.2461 acc=0.9478
+[2026-06-04 14:37:52,432] 157 root - INFO -   [Client 14] loss=0.0290 acc=0.9892
+[2026-06-04 14:37:57,299] 157 root - INFO -   [Client 8] loss=0.0382 acc=0.9839
+[2026-06-04 14:38:00,609] 157 root - INFO -   [Client 6] loss=0.0365 acc=0.9858
+[2026-06-04 14:38:02,160] 157 root - INFO -   [Client 34] loss=0.0374 acc=0.9892
+[2026-06-04 14:38:05,867] 157 root - INFO -   [Client 5] loss=0.0137 acc=0.9953
+[2026-06-04 14:38:11,374] 157 root - INFO -   [Client 37] loss=0.0106 acc=0.9968
+[2026-06-04 14:38:14,512] 157 root - INFO -   [Client 27] loss=0.0156 acc=0.9952
+[2026-06-04 14:38:22,181] 157 root - INFO -   [Client 2] loss=0.0099 acc=0.9967
+[2026-06-04 14:38:25,063] 157 root - INFO -   [Client 47] loss=0.5905 acc=0.8981
+[2026-06-04 14:38:25,486] 157 root - INFO -   [Client 49] loss=0.5095 acc=0.9306
+[2026-06-04 14:38:26,384] 157 root - INFO -   [Client 13] loss=0.1665 acc=0.9530
+[2026-06-04 14:38:27,085] 157 root - INFO -   [Client 44] loss=0.2086 acc=0.9339
+[2026-06-04 14:38:41,114] 157 root - INFO -   [Client 32] loss=0.0072 acc=0.9980
+[2026-06-04 14:38:42,263] 157 root - INFO -   [Client 36] loss=0.5111 acc=0.8886
+[2026-06-04 14:38:42,662] 157 root - INFO -   [Client 46] loss=0.1726 acc=0.9492
+[2026-06-04 14:38:42,691] 188 root - INFO - [Aggregator] Round 1: 3/20 clients flagged by MAD.
+[2026-06-04 14:38:42,691] 201 root - INFO - [Aggregator] Round 1: trust_weights min=0.0294 max=0.0655 zero_count=0
+[2026-06-04 14:38:42,701] 175 root - INFO - [Pipeline] Round 1 aggregated — flagged=3, min_trust=0.0294, max_trust=0.0655
+[2026-06-04 14:38:43,877] 82 root - INFO - [Server] Round 1 — loss=0.0198, macro_f1=0.7097, acc=0.9927
+[2026-06-04 14:38:43,992] 190 root - INFO - [Pipeline] Round 1 eval — macro_f1=0.7097, acc=0.9927, loss=0.0198
+[2026-06-04 14:38:43,993] 130 root - INFO - 
+[Pipeline] ===== Round 2/50 =====
+[2026-06-04 14:38:46,129] 157 root - INFO -   [Client 12] loss=0.0406 acc=0.9836
+[2026-06-04 14:38:50,371] 157 root - INFO -   [Client 45] loss=0.0171 acc=0.9937
+[2026-06-04 14:38:53,198] 157 root - INFO -   [Client 41] loss=0.0224 acc=0.9940
+[2026-06-04 14:38:54,004] 157 root - INFO -   [Client 44] loss=0.1536 acc=0.9472
+[2026-06-04 14:38:55,823] 157 root - INFO -   [Client 34] loss=0.0297 acc=0.9916
+[2026-06-04 14:39:00,459] 157 root - INFO -   [Client 26] loss=0.0308 acc=0.9879
+[2026-06-04 14:39:03,494] 157 root - INFO -   [Client 14] loss=0.0277 acc=0.9898
+[2026-06-04 14:39:06,299] 157 root - INFO -   [Client 28] loss=0.0457 acc=0.9815
+[2026-06-04 14:39:11,512] 157 root - INFO -   [Client 37] loss=0.0100 acc=0.9970
+[2026-06-04 14:39:24,792] 157 root - INFO -   [Client 17] loss=0.0112 acc=0.9962
+[2026-06-04 14:39:30,944] 157 root - INFO -   [Client 0] loss=0.0066 acc=0.9978
+[2026-06-04 14:39:32,083] 157 root - INFO -   [Client 10] loss=0.0147 acc=0.9952
+[2026-06-04 14:39:35,260] 157 root - INFO -   [Client 27] loss=0.0161 acc=0.9950
+[2026-06-04 14:39:39,331] 157 root - INFO -   [Client 21] loss=0.0102 acc=0.9976
+[2026-06-04 14:39:41,971] 157 root - INFO -   [Client 40] loss=0.0146 acc=0.9942
+[2026-06-04 14:39:43,335] 157 root - INFO -   [Client 9] loss=0.0168 acc=0.9957
+[2026-06-04 14:39:44,154] 157 root - INFO -   [Client 13] loss=0.0883 acc=0.9720
+[2026-06-04 14:39:45,404] 157 root - INFO -   [Client 36] loss=0.2135 acc=0.9432
+[2026-06-04 14:39:48,153] 157 root - INFO -   [Client 6] loss=0.0348 acc=0.9862
+[2026-06-04 14:39:55,960] 157 root - INFO -   [Client 2] loss=0.0098 acc=0.9970
+[2026-06-04 14:39:55,983] 188 root - INFO - [Aggregator] Round 2: 3/20 clients flagged by MAD.
+[2026-06-04 14:39:55,983] 201 root - INFO - [Aggregator] Round 2: trust_weights min=0.0172 max=0.0640 zero_count=0
+[2026-06-04 14:39:55,992] 175 root - INFO - [Pipeline] Round 2 aggregated — flagged=3, min_trust=0.0172, max_trust=0.0640
+[2026-06-04 14:39:56,806] 82 root - INFO - [Server] Round 2 — loss=0.0171, macro_f1=0.6673, acc=0.9933
+[2026-06-04 14:39:56,906] 190 root - INFO - [Pipeline] Round 2 eval — macro_f1=0.6673, acc=0.9933, loss=0.0171
+[2026-06-04 14:39:56,907] 130 root - INFO - 
+[Pipeline] ===== Round 3/50 =====
+[2026-06-04 14:40:00,550] 157 root - INFO -   [Client 24] loss=0.0112 acc=0.9968
+[2026-06-04 14:40:03,270] 157 root - INFO -   [Client 6] loss=0.0355 acc=0.9860
+[2026-06-04 14:40:06,955] 157 root - INFO -   [Client 22] loss=0.0100 acc=0.9965
+[2026-06-04 14:40:09,948] 157 root - INFO -   [Client 47] loss=0.5603 acc=0.9001
+[2026-06-04 14:40:13,287] 157 root - INFO -   [Client 38] loss=0.0172 acc=0.9945
+[2026-06-04 14:40:24,915] 157 root - INFO -   [Client 16] loss=0.0068 acc=0.9983
+[2026-06-04 14:40:32,337] 157 root - INFO -   [Client 2] loss=0.0069 acc=0.9974
+[2026-06-04 14:40:35,418] 157 root - INFO -   [Client 29] loss=0.0357 acc=0.9863
+[2026-06-04 14:40:37,002] 157 root - INFO -   [Client 34] loss=0.0306 acc=0.9912
+[2026-06-04 14:40:59,310] 157 root - INFO -   [Client 7] loss=0.0090 acc=0.9970
+[2026-06-04 14:40:59,836] 157 root - INFO -   [Client 49] loss=0.8090 acc=0.9178
+[2026-06-04 14:41:03,665] 157 root - INFO -   [Client 5] loss=0.0117 acc=0.9957
+[2026-06-04 14:41:05,754] 157 root - INFO -   [Client 35] loss=0.0563 acc=0.9784
+[2026-06-04 14:41:06,307] 157 root - INFO -   [Client 18] loss=0.0761 acc=0.9714
+[2026-06-04 14:41:07,053] 157 root - INFO -   [Client 23] loss=2.1137 acc=0.5849
+[2026-06-04 14:41:08,765] 157 root - INFO -   [Client 12] loss=0.0394 acc=0.9840
+[2026-06-04 14:41:12,571] 157 root - INFO -   [Client 4] loss=0.0108 acc=0.9965
+[2026-06-04 14:41:13,484] 157 root - INFO -   [Client 43] loss=0.3148 acc=0.9201
+[2026-06-04 14:41:16,437] 157 root - INFO -   [Client 14] loss=0.0269 acc=0.9902
+[2026-06-04 14:41:28,655] 157 root - INFO -   [Client 39] loss=0.0026 acc=0.9994
+[2026-06-04 14:41:28,683] 188 root - INFO - [Aggregator] Round 3: 3/20 clients flagged by MAD.
+[2026-06-04 14:41:28,683] 201 root - INFO - [Aggregator] Round 3: trust_weights min=0.0180 max=0.0714 zero_count=0
+[2026-06-04 14:41:28,693] 175 root - INFO - [Pipeline] Round 3 aggregated — flagged=3, min_trust=0.0180, max_trust=0.0714
+[2026-06-04 14:41:29,454] 82 root - INFO - [Server] Round 3 — loss=0.0215, macro_f1=0.5866, acc=0.9918
+[2026-06-04 14:41:29,553] 190 root - INFO - [Pipeline] Round 3 eval — macro_f1=0.5866, acc=0.9918, loss=0.0215
+[2026-06-04 14:41:29,554] 130 root - INFO - 
+[Pipeline] ===== Round 4/50 =====
+[2026-06-04 14:41:30,496] 157 root - INFO -   [Client 18] loss=0.0768 acc=0.9705
+[2026-06-04 14:41:34,245] 157 root - INFO -   [Client 5] loss=0.0110 acc=0.9960
+[2026-06-04 14:41:37,124] 157 root - INFO -   [Client 14] loss=0.0273 acc=0.9901
+[2026-06-04 14:41:40,066] 157 root - INFO -   [Client 6] loss=0.0343 acc=0.9865
+[2026-06-04 14:41:43,315] 157 root - INFO -   [Client 24] loss=0.0112 acc=0.9968
+[2026-06-04 14:41:56,566] 157 root - INFO -   [Client 17] loss=0.0106 acc=0.9963
+[2026-06-04 14:42:00,064] 157 root - INFO -   [Client 29] loss=0.0339 acc=0.9865
+[2026-06-04 14:42:02,550] 157 root - INFO -   [Client 40] loss=0.0141 acc=0.9944
+[2026-06-04 14:42:03,276] 157 root - INFO -   [Client 23] loss=1.7070 acc=0.6388
+[2026-06-04 14:42:04,244] 157 root - INFO -   [Client 10] loss=0.0120 acc=0.9962
+[2026-06-04 14:42:07,295] 157 root - INFO -   [Client 41] loss=0.0142 acc=0.9966
+[2026-06-04 14:42:10,904] 157 root - INFO -   [Client 22] loss=0.0111 acc=0.9960
+[2026-06-04 14:42:11,630] 157 root - INFO -   [Client 13] loss=0.1172 acc=0.9655
+[2026-06-04 14:42:12,570] 157 root - INFO -   [Client 44] loss=0.1459 acc=0.9504
+[2026-06-04 14:42:15,759] 157 root - INFO -   [Client 4] loss=0.0101 acc=0.9968
+[2026-06-04 14:42:17,707] 157 root - INFO -   [Client 42] loss=0.0884 acc=0.9680
+[2026-06-04 14:42:20,782] 157 root - INFO -   [Client 15] loss=0.1797 acc=0.9573
+[2026-06-04 14:42:22,296] 157 root - INFO -   [Client 34] loss=0.0317 acc=0.9906
+[2026-06-04 14:42:23,297] 157 root - INFO -   [Client 43] loss=0.2569 acc=0.9345
+[2026-06-04 14:42:24,803] 157 root - INFO -   [Client 12] loss=0.0380 acc=0.9843
+[2026-06-04 14:42:24,825] 188 root - INFO - [Aggregator] Round 4: 1/20 clients flagged by MAD.
+[2026-06-04 14:42:24,826] 201 root - INFO - [Aggregator] Round 4: trust_weights min=0.0099 max=0.0714 zero_count=0
+[2026-06-04 14:42:24,834] 175 root - INFO - [Pipeline] Round 4 aggregated — flagged=1, min_trust=0.0099, max_trust=0.0714
+[2026-06-04 14:42:25,646] 82 root - INFO - [Server] Round 4 — loss=0.0198, macro_f1=0.5876, acc=0.9923
+[2026-06-04 14:42:25,749] 190 root - INFO - [Pipeline] Round 4 eval — macro_f1=0.5876, acc=0.9923, loss=0.0198
+[2026-06-04 14:42:25,750] 130 root - INFO - 
+[Pipeline] ===== Round 5/50 =====
+[2026-06-04 14:42:37,818] 157 root - INFO -   [Client 17] loss=0.0105 acc=0.9964
+[2026-06-04 14:42:40,219] 157 root - INFO -   [Client 40] loss=0.0146 acc=0.9945
+[2026-06-04 14:42:41,012] 157 root - INFO -   [Client 44] loss=0.1215 acc=0.9578
+[2026-06-04 14:42:43,151] 157 root - INFO -   [Client 35] loss=0.0573 acc=0.9783
+[2026-06-04 14:42:45,934] 157 root - INFO -   [Client 14] loss=0.0271 acc=0.9900
+[2026-06-04 14:42:46,660] 157 root - INFO -   [Client 43] loss=0.1902 acc=0.9479
+[2026-06-04 14:42:48,736] 157 root - INFO -   [Client 20] loss=0.0132 acc=0.9957
+[2026-06-04 14:42:56,295] 157 root - INFO -   [Client 3] loss=0.0033 acc=0.9992
+[2026-06-04 14:43:00,763] 157 root - INFO -   [Client 45] loss=0.0147 acc=0.9945
+[2026-06-04 14:43:08,259] 157 root - INFO -   [Client 2] loss=0.0073 acc=0.9973
+[2026-06-04 14:43:11,148] 157 root - INFO -   [Client 47] loss=0.4283 acc=0.9186
+[2026-06-04 14:43:12,582] 157 root - INFO -   [Client 25] loss=0.0531 acc=0.9788
+[2026-06-04 14:43:13,061] 157 root - INFO -   [Client 49] loss=1.1036 acc=0.9281
+[2026-06-04 14:43:16,113] 157 root - INFO -   [Client 4] loss=0.0104 acc=0.9968
+[2026-06-04 14:43:16,898] 157 root - INFO -   [Client 13] loss=0.0859 acc=0.9725
+[2026-06-04 14:43:29,141] 157 root - INFO -   [Client 39] loss=0.0026 acc=0.9993
+[2026-06-04 14:43:29,625] 157 root - INFO -   [Client 46] loss=0.0932 acc=0.9722
+[2026-06-04 14:43:30,630] 157 root - INFO -   [Client 31] loss=0.0177 acc=0.9949
+[2026-06-04 14:43:33,949] 157 root - INFO -   [Client 38] loss=0.0155 acc=0.9949
+[2026-06-04 14:43:36,474] 157 root - INFO -   [Client 28] loss=0.0445 acc=0.9817
+[2026-06-04 14:43:36,499] 188 root - INFO - [Aggregator] Round 5: 3/20 clients flagged by MAD.
+[2026-06-04 14:43:36,500] 201 root - INFO - [Aggregator] Round 5: trust_weights min=0.0082 max=0.0714 zero_count=0
+[2026-06-04 14:43:36,509] 175 root - INFO - [Pipeline] Round 5 aggregated — flagged=3, min_trust=0.0082, max_trust=0.0714
+[2026-06-04 14:43:37,337] 82 root - INFO - [Server] Round 5 — loss=0.0199, macro_f1=0.5895, acc=0.9923
+[2026-06-04 14:43:37,439] 190 root - INFO - [Pipeline] Round 5 eval — macro_f1=0.5895, acc=0.9923, loss=0.0199
+[2026-06-04 14:43:37,440] 130 root - INFO - 
+[Pipeline] ===== Round 6/50 =====
+[2026-06-04 14:43:40,749] 157 root - INFO -   [Client 41] loss=0.0172 acc=0.9958
+[2026-06-04 14:43:43,788] 157 root - INFO -   [Client 29] loss=0.0327 acc=0.9869
+[2026-06-04 14:43:44,951] 157 root - INFO -   [Client 9] loss=0.0160 acc=0.9962
+[2026-06-04 14:43:56,730] 157 root - INFO -   [Client 16] loss=0.0070 acc=0.9982
+[2026-06-04 14:44:01,211] 157 root - INFO -   [Client 8] loss=0.0352 acc=0.9851
+[2026-06-04 14:44:04,152] 157 root - INFO -   [Client 15] loss=0.1239 acc=0.9696
+[2026-06-04 14:44:06,265] 157 root - INFO -   [Client 35] loss=0.0552 acc=0.9790
+[2026-06-04 14:44:08,109] 157 root - INFO -   [Client 34] loss=0.0281 acc=0.9918
+[2026-06-04 14:44:08,655] 157 root - INFO -   [Client 46] loss=0.0832 acc=0.9723
+[2026-06-04 14:44:14,081] 157 root - INFO -   [Client 37] loss=0.0090 acc=0.9974
+[2026-06-04 14:44:17,236] 157 root - INFO -   [Client 27] loss=0.0145 acc=0.9956
+[2026-06-04 14:44:19,937] 157 root - INFO -   [Client 40] loss=0.0142 acc=0.9947
+[2026-06-04 14:44:21,222] 157 root - INFO -   [Client 25] loss=0.0573 acc=0.9773
+[2026-06-04 14:44:21,945] 157 root - INFO -   [Client 23] loss=1.3271 acc=0.7050
+[2026-06-04 14:44:24,967] 157 root - INFO -   [Client 14] loss=0.0269 acc=0.9898
+[2026-06-04 14:44:29,402] 157 root - INFO -   [Client 45] loss=0.0146 acc=0.9945
+[2026-06-04 14:44:44,166] 157 root - INFO -   [Client 32] loss=0.0072 acc=0.9979
+[2026-06-04 14:44:45,271] 157 root - INFO -   [Client 31] loss=0.0188 acc=0.9937
+[2026-06-04 14:44:49,181] 157 root - INFO -   [Client 5] loss=0.0122 acc=0.9956
+[2026-06-04 14:44:52,542] 157 root - INFO -   [Client 24] loss=0.0112 acc=0.9966
+[2026-06-04 14:44:52,566] 188 root - INFO - [Aggregator] Round 6: 2/20 clients flagged by MAD.
+[2026-06-04 14:44:52,566] 201 root - INFO - [Aggregator] Round 6: trust_weights min=0.0172 max=0.0714 zero_count=0
+[2026-06-04 14:44:52,575] 175 root - INFO - [Pipeline] Round 6 aggregated — flagged=2, min_trust=0.0172, max_trust=0.0714
+[2026-06-04 14:44:53,393] 82 root - INFO - [Server] Round 6 — loss=0.0176, macro_f1=0.5816, acc=0.9931
+[2026-06-04 14:44:53,497] 190 root - INFO - [Pipeline] Round 6 eval — macro_f1=0.5816, acc=0.9931, loss=0.0176
+[2026-06-04 14:44:53,498] 130 root - INFO - 
+[Pipeline] ===== Round 7/50 =====
+[2026-06-04 14:45:01,900] 157 root - INFO -   [Client 3] loss=0.0035 acc=0.9992
+[2026-06-04 14:45:25,162] 157 root - INFO -   [Client 7] loss=0.0091 acc=0.9969
+[2026-06-04 14:45:26,192] 157 root - INFO -   [Client 9] loss=0.0175 acc=0.9956
+[2026-06-04 14:45:28,806] 157 root - INFO -   [Client 40] loss=0.0144 acc=0.9945
+[2026-06-04 14:45:30,019] 157 root - INFO -   [Client 10] loss=0.0145 acc=0.9951
+[2026-06-04 14:45:30,772] 157 root - INFO -   [Client 43] loss=0.1619 acc=0.9523
+[2026-06-04 14:45:33,777] 157 root - INFO -   [Client 27] loss=0.0149 acc=0.9952
+[2026-06-04 14:45:37,206] 157 root - INFO -   [Client 38] loss=0.0188 acc=0.9941
+[2026-06-04 14:45:40,588] 157 root - INFO -   [Client 4] loss=0.0097 acc=0.9972
+[2026-06-04 14:45:44,154] 157 root - INFO -   [Client 24] loss=0.0111 acc=0.9966
+[2026-06-04 14:45:44,572] 157 root - INFO -   [Client 46] loss=0.0820 acc=0.9753
+[2026-06-04 14:45:46,631] 157 root - INFO -   [Client 42] loss=0.0852 acc=0.9684
+[2026-06-04 14:45:49,698] 157 root - INFO -   [Client 29] loss=0.0329 acc=0.9863
+[2026-06-04 14:45:52,727] 157 root - INFO -   [Client 33] loss=0.0069 acc=0.9982
+[2026-06-04 14:46:10,542] 157 root - INFO -   [Client 16] loss=0.0067 acc=0.9983
+[2026-06-04 14:46:25,913] 157 root - INFO -   [Client 0] loss=0.0058 acc=0.9982
+[2026-06-04 14:46:29,266] 157 root - INFO -   [Client 48] loss=0.0281 acc=0.9905
+[2026-06-04 14:46:51,298] 157 root - INFO -   [Client 17] loss=0.0112 acc=0.9963
+[2026-06-04 14:46:58,478] 157 root - INFO -   [Client 21] loss=0.0075 acc=0.9983
+[2026-06-04 14:46:59,785] 157 root - INFO -   [Client 49] loss=1.2826 acc=0.9307
+[2026-06-04 14:46:59,830] 188 root - INFO - [Aggregator] Round 7: 5/20 clients flagged by MAD.
+[2026-06-04 14:46:59,831] 201 root - INFO - [Aggregator] Round 7: trust_weights min=0.0095 max=0.0714 zero_count=0
+[2026-06-04 14:46:59,846] 175 root - INFO - [Pipeline] Round 7 aggregated — flagged=5, min_trust=0.0095, max_trust=0.0714
+[2026-06-04 14:47:01,542] 82 root - INFO - [Server] Round 7 — loss=0.0206, macro_f1=0.5794, acc=0.9925
+[2026-06-04 14:47:01,688] 190 root - INFO - [Pipeline] Round 7 eval — macro_f1=0.5794, acc=0.9925, loss=0.0206
+[2026-06-04 14:47:01,690] 130 root - INFO - 
+[Pipeline] ===== Round 8/50 =====
+[2026-06-04 14:47:03,407] 157 root - INFO -   [Client 18] loss=0.0792 acc=0.9711
+[2026-06-04 14:47:10,217] 157 root - INFO -   [Client 27] loss=0.0140 acc=0.9956
+[2026-06-04 14:47:12,582] 157 root - INFO -   [Client 10] loss=0.0111 acc=0.9954
+[2026-06-04 14:47:20,242] 157 root - INFO -   [Client 29] loss=0.0342 acc=0.9861
+[2026-06-04 14:47:31,647] 157 root - INFO -   [Client 0] loss=0.0057 acc=0.9982
+[2026-06-04 14:47:51,439] 157 root - INFO -   [Client 16] loss=0.0070 acc=0.9983
+[2026-06-04 14:48:16,494] 157 root - INFO -   [Client 32] loss=0.0072 acc=0.9981
+[2026-06-04 14:48:20,476] 157 root - INFO -   [Client 11] loss=0.0309 acc=0.9895
+[2026-06-04 14:48:21,980] 157 root - INFO -   [Client 43] loss=0.1854 acc=0.9468
+[2026-06-04 14:48:27,478] 157 root - INFO -   [Client 6] loss=0.0348 acc=0.9865
+[2026-06-04 14:48:42,191] 157 root - INFO -   [Client 19] loss=0.0127 acc=0.9959
+[2026-06-04 14:48:51,825] 157 root - INFO -   [Client 41] loss=0.0126 acc=0.9971
+[2026-06-04 14:48:57,907] 157 root - INFO -   [Client 12] loss=0.0385 acc=0.9844
+[2026-06-04 14:49:02,199] 157 root - INFO -   [Client 9] loss=0.0159 acc=0.9961
+[2026-06-04 14:49:04,726] 157 root - INFO -   [Client 23] loss=1.4478 acc=0.6828
+[2026-06-04 14:49:16,689] 157 root - INFO -   [Client 47] loss=0.4290 acc=0.9179
+[2026-06-04 14:49:27,971] 157 root - INFO -   [Client 33] loss=0.0079 acc=0.9980
+[2026-06-04 14:49:45,756] 157 root - INFO -   [Client 45] loss=0.0146 acc=0.9943
+[2026-06-04 14:49:53,845] 157 root - INFO -   [Client 20] loss=0.0146 acc=0.9951
+[2026-06-04 14:50:05,644] 157 root - INFO -   [Client 15] loss=0.1291 acc=0.9687
+[2026-06-04 14:50:05,771] 188 root - INFO - [Aggregator] Round 8: 3/20 clients flagged by MAD.
+[2026-06-04 14:50:05,775] 201 root - INFO - [Aggregator] Round 8: trust_weights min=0.0121 max=0.0714 zero_count=0
+[2026-06-04 14:50:05,813] 175 root - INFO - [Pipeline] Round 8 aggregated — flagged=3, min_trust=0.0121, max_trust=0.0714
+[2026-06-04 14:50:09,146] 82 root - INFO - [Server] Round 8 — loss=0.0188, macro_f1=0.5798, acc=0.9926
+[2026-06-04 14:50:09,176] 190 root - INFO - [Pipeline] Round 8 eval — macro_f1=0.5798, acc=0.9926, loss=0.0188
+[2026-06-04 14:50:09,179] 130 root - INFO - 
+[Pipeline] ===== Round 9/50 =====
+[2026-06-04 14:50:12,025] 157 root - INFO -   [Client 1] loss=0.0354 acc=0.9868
+[2026-06-04 14:51:39,798] 157 root - INFO -   [Client 7] loss=0.0089 acc=0.9970
+[2026-06-04 14:51:41,579] 157 root - INFO -   [Client 23] loss=1.2735 acc=0.7153
+[2026-06-04 14:52:06,262] 157 root - INFO -   [Client 19] loss=0.0125 acc=0.9961
+[2026-06-04 14:52:17,695] 157 root - INFO -   [Client 15] loss=0.1261 acc=0.9694
+[2026-06-04 14:52:49,856] 157 root - INFO -   [Client 3] loss=0.0037 acc=0.9991
+[2026-06-04 14:53:07,745] 157 root - INFO -   [Client 45] loss=0.0139 acc=0.9946
+[2026-06-04 14:53:11,868] 157 root - INFO -   [Client 36] loss=0.2332 acc=0.9383
+[2026-06-04 14:53:26,903] 157 root - INFO -   [Client 5] loss=0.0114 acc=0.9961
+[2026-06-04 14:53:38,879] 157 root - INFO -   [Client 41] loss=0.0089 acc=0.9978
+[2026-06-04 14:53:42,218] 157 root - INFO -   [Client 31] loss=0.0173 acc=0.9950
+[2026-06-04 14:53:54,480] 157 root - INFO -   [Client 4] loss=0.0097 acc=0.9970
+[2026-06-04 14:54:01,303] 157 root - INFO -   [Client 34] loss=0.0291 acc=0.9915
+[2026-06-04 14:54:19,405] 157 root - INFO -   [Client 8] loss=0.0363 acc=0.9843
+[2026-06-04 14:54:26,604] 157 root - INFO -   [Client 42] loss=0.0855 acc=0.9678
+[2026-06-04 14:56:19,506] 157 root - INFO -   [Client 30] loss=0.0040 acc=0.9989
+[2026-06-04 14:56:23,950] 157 root - INFO -   [Client 10] loss=0.0125 acc=0.9954
+[2026-06-04 14:57:11,171] 157 root - INFO -   [Client 16] loss=0.0064 acc=0.9984
+[2026-06-04 14:57:23,450] 157 root - INFO -   [Client 27] loss=0.0143 acc=0.9957
+[2026-06-04 14:57:44,226] 157 root - INFO -   [Client 37] loss=0.0099 acc=0.9971
+[2026-06-04 14:57:44,283] 188 root - INFO - [Aggregator] Round 9: 4/20 clients flagged by MAD.
+[2026-06-04 14:57:44,285] 201 root - INFO - [Aggregator] Round 9: trust_weights min=0.0130 max=0.0714 zero_count=0
+[2026-06-04 14:57:44,306] 175 root - INFO - [Pipeline] Round 9 aggregated — flagged=4, min_trust=0.0130, max_trust=0.0714
+[2026-06-04 14:57:46,186] 82 root - INFO - [Server] Round 9 — loss=0.0177, macro_f1=0.5828, acc=0.9931
+[2026-06-04 14:57:46,357] 190 root - INFO - [Pipeline] Round 9 eval — macro_f1=0.5828, acc=0.9931, loss=0.0177
+[2026-06-04 14:57:46,359] 130 root - INFO - 
+[Pipeline] ===== Round 10/50 =====
+[2026-06-04 14:57:49,017] 157 root - INFO -   [Client 13] loss=0.0671 acc=0.9794
+[2026-06-04 14:57:55,428] 157 root - INFO -   [Client 34] loss=0.0293 acc=0.9914
+[2026-06-04 14:57:57,393] 157 root - INFO -   [Client 46] loss=0.0792 acc=0.9762
+[2026-06-04 14:58:00,602] 157 root - INFO -   [Client 44] loss=0.1353 acc=0.9506
+[2026-06-04 14:58:07,130] 157 root - INFO -   [Client 12] loss=0.0387 acc=0.9842
+[2026-06-04 14:58:31,360] 157 root - INFO -   [Client 19] loss=0.0128 acc=0.9960
+[2026-06-04 14:58:36,992] 157 root - INFO -   [Client 25] loss=0.0548 acc=0.9784
+[2026-06-04 14:58:44,492] 157 root - INFO -   [Client 42] loss=0.0798 acc=0.9696
+[2026-06-04 14:58:55,422] 157 root - INFO -   [Client 41] loss=0.0085 acc=0.9979
+[2026-06-04 14:58:58,020] 157 root - INFO -   [Client 23] loss=1.1585 acc=0.7269
+[2026-06-04 14:59:08,930] 157 root - INFO -   [Client 28] loss=0.0447 acc=0.9817
+[2026-06-04 14:59:20,419] 157 root - INFO -   [Client 33] loss=0.0070 acc=0.9982
+[2026-06-04 15:00:09,642] 157 root - INFO -   [Client 39] loss=0.0025 acc=0.9994
+[2026-06-04 15:01:40,291] 157 root - INFO -   [Client 7] loss=0.0090 acc=0.9970
+[2026-06-04 15:01:51,119] 157 root - INFO -   [Client 15] loss=0.1125 acc=0.9720
+[2026-06-04 15:02:03,426] 157 root - INFO -   [Client 14] loss=0.0261 acc=0.9904
+[2026-06-04 15:02:16,144] 157 root - INFO -   [Client 4] loss=0.0098 acc=0.9970
+[2026-06-04 15:02:32,154] 157 root - INFO -   [Client 21] loss=0.0069 acc=0.9985
+[2026-06-04 15:02:35,365] 157 root - INFO -   [Client 1] loss=0.0376 acc=0.9861
+[2026-06-04 15:02:37,932] 157 root - INFO -   [Client 18] loss=0.0933 acc=0.9661
+[2026-06-04 15:02:38,103] 188 root - INFO - [Aggregator] Round 10: 2/20 clients flagged by MAD.
+[2026-06-04 15:02:38,108] 201 root - INFO - [Aggregator] Round 10: trust_weights min=0.0062 max=0.0714 zero_count=0
+[2026-06-04 15:02:38,152] 175 root - INFO - [Pipeline] Round 10 aggregated — flagged=2, min_trust=0.0062, max_trust=0.0714
+[2026-06-04 15:02:41,631] 82 root - INFO - [Server] Round 10 — loss=0.0185, macro_f1=0.5838, acc=0.9930
+[2026-06-04 15:02:41,664] 190 root - INFO - [Pipeline] Round 10 eval — macro_f1=0.5838, acc=0.9930, loss=0.0185
+[2026-06-04 15:02:41,667] 130 root - INFO - 
+[Pipeline] ===== Round 11/50 =====
+[2026-06-04 15:02:49,155] 157 root - INFO -   [Client 35] loss=0.0580 acc=0.9773
+[2026-06-04 15:03:01,670] 157 root - INFO -   [Client 14] loss=0.0266 acc=0.9900
+[2026-06-04 15:03:22,379] 157 root - INFO -   [Client 37] loss=0.0093 acc=0.9972
+[2026-06-04 15:03:30,916] 157 root - INFO -   [Client 48] loss=0.0264 acc=0.9906
+[2026-06-04 15:03:56,436] 157 root - INFO -   [Client 0] loss=0.0061 acc=0.9982
+[2026-06-04 15:04:08,922] 157 root - INFO -   [Client 4] loss=0.0095 acc=0.9972
+[2026-06-04 15:04:18,950] 157 root - INFO -   [Client 40] loss=0.0159 acc=0.9941
+[2026-06-04 15:04:49,973] 157 root - INFO -   [Client 3] loss=0.0031 acc=0.9992
+[2026-06-04 15:04:51,494] 157 root - INFO -   [Client 46] loss=0.0681 acc=0.9761
+[2026-06-04 15:04:54,671] 157 root - INFO -   [Client 44] loss=0.1093 acc=0.9609
+[2026-06-04 15:05:22,839] 157 root - INFO -   [Client 2] loss=0.0073 acc=0.9974
+[2026-06-04 15:05:38,536] 157 root - INFO -   [Client 21] loss=0.0077 acc=0.9983
+[2026-06-04 15:05:41,839] 157 root - INFO -   [Client 43] loss=0.1425 acc=0.9594
+[2026-06-04 15:06:38,948] 157 root - INFO -   [Client 32] loss=0.0070 acc=0.9982
+[2026-06-04 15:06:50,616] 157 root - INFO -   [Client 15] loss=0.0916 acc=0.9769
+[2026-06-04 15:07:42,647] 157 root - INFO -   [Client 17] loss=0.0109 acc=0.9963
+[2026-06-04 15:07:46,338] 157 root - INFO -   [Client 31] loss=0.0200 acc=0.9943
+[2026-06-04 15:07:49,244] 157 root - INFO -   [Client 13] loss=0.0674 acc=0.9782
+[2026-06-04 15:08:07,200] 157 root - INFO -   [Client 8] loss=0.0364 acc=0.9844
+[2026-06-04 15:08:09,855] 157 root - INFO -   [Client 23] loss=1.0707 acc=0.7498
+[2026-06-04 15:08:09,997] 188 root - INFO - [Aggregator] Round 11: 2/20 clients flagged by MAD.
+[2026-06-04 15:08:10,000] 201 root - INFO - [Aggregator] Round 11: trust_weights min=0.0146 max=0.0714 zero_count=0
+[2026-06-04 15:08:10,037] 175 root - INFO - [Pipeline] Round 11 aggregated — flagged=2, min_trust=0.0146, max_trust=0.0714
+[2026-06-04 15:08:13,333] 82 root - INFO - [Server] Round 11 — loss=0.0188, macro_f1=0.5978, acc=0.9932
+[2026-06-04 15:08:13,366] 190 root - INFO - [Pipeline] Round 11 eval — macro_f1=0.5978, acc=0.9932, loss=0.0188
+[2026-06-04 15:08:13,369] 130 root - INFO - 
+[Pipeline] ===== Round 12/50 =====
+[2026-06-04 15:08:17,690] 157 root - INFO -   [Client 36] loss=0.1283 acc=0.9653
+[2026-06-04 15:08:19,760] 157 root - INFO -   [Client 49] loss=1.6107 acc=0.9269
+[2026-06-04 15:10:12,925] 157 root - INFO -   [Client 30] loss=0.0039 acc=0.9990
+[2026-06-04 15:10:24,482] 157 root - INFO -   [Client 15] loss=0.0745 acc=0.9811
+[2026-06-04 15:10:28,765] 157 root - INFO -   [Client 47] loss=0.2812 acc=0.9428
+[2026-06-04 15:10:37,967] 157 root - INFO -   [Client 26] loss=0.0318 acc=0.9877
+[2026-06-04 15:10:42,681] 157 root - INFO -   [Client 12] loss=0.0412 acc=0.9830
+[2026-06-04 15:10:51,552] 157 root - INFO -   [Client 6] loss=0.0368 acc=0.9864
+[2026-06-04 15:10:56,721] 157 root - INFO -   [Client 42] loss=0.0770 acc=0.9686
+[2026-06-04 15:11:06,178] 157 root - INFO -   [Client 27] loss=0.0155 acc=0.9954
+[2026-06-04 15:11:16,769] 157 root - INFO -   [Client 22] loss=0.0116 acc=0.9960
+[2026-06-04 15:11:23,816] 157 root - INFO -   [Client 40] loss=0.0143 acc=0.9946
+[2026-06-04 15:11:25,682] 157 root - INFO -   [Client 44] loss=0.1136 acc=0.9574
+[2026-06-04 15:11:35,806] 157 root - INFO -   [Client 29] loss=0.0316 acc=0.9871
+[2026-06-04 15:12:00,454] 157 root - INFO -   [Client 3] loss=0.0030 acc=0.9993
+[2026-06-04 15:12:09,325] 157 root - INFO -   [Client 41] loss=0.0118 acc=0.9969
+[2026-06-04 15:12:16,015] 157 root - INFO -   [Client 35] loss=0.0560 acc=0.9786
+[2026-06-04 15:12:20,125] 157 root - INFO -   [Client 25] loss=0.0543 acc=0.9792
+[2026-06-04 15:12:32,467] 157 root - INFO -   [Client 21] loss=0.0083 acc=0.9981
+[2026-06-04 15:13:16,045] 157 root - INFO -   [Client 32] loss=0.0072 acc=0.9982
+[2026-06-04 15:13:16,149] 188 root - INFO - [Aggregator] Round 12: 3/20 clients flagged by MAD.
+[2026-06-04 15:13:16,151] 201 root - INFO - [Aggregator] Round 12: trust_weights min=0.0103 max=0.0714 zero_count=0
+[2026-06-04 15:13:16,180] 175 root - INFO - [Pipeline] Round 12 aggregated — flagged=3, min_trust=0.0103, max_trust=0.0714
+[2026-06-04 15:13:19,342] 82 root - INFO - [Server] Round 12 — loss=0.0195, macro_f1=0.5823, acc=0.9927
+[2026-06-04 15:13:19,414] 190 root - INFO - [Pipeline] Round 12 eval — macro_f1=0.5823, acc=0.9927, loss=0.0195
+[2026-06-04 15:13:19,417] 130 root - INFO - 
+[Pipeline] ===== Round 13/50 =====
+[2026-06-04 15:13:27,543] 157 root - INFO -   [Client 6] loss=0.0330 acc=0.9873
+[2026-06-04 15:13:36,081] 157 root - INFO -   [Client 15] loss=0.0736 acc=0.9810
+[2026-06-04 15:13:41,124] 157 root - INFO -   [Client 12] loss=0.0386 acc=0.9840
+[2026-06-04 15:13:51,315] 157 root - INFO -   [Client 47] loss=0.3036 acc=0.9387
+[2026-06-04 15:13:56,496] 157 root - INFO -   [Client 34] loss=0.0289 acc=0.9912
+[2026-06-04 15:14:04,917] 157 root - INFO -   [Client 28] loss=0.0451 acc=0.9819
+[2026-06-04 15:14:19,199] 157 root - INFO -   [Client 8] loss=0.0359 acc=0.9850
+[2026-06-04 15:14:28,954] 157 root - INFO -   [Client 27] loss=0.0134 acc=0.9958
+[2026-06-04 15:14:36,869] 157 root - INFO -   [Client 11] loss=0.0257 acc=0.9910
+[2026-06-04 15:15:17,131] 157 root - INFO -   [Client 17] loss=0.0109 acc=0.9962
+[2026-06-04 15:15:27,229] 157 root - INFO -   [Client 29] loss=0.0324 acc=0.9871
+[2026-06-04 15:15:34,439] 157 root - INFO -   [Client 48] loss=0.0275 acc=0.9901
+[2026-06-04 15:15:44,804] 157 root - INFO -   [Client 4] loss=0.0100 acc=0.9969
+[2026-06-04 15:15:47,432] 157 root - INFO -   [Client 44] loss=0.1095 acc=0.9603
+[2026-06-04 15:15:54,531] 157 root - INFO -   [Client 35] loss=0.0566 acc=0.9784
+[2026-06-04 15:15:56,192] 157 root - INFO -   [Client 49] loss=1.5904 acc=0.9259
+[2026-06-04 15:16:21,015] 157 root - INFO -   [Client 3] loss=0.0034 acc=0.9992
+[2026-06-04 15:16:43,847] 157 root - INFO -   [Client 0] loss=0.0062 acc=0.9981
+[2026-06-04 15:16:58,264] 157 root - INFO -   [Client 5] loss=0.0110 acc=0.9962
+[2026-06-04 15:17:36,460] 157 root - INFO -   [Client 39] loss=0.0028 acc=0.9993
+[2026-06-04 15:17:36,599] 188 root - INFO - [Aggregator] Round 13: 2/20 clients flagged by MAD.
+[2026-06-04 15:17:36,603] 201 root - INFO - [Aggregator] Round 13: trust_weights min=0.0130 max=0.0714 zero_count=0
+[2026-06-04 15:17:36,638] 175 root - INFO - [Pipeline] Round 13 aggregated — flagged=2, min_trust=0.0130, max_trust=0.0714
+[2026-06-04 15:17:39,478] 82 root - INFO - [Server] Round 13 — loss=0.0217, macro_f1=0.5452, acc=0.9919
+[2026-06-04 15:17:39,580] 190 root - INFO - [Pipeline] Round 13 eval — macro_f1=0.5452, acc=0.9919, loss=0.0217
+[2026-06-04 15:17:39,582] 130 root - INFO - 
+[Pipeline] ===== Round 14/50 =====
+[2026-06-04 15:17:46,681] 157 root - INFO -   [Client 48] loss=0.0239 acc=0.9913
+[2026-06-04 15:17:56,603] 157 root - INFO -   [Client 15] loss=0.0590 acc=0.9843
+[2026-06-04 15:17:59,977] 157 root - INFO -   [Client 10] loss=0.0146 acc=0.9945
+[2026-06-04 15:18:14,273] 157 root - INFO -   [Client 26] loss=0.0311 acc=0.9879
+[2026-06-04 15:18:17,295] 157 root - INFO -   [Client 31] loss=0.0186 acc=0.9947
+[2026-06-04 15:19:46,751] 157 root - INFO -   [Client 30] loss=0.0044 acc=0.9989
+[2026-06-04 15:19:48,966] 157 root - INFO -   [Client 13] loss=0.0638 acc=0.9802
+[2026-06-04 15:19:53,295] 157 root - INFO -   [Client 25] loss=0.0541 acc=0.9783
+[2026-06-04 15:20:16,990] 157 root - INFO -   [Client 3] loss=0.0031 acc=0.9992
+[2026-06-04 15:20:26,691] 157 root - INFO -   [Client 47] loss=0.2823 acc=0.9423
+[2026-06-04 15:20:38,443] 157 root - INFO -   [Client 24] loss=0.0125 acc=0.9962
+[2026-06-04 15:20:59,273] 157 root - INFO -   [Client 0] loss=0.0064 acc=0.9981
+[2026-06-04 15:21:37,231] 157 root - INFO -   [Client 39] loss=0.0027 acc=0.9993
+[2026-06-04 15:22:12,943] 157 root - INFO -   [Client 16] loss=0.0067 acc=0.9985
+[2026-06-04 15:22:22,462] 157 root - INFO -   [Client 29] loss=0.0340 acc=0.9867
+[2026-06-04 15:22:24,393] 157 root - INFO -   [Client 18] loss=0.0662 acc=0.9727
+[2026-06-04 15:22:33,528] 157 root - INFO -   [Client 27] loss=0.0147 acc=0.9957
+[2026-06-04 15:22:47,347] 157 root - INFO -   [Client 45] loss=0.0148 acc=0.9943
+[2026-06-04 15:22:50,851] 157 root - INFO -   [Client 9] loss=0.0174 acc=0.9953
+[2026-06-04 15:22:59,716] 157 root - INFO -   [Client 6] loss=0.0340 acc=0.9867
+[2026-06-04 15:22:59,828] 188 root - INFO - [Aggregator] Round 14: 3/20 clients flagged by MAD.
+[2026-06-04 15:22:59,831] 201 root - INFO - [Aggregator] Round 14: trust_weights min=0.0166 max=0.0714 zero_count=0
+[2026-06-04 15:22:59,863] 175 root - INFO - [Pipeline] Round 14 aggregated — flagged=3, min_trust=0.0166, max_trust=0.0714
+[2026-06-04 15:23:02,848] 82 root - INFO - [Server] Round 14 — loss=0.0174, macro_f1=0.5474, acc=0.9932
+[2026-06-04 15:23:02,955] 190 root - INFO - [Pipeline] Round 14 eval — macro_f1=0.5474, acc=0.9932, loss=0.0174
+[2026-06-04 15:23:02,958] 130 root - INFO - 
+[Pipeline] ===== Round 15/50 =====
+[2026-06-04 15:23:04,962] 157 root - INFO -   [Client 18] loss=0.0838 acc=0.9690
+[2026-06-04 15:23:07,294] 157 root - INFO -   [Client 13] loss=0.0610 acc=0.9818
+[2026-06-04 15:23:31,185] 157 root - INFO -   [Client 3] loss=0.0036 acc=0.9992
+[2026-06-04 15:23:46,921] 157 root - INFO -   [Client 37] loss=0.0088 acc=0.9973
+[2026-06-04 15:23:52,202] 157 root - INFO -   [Client 34] loss=0.0267 acc=0.9923
+[2026-06-04 15:24:01,119] 157 root - INFO -   [Client 47] loss=0.2980 acc=0.9400
+[2026-06-04 15:24:07,002] 157 root - INFO -   [Client 20] loss=0.0123 acc=0.9957
+[2026-06-04 15:24:09,480] 157 root - INFO -   [Client 44] loss=0.1170 acc=0.9556
+[2026-06-04 15:24:15,972] 157 root - INFO -   [Client 42] loss=0.0807 acc=0.9696
+[2026-06-04 15:24:17,645] 157 root - INFO -   [Client 46] loss=0.0755 acc=0.9754
+[2026-06-04 15:25:43,567] 157 root - INFO -   [Client 30] loss=0.0040 acc=0.9990
+[2026-06-04 15:26:28,334] 157 root - INFO -   [Client 32] loss=0.0078 acc=0.9981
+[2026-06-04 15:26:37,033] 157 root - INFO -   [Client 33] loss=0.0069 acc=0.9985
+[2026-06-04 15:26:40,249] 157 root - INFO -   [Client 10] loss=0.0136 acc=0.9949
+[2026-06-04 15:26:48,399] 157 root - INFO -   [Client 41] loss=0.0107 acc=0.9971
+[2026-06-04 15:26:58,160] 157 root - INFO -   [Client 38] loss=0.0183 acc=0.9945
+[2026-06-04 15:27:09,414] 157 root - INFO -   [Client 5] loss=0.0113 acc=0.9959
+[2026-06-04 15:27:17,047] 157 root - INFO -   [Client 11] loss=0.0262 acc=0.9910
+[2026-06-04 15:27:26,777] 157 root - INFO -   [Client 4] loss=0.0101 acc=0.9969
+[2026-06-04 15:27:45,927] 157 root - INFO -   [Client 19] loss=0.0124 acc=0.9959
+[2026-06-04 15:27:46,042] 188 root - INFO - [Aggregator] Round 15: 3/20 clients flagged by MAD.
+[2026-06-04 15:27:46,045] 201 root - INFO - [Aggregator] Round 15: trust_weights min=0.0148 max=0.0714 zero_count=0
+[2026-06-04 15:27:46,073] 175 root - INFO - [Pipeline] Round 15 aggregated — flagged=3, min_trust=0.0148, max_trust=0.0714
+[2026-06-04 15:27:48,695] 82 root - INFO - [Server] Round 15 — loss=0.0191, macro_f1=0.5402, acc=0.9929
+[2026-06-04 15:27:48,756] 190 root - INFO - [Pipeline] Round 15 eval — macro_f1=0.5402, acc=0.9929, loss=0.0191
+[2026-06-04 15:27:48,759] 130 root - INFO - 
+[Pipeline] ===== Round 16/50 =====
+[2026-06-04 15:27:58,239] 157 root - INFO -   [Client 4] loss=0.0094 acc=0.9972
+[2026-06-04 15:28:00,551] 157 root - INFO -   [Client 43] loss=0.1328 acc=0.9611
+[2026-06-04 15:28:09,592] 157 root - INFO -   [Client 15] loss=0.0709 acc=0.9814
+[2026-06-04 15:28:13,753] 157 root - INFO -   [Client 25] loss=0.0530 acc=0.9806
+[2026-06-04 15:29:22,108] 157 root - INFO -   [Client 7] loss=0.0087 acc=0.9971
+[2026-06-04 15:29:25,477] 157 root - INFO -   [Client 36] loss=0.1298 acc=0.9636
+[2026-06-04 15:29:35,314] 157 root - INFO -   [Client 47] loss=0.2582 acc=0.9462
+[2026-06-04 15:29:50,553] 157 root - INFO -   [Client 37] loss=0.0091 acc=0.9974
+[2026-06-04 15:30:00,782] 157 root - INFO -   [Client 38] loss=0.0161 acc=0.9947
+[2026-06-04 15:30:23,365] 157 root - INFO -   [Client 2] loss=0.0069 acc=0.9974
+[2026-06-04 15:30:59,943] 157 root - INFO -   [Client 39] loss=0.0026 acc=0.9994
+[2026-06-04 15:31:11,688] 157 root - INFO -   [Client 5] loss=0.0107 acc=0.9961
+[2026-06-04 15:31:25,076] 157 root - INFO -   [Client 26] loss=0.0307 acc=0.9879
+[2026-06-04 15:31:27,609] 157 root - INFO -   [Client 44] loss=0.1084 acc=0.9580
+[2026-06-04 15:31:36,781] 157 root - INFO -   [Client 33] loss=0.0071 acc=0.9983
+[2026-06-04 15:31:43,056] 157 root - INFO -   [Client 20] loss=0.0142 acc=0.9953
+[2026-06-04 15:32:17,923] 157 root - INFO -   [Client 16] loss=0.0066 acc=0.9984
+[2026-06-04 15:32:20,081] 157 root - INFO -   [Client 13] loss=0.0430 acc=0.9849
+[2026-06-04 15:32:25,355] 157 root - INFO -   [Client 34] loss=0.0283 acc=0.9920
+[2026-06-04 15:32:40,626] 157 root - INFO -   [Client 45] loss=0.0146 acc=0.9946
+[2026-06-04 15:32:40,735] 188 root - INFO - [Aggregator] Round 16: 3/20 clients flagged by MAD.
+[2026-06-04 15:32:40,738] 201 root - INFO - [Aggregator] Round 16: trust_weights min=0.0171 max=0.0714 zero_count=0
+[2026-06-04 15:32:40,765] 175 root - INFO - [Pipeline] Round 16 aggregated — flagged=3, min_trust=0.0171, max_trust=0.0714
+[2026-06-04 15:32:43,427] 82 root - INFO - [Server] Round 16 — loss=0.0179, macro_f1=0.5461, acc=0.9933
+[2026-06-04 15:32:43,481] 190 root - INFO - [Pipeline] Round 16 eval — macro_f1=0.5461, acc=0.9933, loss=0.0179
+[2026-06-04 15:32:43,484] 130 root - INFO - 
+[Pipeline] ===== Round 17/50 =====
+[2026-06-04 15:33:17,527] 157 root - INFO -   [Client 16] loss=0.0064 acc=0.9985
+[2026-06-04 15:33:21,647] 157 root - INFO -   [Client 25] loss=0.0492 acc=0.9799
+[2026-06-04 15:33:35,640] 157 root - INFO -   [Client 8] loss=0.0354 acc=0.9848
+[2026-06-04 15:33:40,956] 157 root - INFO -   [Client 42] loss=0.0735 acc=0.9712
+[2026-06-04 15:33:49,621] 157 root - INFO -   [Client 41] loss=0.0116 acc=0.9972
+[2026-06-04 15:34:08,445] 157 root - INFO -   [Client 19] loss=0.0131 acc=0.9960
+[2026-06-04 15:34:18,303] 157 root - INFO -   [Client 29] loss=0.0336 acc=0.9867
+[2026-06-04 15:34:24,408] 157 root - INFO -   [Client 20] loss=0.0126 acc=0.9958
+[2026-06-04 15:34:33,904] 157 root - INFO -   [Client 4] loss=0.0103 acc=0.9970
+[2026-06-04 15:34:40,200] 157 root - INFO -   [Client 0] loss=0.0056 acc=0.9983
+[2026-06-04 15:34:41,075] 157 root - INFO -   [Client 43] loss=0.1199 acc=0.9641
+[2026-06-04 15:34:42,063] 157 root - INFO -   [Client 36] loss=0.1081 acc=0.9703
+[2026-06-04 15:34:45,014] 157 root - INFO -   [Client 6] loss=0.0379 acc=0.9854
+[2026-06-04 15:34:49,241] 157 root - INFO -   [Client 45] loss=0.0147 acc=0.9948
+[2026-06-04 15:34:50,712] 157 root - INFO -   [Client 34] loss=0.0286 acc=0.9915
+[2026-06-04 15:34:51,606] 157 root - INFO -   [Client 13] loss=0.0442 acc=0.9852
+[2026-06-04 15:35:06,032] 157 root - INFO -   [Client 32] loss=0.0076 acc=0.9981
+[2026-06-04 15:35:06,538] 157 root - INFO -   [Client 49] loss=1.4586 acc=0.9303
+[2026-06-04 15:35:09,443] 157 root - INFO -   [Client 47] loss=0.2370 acc=0.9496
+[2026-06-04 15:35:21,798] 157 root - INFO -   [Client 39] loss=0.0023 acc=0.9994
+[2026-06-04 15:35:21,822] 188 root - INFO - [Aggregator] Round 17: 4/20 clients flagged by MAD.
+[2026-06-04 15:35:21,823] 201 root - INFO - [Aggregator] Round 17: trust_weights min=0.0148 max=0.0714 zero_count=0
+[2026-06-04 15:35:21,832] 175 root - INFO - [Pipeline] Round 17 aggregated — flagged=4, min_trust=0.0148, max_trust=0.0714
+[2026-06-04 15:35:22,648] 82 root - INFO - [Server] Round 17 — loss=0.0195, macro_f1=0.5437, acc=0.9923
+[2026-06-04 15:35:22,748] 190 root - INFO - [Pipeline] Round 17 eval — macro_f1=0.5437, acc=0.9923, loss=0.0195
+[2026-06-04 15:35:22,749] 130 root - INFO - 
+[Pipeline] ===== Round 18/50 =====
+[2026-06-04 15:35:26,555] 157 root - INFO -   [Client 22] loss=0.0111 acc=0.9963
+[2026-06-04 15:35:30,151] 157 root - INFO -   [Client 4] loss=0.0095 acc=0.9970
+[2026-06-04 15:35:33,230] 157 root - INFO -   [Client 15] loss=0.0639 acc=0.9832
+[2026-06-04 15:35:33,837] 157 root - INFO -   [Client 23] loss=0.8922 acc=0.7847
+[2026-06-04 15:35:34,531] 157 root - INFO -   [Client 18] loss=0.0656 acc=0.9730
+[2026-06-04 15:35:35,529] 157 root - INFO -   [Client 10] loss=0.0141 acc=0.9950
+[2026-06-04 15:35:38,363] 157 root - INFO -   [Client 28] loss=0.0450 acc=0.9822
+[2026-06-04 15:35:40,030] 157 root - INFO -   [Client 34] loss=0.0273 acc=0.9919
+[2026-06-04 15:35:46,039] 157 root - INFO -   [Client 19] loss=0.0130 acc=0.9960
+[2026-06-04 15:35:58,056] 157 root - INFO -   [Client 39] loss=0.0023 acc=0.9994
+[2026-06-04 15:36:05,239] 157 root - INFO -   [Client 33] loss=0.0080 acc=0.9979
+[2026-06-04 15:36:24,044] 157 root - INFO -   [Client 0] loss=0.0056 acc=0.9983
+[2026-06-04 15:36:30,683] 157 root - INFO -   [Client 35] loss=0.0581 acc=0.9775
+[2026-06-04 15:36:39,754] 157 root - INFO -   [Client 41] loss=0.0093 acc=0.9977
+[2026-06-04 15:36:48,866] 157 root - INFO -   [Client 6] loss=0.0366 acc=0.9856
+[2026-06-04 15:37:02,612] 157 root - INFO -   [Client 8] loss=0.0347 acc=0.9851
+[2026-06-04 15:37:38,426] 157 root - INFO -   [Client 16] loss=0.0062 acc=0.9984
+[2026-06-04 15:38:46,342] 157 root - INFO -   [Client 7] loss=0.0090 acc=0.9970
+[2026-06-04 15:39:01,932] 157 root - INFO -   [Client 37] loss=0.0096 acc=0.9972
+[2026-06-04 15:39:03,305] 157 root - INFO -   [Client 46] loss=0.0600 acc=0.9789
+[2026-06-04 15:39:03,421] 188 root - INFO - [Aggregator] Round 18: 2/20 clients flagged by MAD.
+[2026-06-04 15:39:03,424] 201 root - INFO - [Aggregator] Round 18: trust_weights min=0.0174 max=0.0714 zero_count=0
+[2026-06-04 15:39:03,451] 175 root - INFO - [Pipeline] Round 18 aggregated — flagged=2, min_trust=0.0174, max_trust=0.0714
+[2026-06-04 15:39:06,331] 82 root - INFO - [Server] Round 18 — loss=0.0175, macro_f1=0.5472, acc=0.9933
+[2026-06-04 15:39:06,360] 190 root - INFO - [Pipeline] Round 18 eval — macro_f1=0.5472, acc=0.9933, loss=0.0175
+[2026-06-04 15:39:06,363] 130 root - INFO - 
+[Pipeline] ===== Round 19/50 =====
+[2026-06-04 15:39:12,439] 157 root - INFO -   [Client 35] loss=0.0579 acc=0.9782
+[2026-06-04 15:39:15,643] 157 root - INFO -   [Client 9] loss=0.0172 acc=0.9955
+[2026-06-04 15:39:55,096] 157 root - INFO -   [Client 17] loss=0.0106 acc=0.9963
+[2026-06-04 15:39:56,920] 157 root - INFO -   [Client 18] loss=0.0739 acc=0.9722
+[2026-06-04 15:40:06,934] 157 root - INFO -   [Client 38] loss=0.0186 acc=0.9943
+[2026-06-04 15:40:09,279] 157 root - INFO -   [Client 13] loss=0.0688 acc=0.9784
+[2026-06-04 15:40:21,564] 157 root - INFO -   [Client 21] loss=0.0070 acc=0.9985
+[2026-06-04 15:40:23,979] 157 root - INFO -   [Client 44] loss=0.1203 acc=0.9552
+[2026-06-04 15:40:32,030] 157 root - INFO -   [Client 40] loss=0.0147 acc=0.9943
+[2026-06-04 15:41:11,145] 157 root - INFO -   [Client 16] loss=0.0066 acc=0.9984
+[2026-06-04 15:42:12,194] 157 root - INFO -   [Client 32] loss=0.0074 acc=0.9980
+[2026-06-04 15:42:16,359] 157 root - INFO -   [Client 31] loss=0.0191 acc=0.9939
+[2026-06-04 15:42:28,818] 157 root - INFO -   [Client 41] loss=0.0084 acc=0.9979
+[2026-06-04 15:43:01,542] 157 root - INFO -   [Client 3] loss=0.0036 acc=0.9992
+[2026-06-04 15:43:16,906] 157 root - INFO -   [Client 5] loss=0.0110 acc=0.9959
+[2026-06-04 15:43:29,982] 157 root - INFO -   [Client 27] loss=0.0144 acc=0.9955
+[2026-06-04 15:43:43,184] 157 root - INFO -   [Client 47] loss=0.2671 acc=0.9434
+[2026-06-04 15:44:14,392] 157 root - INFO -   [Client 2] loss=0.0069 acc=0.9975
+[2026-06-04 15:44:40,723] 157 root - INFO -   [Client 0] loss=0.0054 acc=0.9983
+[2026-06-04 15:44:45,286] 157 root - INFO -   [Client 10] loss=0.0134 acc=0.9948
+[2026-06-04 15:44:45,397] 188 root - INFO - [Aggregator] Round 19: 3/20 clients flagged by MAD.
+[2026-06-04 15:44:45,400] 201 root - INFO - [Aggregator] Round 19: trust_weights min=0.0212 max=0.0714 zero_count=0
+[2026-06-04 15:44:45,428] 175 root - INFO - [Pipeline] Round 19 aggregated — flagged=3, min_trust=0.0212, max_trust=0.0714
+[2026-06-04 15:44:48,144] 82 root - INFO - [Server] Round 19 — loss=0.0177, macro_f1=0.5458, acc=0.9933
+[2026-06-04 15:44:48,245] 190 root - INFO - [Pipeline] Round 19 eval — macro_f1=0.5458, acc=0.9933, loss=0.0177
+[2026-06-04 15:44:48,248] 130 root - INFO - 
+[Pipeline] ===== Round 20/50 =====
+[2026-06-04 15:44:50,330] 157 root - INFO -   [Client 49] loss=1.7956 acc=0.9054
+[2026-06-04 15:45:09,573] 157 root - INFO -   [Client 8] loss=0.0360 acc=0.9851
+[2026-06-04 15:45:20,201] 157 root - INFO -   [Client 40] loss=0.0154 acc=0.9942
+[2026-06-04 15:46:08,876] 157 root - INFO -   [Client 16] loss=0.0065 acc=0.9984
+[2026-06-04 15:46:13,386] 157 root - INFO -   [Client 10] loss=0.0131 acc=0.9946
+[2026-06-04 15:46:24,358] 157 root - INFO -   [Client 28] loss=0.0458 acc=0.9816
+[2026-06-04 15:46:33,319] 157 root - INFO -   [Client 35] loss=0.0559 acc=0.9788
+[2026-06-04 15:46:46,548] 157 root - INFO -   [Client 27] loss=0.0145 acc=0.9951
+[2026-06-04 15:46:49,094] 157 root - INFO -   [Client 43] loss=0.1678 acc=0.9536
+[2026-06-04 15:47:15,393] 157 root - INFO -   [Client 0] loss=0.0056 acc=0.9983
+[2026-06-04 15:48:20,010] 157 root - INFO -   [Client 7] loss=0.0085 acc=0.9971
+[2026-06-04 15:48:26,769] 157 root - INFO -   [Client 4] loss=0.0100 acc=0.9970
+[2026-06-04 15:48:29,258] 157 root - INFO -   [Client 9] loss=0.0156 acc=0.9961
+[2026-06-04 15:48:32,766] 157 root - INFO -   [Client 34] loss=0.0279 acc=0.9918
+[2026-06-04 15:48:47,771] 157 root - INFO -   [Client 2] loss=0.0065 acc=0.9976
+[2026-06-04 15:48:49,234] 157 root - INFO -   [Client 23] loss=1.1695 acc=0.7332
+[2026-06-04 15:48:59,854] 157 root - INFO -   [Client 37] loss=0.0093 acc=0.9973
+[2026-06-04 15:49:03,688] 157 root - INFO -   [Client 42] loss=0.0791 acc=0.9690
+[2026-06-04 15:49:07,993] 157 root - INFO -   [Client 48] loss=0.0224 acc=0.9916
+[2026-06-04 15:49:09,340] 157 root - INFO -   [Client 1] loss=0.0384 acc=0.9854
+[2026-06-04 15:49:09,399] 188 root - INFO - [Aggregator] Round 20: 2/20 clients flagged by MAD.
+[2026-06-04 15:49:09,400] 201 root - INFO - [Aggregator] Round 20: trust_weights min=0.0126 max=0.0714 zero_count=0
+[2026-06-04 15:49:09,420] 175 root - INFO - [Pipeline] Round 20 aggregated — flagged=2, min_trust=0.0126, max_trust=0.0714
+[2026-06-04 15:49:10,955] 82 root - INFO - [Server] Round 20 — loss=0.0206, macro_f1=0.5396, acc=0.9924
+[2026-06-04 15:49:11,061] 190 root - INFO - [Pipeline] Round 20 eval — macro_f1=0.5396, acc=0.9924, loss=0.0206
+[2026-06-04 15:49:11,063] 130 root - INFO - 
+[Pipeline] ===== Round 21/50 =====
+[2026-06-04 15:49:23,683] 157 root - INFO -   [Client 19] loss=0.0121 acc=0.9961
+[2026-06-04 15:49:24,887] 157 root - INFO -   [Client 23] loss=0.8759 acc=0.7879
+[2026-06-04 15:49:40,225] 157 root - INFO -   [Client 2] loss=0.0063 acc=0.9977
+[2026-06-04 15:49:47,483] 157 root - INFO -   [Client 22] loss=0.0117 acc=0.9960
+[2026-06-04 15:49:48,815] 157 root - INFO -   [Client 13] loss=0.0504 acc=0.9825
+[2026-06-04 15:49:50,602] 157 root - INFO -   [Client 43] loss=0.1099 acc=0.9665
+[2026-06-04 15:49:56,468] 157 root - INFO -   [Client 15] loss=0.0672 acc=0.9836
+[2026-06-04 15:50:00,498] 157 root - INFO -   [Client 42] loss=0.0795 acc=0.9694
+[2026-06-04 15:50:06,571] 157 root - INFO -   [Client 6] loss=0.0358 acc=0.9866
+[2026-06-04 15:50:07,455] 157 root - INFO -   [Client 46] loss=0.0590 acc=0.9815
+[2026-06-04 15:50:11,952] 157 root - INFO -   [Client 35] loss=0.0558 acc=0.9788
+[2026-06-04 15:50:21,258] 157 root - INFO -   [Client 26] loss=0.0300 acc=0.9884
+[2026-06-04 15:50:23,487] 157 root - INFO -   [Client 9] loss=0.0172 acc=0.9959
+[2026-06-04 15:50:25,074] 157 root - INFO -   [Client 44] loss=0.1035 acc=0.9602
+[2026-06-04 15:50:27,350] 157 root - INFO -   [Client 10] loss=0.0128 acc=0.9955
+[2026-06-04 15:50:32,500] 157 root - INFO -   [Client 11] loss=0.0223 acc=0.9920
+[2026-06-04 15:50:39,295] 157 root - INFO -   [Client 38] loss=0.0184 acc=0.9945
+[2026-06-04 15:50:40,626] 157 root - INFO -   [Client 1] loss=0.0364 acc=0.9859
+[2026-06-04 15:50:43,961] 157 root - INFO -   [Client 34] loss=0.0291 acc=0.9915
+[2026-06-04 15:50:48,242] 157 root - INFO -   [Client 48] loss=0.0217 acc=0.9918
+[2026-06-04 15:50:48,990] 188 root - INFO - [Aggregator] Round 21: 2/20 clients flagged by MAD.
+[2026-06-04 15:50:48,992] 201 root - INFO - [Aggregator] Round 21: trust_weights min=0.0130 max=0.0714 zero_count=0
+[2026-06-04 15:50:49,010] 175 root - INFO - [Pipeline] Round 21 aggregated — flagged=2, min_trust=0.0130, max_trust=0.0714
+[2026-06-04 15:50:50,428] 82 root - INFO - [Server] Round 21 — loss=0.0180, macro_f1=0.5471, acc=0.9932
+[2026-06-04 15:50:50,539] 190 root - INFO - [Pipeline] Round 21 eval — macro_f1=0.5471, acc=0.9932, loss=0.0180
+[2026-06-04 15:50:50,540] 130 root - INFO - 
+[Pipeline] ===== Round 22/50 =====
+[2026-06-04 15:50:58,977] 157 root - INFO -   [Client 21] loss=0.0083 acc=0.9982
+[2026-06-04 15:51:08,391] 157 root - INFO -   [Client 26] loss=0.0306 acc=0.9880
+[2026-06-04 15:51:12,253] 157 root - INFO -   [Client 42] loss=0.0735 acc=0.9697
+[2026-06-04 15:51:17,701] 157 root - INFO -   [Client 15] loss=0.0403 acc=0.9895
+[2026-06-04 15:51:44,785] 157 root - INFO -   [Client 17] loss=0.0109 acc=0.9963
+[2026-06-04 15:51:46,707] 157 root - INFO -   [Client 10] loss=0.0144 acc=0.9943
+[2026-06-04 15:51:53,048] 157 root - INFO -   [Client 6] loss=0.0372 acc=0.9861
+[2026-06-04 15:51:59,954] 157 root - INFO -   [Client 24] loss=0.0120 acc=0.9966
+[2026-06-04 15:52:15,405] 157 root - INFO -   [Client 2] loss=0.0080 acc=0.9972
+[2026-06-04 15:53:13,713] 157 root - INFO -   [Client 30] loss=0.0044 acc=0.9989
+[2026-06-04 15:53:19,706] 157 root - INFO -   [Client 14] loss=0.0282 acc=0.9898
+[2026-06-04 15:53:22,888] 157 root - INFO -   [Client 12] loss=0.0377 acc=0.9846
+[2026-06-04 15:53:29,945] 157 root - INFO -   [Client 29] loss=0.0312 acc=0.9876
+[2026-06-04 15:53:37,255] 157 root - INFO -   [Client 22] loss=0.0126 acc=0.9956
+[2026-06-04 15:53:50,131] 157 root - INFO -   [Client 19] loss=0.0132 acc=0.9958
+[2026-06-04 15:54:15,777] 157 root - INFO -   [Client 39] loss=0.0029 acc=0.9992
+[2026-06-04 15:54:19,364] 157 root - INFO -   [Client 34] loss=0.0253 acc=0.9923
+[2026-06-04 15:54:20,774] 157 root - INFO -   [Client 1] loss=0.0386 acc=0.9850
+[2026-06-04 15:54:27,136] 157 root - INFO -   [Client 38] loss=0.0182 acc=0.9945
+[2026-06-04 15:54:28,945] 157 root - INFO -   [Client 31] loss=0.0188 acc=0.9945
+[2026-06-04 15:54:29,002] 188 root - INFO - [Aggregator] Round 22: 2/20 clients flagged by MAD.
+[2026-06-04 15:54:29,004] 201 root - INFO - [Aggregator] Round 22: trust_weights min=0.0181 max=0.0714 zero_count=0
+[2026-06-04 15:54:29,018] 175 root - INFO - [Pipeline] Round 22 aggregated — flagged=2, min_trust=0.0181, max_trust=0.0714
+[2026-06-04 15:54:30,431] 82 root - INFO - [Server] Round 22 — loss=0.0208, macro_f1=0.5390, acc=0.9928
+[2026-06-04 15:54:30,542] 190 root - INFO - [Pipeline] Round 22 eval — macro_f1=0.5390, acc=0.9928, loss=0.0208
+[2026-06-04 15:54:30,544] 130 root - INFO - 
+[Pipeline] ===== Round 23/50 =====
+[2026-06-04 15:54:38,439] 157 root - INFO -   [Client 21] loss=0.0069 acc=0.9984
+[2026-06-04 15:55:03,372] 157 root - INFO -   [Client 17] loss=0.0104 acc=0.9964
+[2026-06-04 15:55:09,404] 157 root - INFO -   [Client 4] loss=0.0091 acc=0.9972
+[2026-06-04 15:55:13,264] 157 root - INFO -   [Client 48] loss=0.0233 acc=0.9916
+[2026-06-04 15:55:20,150] 157 root - INFO -   [Client 22] loss=0.0113 acc=0.9962
+[2026-06-04 15:55:25,558] 157 root - INFO -   [Client 41] loss=0.0070 acc=0.9983
+[2026-06-04 15:55:56,860] 157 root - INFO -   [Client 32] loss=0.0073 acc=0.9981
+[2026-06-04 15:55:59,374] 157 root - INFO -   [Client 25] loss=0.0525 acc=0.9790
+[2026-06-04 15:56:02,592] 157 root - INFO -   [Client 34] loss=0.0265 acc=0.9917
+[2026-06-04 15:56:03,719] 157 root - INFO -   [Client 49] loss=1.6809 acc=0.9148
+[2026-06-04 15:56:05,434] 157 root - INFO -   [Client 1] loss=0.0366 acc=0.9869
+[2026-06-04 15:56:49,758] 157 root - INFO -   [Client 7] loss=0.0087 acc=0.9972
+[2026-06-04 15:57:12,766] 157 root - INFO -   [Client 16] loss=0.0066 acc=0.9985
+[2026-06-04 15:57:17,668] 157 root - INFO -   [Client 11] loss=0.0248 acc=0.9916
+[2026-06-04 15:57:28,734] 157 root - INFO -   [Client 37] loss=0.0091 acc=0.9971
+[2026-06-04 15:57:44,551] 157 root - INFO -   [Client 2] loss=0.0066 acc=0.9977
+[2026-06-04 15:57:50,739] 157 root - INFO -   [Client 6] loss=0.0360 acc=0.9866
+[2026-06-04 15:57:56,817] 157 root - INFO -   [Client 27] loss=0.0155 acc=0.9953
+[2026-06-04 15:58:05,572] 157 root - INFO -   [Client 45] loss=0.0139 acc=0.9949
+[2026-06-04 15:58:06,708] 157 root - INFO -   [Client 23] loss=1.0182 acc=0.7662
+[2026-06-04 15:58:06,767] 188 root - INFO - [Aggregator] Round 23: 2/20 clients flagged by MAD.
+[2026-06-04 15:58:06,768] 201 root - INFO - [Aggregator] Round 23: trust_weights min=0.0166 max=0.0714 zero_count=0
+[2026-06-04 15:58:06,782] 175 root - INFO - [Pipeline] Round 23 aggregated — flagged=2, min_trust=0.0166, max_trust=0.0714
+[2026-06-04 15:58:08,203] 82 root - INFO - [Server] Round 23 — loss=0.0204, macro_f1=0.5397, acc=0.9924
+[2026-06-04 15:58:08,312] 190 root - INFO - [Pipeline] Round 23 eval — macro_f1=0.5397, acc=0.9924, loss=0.0204
+[2026-06-04 15:58:08,314] 130 root - INFO - 
+[Pipeline] ===== Round 24/50 =====
+[2026-06-04 15:58:12,850] 157 root - INFO -   [Client 20] loss=0.0116 acc=0.9963
+[2026-06-04 15:58:19,122] 157 root - INFO -   [Client 27] loss=0.0137 acc=0.9956
+[2026-06-04 15:58:25,618] 157 root - INFO -   [Client 38] loss=0.0179 acc=0.9947
+[2026-06-04 15:58:53,297] 157 root - INFO -   [Client 32] loss=0.0072 acc=0.9981
+[2026-06-04 15:59:24,979] 157 root - INFO -   [Client 7] loss=0.0083 acc=0.9972
+[2026-06-04 15:59:31,680] 157 root - INFO -   [Client 24] loss=0.0110 acc=0.9968
+[2026-06-04 15:59:34,344] 157 root - INFO -   [Client 36] loss=0.1379 acc=0.9633
+[2026-06-04 15:59:37,524] 157 root - INFO -   [Client 12] loss=0.0384 acc=0.9850
+[2026-06-04 16:00:01,151] 157 root - INFO -   [Client 16] loss=0.0067 acc=0.9983
+[2026-06-04 16:00:16,707] 157 root - INFO -   [Client 2] loss=0.0060 acc=0.9978
+[2026-06-04 16:00:21,180] 157 root - INFO -   [Client 48] loss=0.0217 acc=0.9920
+[2026-06-04 16:00:34,451] 157 root - INFO -   [Client 0] loss=0.0059 acc=0.9981
+[2026-06-04 16:00:40,559] 157 root - INFO -   [Client 33] loss=0.0073 acc=0.9983
+[2026-06-04 16:00:44,098] 157 root - INFO -   [Client 34] loss=0.0267 acc=0.9924
+[2026-06-04 16:00:47,996] 157 root - INFO -   [Client 42] loss=0.0795 acc=0.9689
+[2026-06-04 16:00:49,350] 157 root - INFO -   [Client 23] loss=0.9994 acc=0.7616
+[2026-06-04 16:01:14,160] 157 root - INFO -   [Client 39] loss=0.0025 acc=0.9993
+[2026-06-04 16:01:20,901] 157 root - INFO -   [Client 4] loss=0.0083 acc=0.9973
+[2026-06-04 16:01:28,961] 157 root - INFO -   [Client 21] loss=0.0068 acc=0.9986
+[2026-06-04 16:01:41,285] 157 root - INFO -   [Client 19] loss=0.0120 acc=0.9962
+[2026-06-04 16:01:41,364] 188 root - INFO - [Aggregator] Round 24: 3/20 clients flagged by MAD.
+[2026-06-04 16:01:41,366] 201 root - INFO - [Aggregator] Round 24: trust_weights min=0.0168 max=0.0714 zero_count=0
+[2026-06-04 16:01:41,387] 175 root - INFO - [Pipeline] Round 24 aggregated — flagged=3, min_trust=0.0168, max_trust=0.0714
+[2026-06-04 16:01:42,789] 82 root - INFO - [Server] Round 24 — loss=0.0183, macro_f1=0.5404, acc=0.9930
+[2026-06-04 16:01:42,940] 190 root - INFO - [Pipeline] Round 24 eval — macro_f1=0.5404, acc=0.9930, loss=0.0183
+[2026-06-04 16:01:42,942] 130 root - INFO - 
+[Pipeline] ===== Round 25/50 =====
+[2026-06-04 16:01:47,283] 157 root - INFO -   [Client 20] loss=0.0118 acc=0.9961
+[2026-06-04 16:01:51,250] 157 root - INFO -   [Client 42] loss=0.0753 acc=0.9708
+[2026-06-04 16:02:38,667] 157 root - INFO -   [Client 7] loss=0.0085 acc=0.9971
+[2026-06-04 16:02:39,673] 157 root - INFO -   [Client 46] loss=0.0760 acc=0.9744
+[2026-06-04 16:02:52,899] 157 root - INFO -   [Client 19] loss=0.0130 acc=0.9960
+[2026-06-04 16:03:23,218] 157 root - INFO -   [Client 32] loss=0.0068 acc=0.9982
+[2026-06-04 16:03:32,226] 157 root - INFO -   [Client 45] loss=0.0136 acc=0.9950
+[2026-06-04 16:03:36,094] 157 root - INFO -   [Client 48] loss=0.0218 acc=0.9918
+[2026-06-04 16:03:46,001] 157 root - INFO -   [Client 26] loss=0.0302 acc=0.9884
+[2026-06-04 16:03:47,019] 157 root - INFO -   [Client 49] loss=1.6886 acc=0.9075
+[2026-06-04 16:03:50,147] 157 root - INFO -   [Client 25] loss=0.0576 acc=0.9779
+[2026-06-04 16:03:51,312] 157 root - INFO -   [Client 18] loss=0.0860 acc=0.9680
+[2026-06-04 16:03:56,098] 157 root - INFO -   [Client 35] loss=0.0598 acc=0.9774
+[2026-06-04 16:04:05,496] 157 root - INFO -   [Client 8] loss=0.0357 acc=0.9845
+[2026-06-04 16:04:08,783] 157 root - INFO -   [Client 12] loss=0.0403 acc=0.9843
+[2026-06-04 16:04:14,704] 157 root - INFO -   [Client 41] loss=0.0059 acc=0.9986
+[2026-06-04 16:04:21,894] 157 root - INFO -   [Client 24] loss=0.0114 acc=0.9966
+[2026-06-04 16:04:27,267] 157 root - INFO -   [Client 11] loss=0.0236 acc=0.9918
+[2026-06-04 16:04:29,088] 157 root - INFO -   [Client 43] loss=0.1523 acc=0.9568
+[2026-06-04 16:04:40,308] 157 root - INFO -   [Client 37] loss=0.0094 acc=0.9974
+[2026-06-04 16:04:40,381] 188 root - INFO - [Aggregator] Round 25: 2/20 clients flagged by MAD.
+[2026-06-04 16:04:40,383] 201 root - INFO - [Aggregator] Round 25: trust_weights min=0.0117 max=0.0714 zero_count=0
+[2026-06-04 16:04:40,403] 175 root - INFO - [Pipeline] Round 25 aggregated — flagged=2, min_trust=0.0117, max_trust=0.0714
+[2026-06-04 16:04:41,881] 82 root - INFO - [Server] Round 25 — loss=0.0281, macro_f1=0.5367, acc=0.9909
+[2026-06-04 16:04:41,991] 190 root - INFO - [Pipeline] Round 25 eval — macro_f1=0.5367, acc=0.9909, loss=0.0281
+[2026-06-04 16:04:41,992] 130 root - INFO - 
+[Pipeline] ===== Round 26/50 =====
+[2026-06-04 16:04:46,708] 157 root - INFO -   [Client 35] loss=0.0566 acc=0.9780
+[2026-06-04 16:04:58,769] 157 root - INFO -   [Client 0] loss=0.0056 acc=0.9983
+[2026-06-04 16:05:10,401] 157 root - INFO -   [Client 19] loss=0.0128 acc=0.9961
+[2026-06-04 16:05:11,443] 157 root - INFO -   [Client 18] loss=0.0642 acc=0.9737
+[2026-06-04 16:05:13,045] 157 root - INFO -   [Client 13] loss=0.0471 acc=0.9848
+[2026-06-04 16:05:19,277] 157 root - INFO -   [Client 27] loss=0.0144 acc=0.9954
+[2026-06-04 16:05:29,520] 157 root - INFO -   [Client 37] loss=0.0096 acc=0.9971
+[2026-06-04 16:05:36,099] 157 root - INFO -   [Client 38] loss=0.0177 acc=0.9943
+[2026-06-04 16:05:42,323] 157 root - INFO -   [Client 41] loss=0.0078 acc=0.9980
+[2026-06-04 16:05:46,230] 157 root - INFO -   [Client 20] loss=0.0107 acc=0.9961
+[2026-06-04 16:05:52,538] 157 root - INFO -   [Client 29] loss=0.0331 acc=0.9864
+[2026-06-04 16:05:57,760] 157 root - INFO -   [Client 28] loss=0.0433 acc=0.9824
+[2026-06-04 16:06:01,317] 157 root - INFO -   [Client 42] loss=0.0717 acc=0.9710
+[2026-06-04 16:06:09,646] 157 root - INFO -   [Client 45] loss=0.0144 acc=0.9949
+[2026-06-04 16:06:37,231] 157 root - INFO -   [Client 32] loss=0.0077 acc=0.9980
+[2026-06-04 16:07:34,331] 157 root - INFO -   [Client 30] loss=0.0040 acc=0.9990
+[2026-06-04 16:07:36,684] 157 root - INFO -   [Client 10] loss=0.0126 acc=0.9954
+[2026-06-04 16:07:44,504] 157 root - INFO -   [Client 5] loss=0.0109 acc=0.9960
+[2026-06-04 16:07:45,672] 157 root - INFO -   [Client 46] loss=0.0557 acc=0.9818
+[2026-06-04 16:08:09,025] 157 root - INFO -   [Client 16] loss=0.0065 acc=0.9984
+[2026-06-04 16:08:09,082] 188 root - INFO - [Aggregator] Round 26: 3/20 clients flagged by MAD.
+[2026-06-04 16:08:09,084] 201 root - INFO - [Aggregator] Round 26: trust_weights min=0.0203 max=0.0714 zero_count=0
+[2026-06-04 16:08:09,097] 175 root - INFO - [Pipeline] Round 26 aggregated — flagged=3, min_trust=0.0203, max_trust=0.0714
+[2026-06-04 16:08:10,409] 82 root - INFO - [Server] Round 26 — loss=0.0186, macro_f1=0.5442, acc=0.9929
+[2026-06-04 16:08:10,533] 190 root - INFO - [Pipeline] Round 26 eval — macro_f1=0.5442, acc=0.9929, loss=0.0186
+[2026-06-04 16:08:10,534] 130 root - INFO - 
+[Pipeline] ===== Round 27/50 =====
+[2026-06-04 16:08:14,481] 157 root - INFO -   [Client 42] loss=0.0803 acc=0.9695
+[2026-06-04 16:08:18,899] 157 root - INFO -   [Client 40] loss=0.0154 acc=0.9943
+[2026-06-04 16:08:41,562] 157 root - INFO -   [Client 39] loss=0.0025 acc=0.9994
+[2026-06-04 16:08:48,642] 157 root - INFO -   [Client 21] loss=0.0057 acc=0.9987
+[2026-06-04 16:08:55,744] 157 root - INFO -   [Client 5] loss=0.0105 acc=0.9963
+[2026-06-04 16:09:01,054] 157 root - INFO -   [Client 15] loss=0.0743 acc=0.9807
+[2026-06-04 16:09:02,626] 157 root - INFO -   [Client 43] loss=0.1249 acc=0.9606
+[2026-06-04 16:09:14,363] 157 root - INFO -   [Client 19] loss=0.0131 acc=0.9957
+[2026-06-04 16:09:19,570] 157 root - INFO -   [Client 14] loss=0.0274 acc=0.9898
+[2026-06-04 16:09:22,406] 157 root - INFO -   [Client 12] loss=0.0378 acc=0.9843
+[2026-06-04 16:09:24,868] 157 root - INFO -   [Client 9] loss=0.0152 acc=0.9961
+[2026-06-04 16:09:26,374] 157 root - INFO -   [Client 1] loss=0.0336 acc=0.9883
+[2026-06-04 16:09:41,092] 157 root - INFO -   [Client 2] loss=0.0059 acc=0.9978
+[2026-06-04 16:09:42,913] 157 root - INFO -   [Client 44] loss=0.1131 acc=0.9578
+[2026-06-04 16:10:34,314] 157 root - INFO -   [Client 30] loss=0.0036 acc=0.9991
+[2026-06-04 16:10:40,044] 157 root - INFO -   [Client 4] loss=0.0094 acc=0.9969
+[2026-06-04 16:10:45,694] 157 root - INFO -   [Client 29] loss=0.0309 acc=0.9876
+[2026-06-04 16:10:53,886] 157 root - INFO -   [Client 26] loss=0.0297 acc=0.9884
+[2026-06-04 16:10:57,565] 157 root - INFO -   [Client 48] loss=0.0210 acc=0.9920
+[2026-06-04 16:11:03,665] 157 root - INFO -   [Client 22] loss=0.0107 acc=0.9961
+[2026-06-04 16:11:03,723] 188 root - INFO - [Aggregator] Round 27: 2/20 clients flagged by MAD.
+[2026-06-04 16:11:03,724] 201 root - INFO - [Aggregator] Round 27: trust_weights min=0.0173 max=0.0714 zero_count=0
+[2026-06-04 16:11:03,739] 175 root - INFO - [Pipeline] Round 27 aggregated — flagged=2, min_trust=0.0173, max_trust=0.0714
+[2026-06-04 16:11:05,123] 82 root - INFO - [Server] Round 27 — loss=0.0180, macro_f1=0.5460, acc=0.9927
+[2026-06-04 16:11:05,258] 190 root - INFO - [Pipeline] Round 27 eval — macro_f1=0.5460, acc=0.9927, loss=0.0180
+[2026-06-04 16:11:05,259] 130 root - INFO - 
+[Pipeline] ===== Round 28/50 =====
+[2026-06-04 16:11:07,212] 157 root - INFO -   [Client 44] loss=0.1120 acc=0.9583
+[2026-06-04 16:11:12,983] 157 root - INFO -   [Client 24] loss=0.0122 acc=0.9966
+[2026-06-04 16:11:14,791] 157 root - INFO -   [Client 31] loss=0.0201 acc=0.9940
+[2026-06-04 16:11:17,141] 157 root - INFO -   [Client 25] loss=0.0526 acc=0.9801
+[2026-06-04 16:11:22,227] 157 root - INFO -   [Client 15] loss=0.0626 acc=0.9842
+[2026-06-04 16:11:24,062] 157 root - INFO -   [Client 9] loss=0.0153 acc=0.9963
+[2026-06-04 16:11:29,822] 157 root - INFO -   [Client 41] loss=0.0065 acc=0.9984
+[2026-06-04 16:11:43,494] 157 root - INFO -   [Client 0] loss=0.0063 acc=0.9981
+[2026-06-04 16:11:49,520] 157 root - INFO -   [Client 6] loss=0.0362 acc=0.9867
+[2026-06-04 16:11:56,456] 157 root - INFO -   [Client 27] loss=0.0143 acc=0.9956
+[2026-06-04 16:12:03,237] 157 root - INFO -   [Client 14] loss=0.0286 acc=0.9897
+[2026-06-04 16:12:08,355] 157 root - INFO -   [Client 11] loss=0.0240 acc=0.9914
+[2026-06-04 16:12:14,714] 157 root - INFO -   [Client 33] loss=0.0069 acc=0.9980
+[2026-06-04 16:12:20,956] 157 root - INFO -   [Client 29] loss=0.0319 acc=0.9879
+[2026-06-04 16:12:36,258] 157 root - INFO -   [Client 3] loss=0.0032 acc=0.9992
+[2026-06-04 16:12:45,590] 157 root - INFO -   [Client 45] loss=0.0138 acc=0.9951
+[2026-06-04 16:13:30,139] 157 root - INFO -   [Client 7] loss=0.0088 acc=0.9971
+[2026-06-04 16:13:32,370] 157 root - INFO -   [Client 36] loss=0.1310 acc=0.9644
+[2026-06-04 16:13:41,576] 157 root - INFO -   [Client 8] loss=0.0363 acc=0.9846
+[2026-06-04 16:13:42,503] 157 root - INFO -   [Client 46] loss=0.0676 acc=0.9777
+[2026-06-04 16:13:42,539] 188 root - INFO - [Aggregator] Round 28: 2/20 clients flagged by MAD.
+[2026-06-04 16:13:42,540] 201 root - INFO - [Aggregator] Round 28: trust_weights min=0.0169 max=0.0714 zero_count=0
+[2026-06-04 16:13:42,557] 175 root - INFO - [Pipeline] Round 28 aggregated — flagged=2, min_trust=0.0169, max_trust=0.0714
+[2026-06-04 16:13:43,953] 82 root - INFO - [Server] Round 28 — loss=0.0176, macro_f1=0.5463, acc=0.9929
+[2026-06-04 16:13:44,059] 190 root - INFO - [Pipeline] Round 28 eval — macro_f1=0.5463, acc=0.9929, loss=0.0176
+[2026-06-04 16:13:44,060] 130 root - INFO - 
+[Pipeline] ===== Round 29/50 =====
+[2026-06-04 16:13:51,189] 157 root - INFO -   [Client 29] loss=0.0317 acc=0.9873
+[2026-06-04 16:13:55,103] 157 root - INFO -   [Client 42] loss=0.0771 acc=0.9705
+[2026-06-04 16:14:00,298] 157 root - INFO -   [Client 33] loss=0.0070 acc=0.9983
+[2026-06-04 16:14:04,078] 157 root - INFO -   [Client 35] loss=0.0559 acc=0.9787
+[2026-06-04 16:14:10,372] 157 root - INFO -   [Client 38] loss=0.0180 acc=0.9944
+[2026-06-04 16:14:14,323] 157 root - INFO -   [Client 20] loss=0.0122 acc=0.9960
+[2026-06-04 16:14:19,024] 157 root - INFO -   [Client 28] loss=0.0418 acc=0.9827
+[2026-06-04 16:14:40,938] 157 root - INFO -   [Client 39] loss=0.0026 acc=0.9993
+[2026-06-04 16:15:06,822] 157 root - INFO -   [Client 32] loss=0.0076 acc=0.9981
+[2026-06-04 16:15:12,405] 157 root - INFO -   [Client 27] loss=0.0145 acc=0.9955
+[2026-06-04 16:15:13,514] 157 root - INFO -   [Client 46] loss=0.0647 acc=0.9784
+[2026-06-04 16:15:14,897] 157 root - INFO -   [Client 43] loss=0.1171 acc=0.9661
+[2026-06-04 16:15:16,831] 157 root - INFO -   [Client 10] loss=0.0126 acc=0.9951
+[2026-06-04 16:16:10,611] 157 root - INFO -   [Client 30] loss=0.0036 acc=0.9991
+[2026-06-04 16:16:19,272] 157 root - INFO -   [Client 45] loss=0.0136 acc=0.9947
+[2026-06-04 16:16:41,801] 157 root - INFO -   [Client 16] loss=0.0063 acc=0.9984
+[2026-06-04 16:16:47,542] 157 root - INFO -   [Client 15] loss=0.0612 acc=0.9844
+[2026-06-04 16:17:12,911] 157 root - INFO -   [Client 17] loss=0.0108 acc=0.9963
+[2026-06-04 16:17:14,733] 157 root - INFO -   [Client 31] loss=0.0185 acc=0.9945
+[2026-06-04 16:17:16,420] 157 root - INFO -   [Client 44] loss=0.1109 acc=0.9616
+[2026-06-04 16:17:16,473] 188 root - INFO - [Aggregator] Round 29: 4/20 clients flagged by MAD.
+[2026-06-04 16:17:16,474] 201 root - INFO - [Aggregator] Round 29: trust_weights min=0.0172 max=0.0714 zero_count=0
+[2026-06-04 16:17:16,488] 175 root - INFO - [Pipeline] Round 29 aggregated — flagged=4, min_trust=0.0172, max_trust=0.0714
+[2026-06-04 16:17:17,904] 82 root - INFO - [Server] Round 29 — loss=0.0182, macro_f1=0.5458, acc=0.9926
+[2026-06-04 16:17:18,013] 190 root - INFO - [Pipeline] Round 29 eval — macro_f1=0.5458, acc=0.9926, loss=0.0182
+[2026-06-04 16:17:18,015] 130 root - INFO - 
+[Pipeline] ===== Round 30/50 =====
+[2026-06-04 16:17:24,120] 157 root - INFO -   [Client 15] loss=0.0495 acc=0.9868
+[2026-06-04 16:17:50,585] 157 root - INFO -   [Client 17] loss=0.0107 acc=0.9963
+[2026-06-04 16:17:56,192] 157 root - INFO -   [Client 28] loss=0.0430 acc=0.9828
+[2026-06-04 16:18:02,398] 157 root - INFO -   [Client 4] loss=0.0091 acc=0.9972
+[2026-06-04 16:18:10,931] 157 root - INFO -   [Client 45] loss=0.0141 acc=0.9948
+[2026-06-04 16:18:11,932] 157 root - INFO -   [Client 18] loss=0.0719 acc=0.9728
+[2026-06-04 16:18:12,887] 157 root - INFO -   [Client 49] loss=1.6435 acc=0.9183
+[2026-06-04 16:18:16,848] 157 root - INFO -   [Client 48] loss=0.0231 acc=0.9918
+[2026-06-04 16:18:24,163] 157 root - INFO -   [Client 21] loss=0.0074 acc=0.9983
+[2026-06-04 16:18:27,951] 157 root - INFO -   [Client 20] loss=0.0109 acc=0.9963
+[2026-06-04 16:18:30,900] 157 root - INFO -   [Client 34] loss=0.0272 acc=0.9921
+[2026-06-04 16:18:37,535] 157 root - INFO -   [Client 5] loss=0.0110 acc=0.9961
+[2026-06-04 16:18:45,730] 157 root - INFO -   [Client 8] loss=0.0349 acc=0.9847
+[2026-06-04 16:18:48,236] 157 root - INFO -   [Client 9] loss=0.0153 acc=0.9961
+[2026-06-04 16:18:53,997] 157 root - INFO -   [Client 14] loss=0.0254 acc=0.9903
+[2026-06-04 16:19:00,221] 157 root - INFO -   [Client 24] loss=0.0112 acc=0.9965
+[2026-06-04 16:19:02,589] 157 root - INFO -   [Client 36] loss=0.1349 acc=0.9635
+[2026-06-04 16:19:03,945] 157 root - INFO -   [Client 13] loss=0.0737 acc=0.9787
+[2026-06-04 16:19:04,925] 157 root - INFO -   [Client 46] loss=0.0608 acc=0.9790
+[2026-06-04 16:19:33,103] 157 root - INFO -   [Client 32] loss=0.0074 acc=0.9981
+[2026-06-04 16:19:33,166] 188 root - INFO - [Aggregator] Round 30: 1/20 clients flagged by MAD.
+[2026-06-04 16:19:33,168] 201 root - INFO - [Aggregator] Round 30: trust_weights min=0.0158 max=0.0714 zero_count=0
+[2026-06-04 16:19:33,189] 175 root - INFO - [Pipeline] Round 30 aggregated — flagged=1, min_trust=0.0158, max_trust=0.0714
+[2026-06-04 16:19:34,504] 82 root - INFO - [Server] Round 30 — loss=0.0200, macro_f1=0.5386, acc=0.9929
+[2026-06-04 16:19:34,609] 190 root - INFO - [Pipeline] Round 30 eval — macro_f1=0.5386, acc=0.9929, loss=0.0200
+[2026-06-04 16:19:34,611] 130 root - INFO - 
+[Pipeline] ===== Round 31/50 =====
+[2026-06-04 16:19:44,534] 157 root - INFO -   [Client 26] loss=0.0318 acc=0.9879
+[2026-06-04 16:19:52,918] 157 root - INFO -   [Client 21] loss=0.0065 acc=0.9985
+[2026-06-04 16:19:56,214] 157 root - INFO -   [Client 34] loss=0.0244 acc=0.9930
+[2026-06-04 16:20:02,880] 157 root - INFO -   [Client 29] loss=0.0317 acc=0.9874
+[2026-06-04 16:20:03,820] 157 root - INFO -   [Client 49] loss=1.4134 acc=0.9348
+[2026-06-04 16:20:20,032] 157 root - INFO -   [Client 3] loss=0.0036 acc=0.9992
+[2026-06-04 16:20:21,841] 157 root - INFO -   [Client 13] loss=0.0407 acc=0.9864
+[2026-06-04 16:20:31,068] 157 root - INFO -   [Client 45] loss=0.0135 acc=0.9946
+[2026-06-04 16:20:37,537] 157 root - INFO -   [Client 24] loss=0.0119 acc=0.9964
+[2026-06-04 16:20:47,257] 157 root - INFO -   [Client 37] loss=0.0090 acc=0.9974
+[2026-06-04 16:20:48,949] 157 root - INFO -   [Client 1] loss=0.0369 acc=0.9864
+[2026-06-04 16:20:51,384] 157 root - INFO -   [Client 36] loss=0.0957 acc=0.9733
+[2026-06-04 16:20:56,927] 157 root - INFO -   [Client 41] loss=0.0078 acc=0.9980
+[2026-06-04 16:21:54,215] 157 root - INFO -   [Client 30] loss=0.0038 acc=0.9991
+[2026-06-04 16:22:05,879] 157 root - INFO -   [Client 0] loss=0.0057 acc=0.9982
+[2026-06-04 16:22:12,800] 157 root - INFO -   [Client 22] loss=0.0111 acc=0.9962
+[2026-06-04 16:22:24,534] 157 root - INFO -   [Client 19] loss=0.0128 acc=0.9960
+[2026-06-04 16:22:29,127] 157 root - INFO -   [Client 40] loss=0.0156 acc=0.9942
+[2026-06-04 16:22:32,419] 157 root - INFO -   [Client 42] loss=0.0775 acc=0.9699
+[2026-06-04 16:22:56,536] 157 root - INFO -   [Client 17] loss=0.0106 acc=0.9963
+[2026-06-04 16:22:56,589] 188 root - INFO - [Aggregator] Round 31: 2/20 clients flagged by MAD.
+[2026-06-04 16:22:56,590] 201 root - INFO - [Aggregator] Round 31: trust_weights min=0.0212 max=0.0714 zero_count=0
+[2026-06-04 16:22:56,606] 175 root - INFO - [Pipeline] Round 31 aggregated — flagged=2, min_trust=0.0212, max_trust=0.0714
+[2026-06-04 16:22:57,956] 82 root - INFO - [Server] Round 31 — loss=0.0179, macro_f1=0.5428, acc=0.9933
+[2026-06-04 16:22:58,055] 190 root - INFO - [Pipeline] Round 31 eval — macro_f1=0.5428, acc=0.9933, loss=0.0179
+[2026-06-04 16:22:58,057] 130 root - INFO - 
+[Pipeline] ===== Round 32/50 =====
+[2026-06-04 16:23:04,162] 157 root - INFO -   [Client 47] loss=0.2779 acc=0.9432
+[2026-06-04 16:23:05,002] 157 root - INFO -   [Client 49] loss=1.5598 acc=0.9154
+[2026-06-04 16:23:08,048] 157 root - INFO -   [Client 34] loss=0.0273 acc=0.9922
+[2026-06-04 16:23:13,926] 157 root - INFO -   [Client 38] loss=0.0167 acc=0.9950
+[2026-06-04 16:23:19,802] 157 root - INFO -   [Client 14] loss=0.0278 acc=0.9898
+[2026-06-04 16:23:21,294] 157 root - INFO -   [Client 31] loss=0.0207 acc=0.9939
+[2026-06-04 16:23:30,489] 157 root - INFO -   [Client 45] loss=0.0134 acc=0.9949
+[2026-06-04 16:23:56,875] 157 root - INFO -   [Client 17] loss=0.0101 acc=0.9964
+[2026-06-04 16:24:02,505] 157 root - INFO -   [Client 27] loss=0.0145 acc=0.9954
+[2026-06-04 16:24:04,179] 157 root - INFO -   [Client 44] loss=0.1185 acc=0.9559
+[2026-06-04 16:24:05,443] 157 root - INFO -   [Client 1] loss=0.0372 acc=0.9856
+[2026-06-04 16:24:11,557] 157 root - INFO -   [Client 24] loss=0.0103 acc=0.9971
+[2026-06-04 16:24:19,006] 157 root - INFO -   [Client 21] loss=0.0065 acc=0.9986
+[2026-06-04 16:24:21,568] 157 root - INFO -   [Client 25] loss=0.0568 acc=0.9766
+[2026-06-04 16:24:23,800] 157 root - INFO -   [Client 10] loss=0.0135 acc=0.9953
+[2026-06-04 16:24:30,002] 157 root - INFO -   [Client 29] loss=0.0333 acc=0.9866
+[2026-06-04 16:24:38,392] 157 root - INFO -   [Client 8] loss=0.0362 acc=0.9848
+[2026-06-04 16:25:01,335] 157 root - INFO -   [Client 39] loss=0.0025 acc=0.9993
+[2026-06-04 16:25:02,983] 157 root - INFO -   [Client 36] loss=0.0936 acc=0.9735
+[2026-06-04 16:25:04,431] 157 root - INFO -   [Client 18] loss=0.0683 acc=0.9719
+[2026-06-04 16:25:04,491] 188 root - INFO - [Aggregator] Round 32: 2/20 clients flagged by MAD.
+[2026-06-04 16:25:04,492] 201 root - INFO - [Aggregator] Round 32: trust_weights min=0.0187 max=0.0714 zero_count=0
+[2026-06-04 16:25:04,505] 175 root - INFO - [Pipeline] Round 32 aggregated — flagged=2, min_trust=0.0187, max_trust=0.0714
+[2026-06-04 16:25:05,818] 82 root - INFO - [Server] Round 32 — loss=0.0204, macro_f1=0.5420, acc=0.9924
+[2026-06-04 16:25:05,932] 190 root - INFO - [Pipeline] Round 32 eval — macro_f1=0.5420, acc=0.9924, loss=0.0204
+[2026-06-04 16:25:05,933] 130 root - INFO - 
+[Pipeline] ===== Round 33/50 =====
+[2026-06-04 16:25:08,453] 157 root - INFO -   [Client 36] loss=0.1146 acc=0.9683
+[2026-06-04 16:25:11,965] 157 root - INFO -   [Client 42] loss=0.0801 acc=0.9691
+[2026-06-04 16:25:13,136] 157 root - INFO -   [Client 1] loss=0.0340 acc=0.9877
+[2026-06-04 16:25:19,891] 157 root - INFO -   [Client 5] loss=0.0113 acc=0.9958
+[2026-06-04 16:25:25,581] 157 root - INFO -   [Client 41] loss=0.0065 acc=0.9985
+[2026-06-04 16:25:31,566] 157 root - INFO -   [Client 27] loss=0.0148 acc=0.9952
+[2026-06-04 16:25:41,029] 157 root - INFO -   [Client 8] loss=0.0352 acc=0.9844
+[2026-06-04 16:25:47,405] 157 root - INFO -   [Client 29] loss=0.0328 acc=0.9867
+[2026-06-04 16:25:52,040] 157 root - INFO -   [Client 11] loss=0.0244 acc=0.9918
+[2026-06-04 16:26:08,384] 157 root - INFO -   [Client 3] loss=0.0030 acc=0.9993
+[2026-06-04 16:26:29,902] 157 root - INFO -   [Client 16] loss=0.0063 acc=0.9985
+[2026-06-04 16:26:36,075] 157 root - INFO -   [Client 24] loss=0.0106 acc=0.9969
+[2026-06-04 16:26:39,746] 157 root - INFO -   [Client 20] loss=0.0117 acc=0.9959
+[2026-06-04 16:26:41,341] 157 root - INFO -   [Client 13] loss=0.0393 acc=0.9865
+[2026-06-04 16:26:45,199] 157 root - INFO -   [Client 48] loss=0.0198 acc=0.9927
+[2026-06-04 16:26:54,684] 157 root - INFO -   [Client 37] loss=0.0093 acc=0.9972
+[2026-06-04 16:27:02,083] 157 root - INFO -   [Client 21] loss=0.0065 acc=0.9987
+[2026-06-04 16:27:08,050] 157 root - INFO -   [Client 38] loss=0.0175 acc=0.9948
+[2026-06-04 16:27:32,103] 157 root - INFO -   [Client 17] loss=0.0107 acc=0.9963
+[2026-06-04 16:28:00,076] 157 root - INFO -   [Client 32] loss=0.0068 acc=0.9982
+[2026-06-04 16:28:00,144] 188 root - INFO - [Aggregator] Round 33: 3/20 clients flagged by MAD.
+[2026-06-04 16:28:00,145] 201 root - INFO - [Aggregator] Round 33: trust_weights min=0.0208 max=0.0714 zero_count=0
+[2026-06-04 16:28:00,160] 175 root - INFO - [Pipeline] Round 33 aggregated — flagged=3, min_trust=0.0208, max_trust=0.0714
+[2026-06-04 16:28:01,573] 82 root - INFO - [Server] Round 33 — loss=0.0189, macro_f1=0.5434, acc=0.9928
+[2026-06-04 16:28:01,682] 190 root - INFO - [Pipeline] Round 33 eval — macro_f1=0.5434, acc=0.9928, loss=0.0189
+[2026-06-04 16:28:01,683] 130 root - INFO - 
+[Pipeline] ===== Round 34/50 =====
+[2026-06-04 16:28:10,747] 157 root - INFO -   [Client 26] loss=0.0311 acc=0.9881
+[2026-06-04 16:28:32,566] 157 root - INFO -   [Client 16] loss=0.0062 acc=0.9985
+[2026-06-04 16:28:39,381] 157 root - INFO -   [Client 5] loss=0.0109 acc=0.9961
+[2026-06-04 16:29:34,036] 157 root - INFO -   [Client 30] loss=0.0036 acc=0.9991
+[2026-06-04 16:29:35,706] 157 root - INFO -   [Client 1] loss=0.0393 acc=0.9856
+[2026-06-04 16:29:39,461] 157 root - INFO -   [Client 34] loss=0.0275 acc=0.9923
+[2026-06-04 16:29:55,073] 157 root - INFO -   [Client 3] loss=0.0035 acc=0.9992
+[2026-06-04 16:30:02,155] 157 root - INFO -   [Client 22] loss=0.0112 acc=0.9963
+[2026-06-04 16:30:08,377] 157 root - INFO -   [Client 14] loss=0.0268 acc=0.9903
+[2026-06-04 16:30:14,891] 157 root - INFO -   [Client 4] loss=0.0099 acc=0.9968
+[2026-06-04 16:30:29,413] 157 root - INFO -   [Client 2] loss=0.0064 acc=0.9977
+[2026-06-04 16:30:38,481] 157 root - INFO -   [Client 45] loss=0.0139 acc=0.9947
+[2026-06-04 16:30:44,226] 157 root - INFO -   [Client 15] loss=0.0722 acc=0.9820
+[2026-06-04 16:30:47,071] 157 root - INFO -   [Client 12] loss=0.0384 acc=0.9842
+[2026-06-04 16:30:54,095] 157 root - INFO -   [Client 38] loss=0.0177 acc=0.9951
+[2026-06-04 16:30:56,347] 157 root - INFO -   [Client 9] loss=0.0150 acc=0.9961
+[2026-06-04 16:31:06,897] 157 root - INFO -   [Client 37] loss=0.0089 acc=0.9972
+[2026-06-04 16:31:16,196] 157 root - INFO -   [Client 8] loss=0.0344 acc=0.9849
+[2026-06-04 16:31:16,946] 157 root - INFO -   [Client 46] loss=0.0614 acc=0.9790
+[2026-06-04 16:31:24,035] 157 root - INFO -   [Client 21] loss=0.0064 acc=0.9985
+[2026-06-04 16:31:24,089] 188 root - INFO - [Aggregator] Round 34: 3/20 clients flagged by MAD.
+[2026-06-04 16:31:24,090] 201 root - INFO - [Aggregator] Round 34: trust_weights min=0.0256 max=0.0714 zero_count=0
+[2026-06-04 16:31:24,103] 175 root - INFO - [Pipeline] Round 34 aggregated — flagged=3, min_trust=0.0256, max_trust=0.0714
+[2026-06-04 16:31:25,503] 82 root - INFO - [Server] Round 34 — loss=0.0175, macro_f1=0.5442, acc=0.9934
+[2026-06-04 16:31:25,610] 190 root - INFO - [Pipeline] Round 34 eval — macro_f1=0.5442, acc=0.9934, loss=0.0175
+[2026-06-04 16:31:25,611] 130 root - INFO - 
+[Pipeline] ===== Round 35/50 =====
+[2026-06-04 16:32:15,207] 157 root - INFO -   [Client 7] loss=0.0087 acc=0.9971
+[2026-06-04 16:32:17,520] 157 root - INFO -   [Client 36] loss=0.1241 acc=0.9661
+[2026-06-04 16:32:19,109] 157 root - INFO -   [Client 13] loss=0.0573 acc=0.9817
+[2026-06-04 16:32:27,316] 157 root - INFO -   [Client 29] loss=0.0340 acc=0.9864
+[2026-06-04 16:32:29,196] 157 root - INFO -   [Client 44] loss=0.1274 acc=0.9534
+[2026-06-04 16:32:52,177] 157 root - INFO -   [Client 16] loss=0.0065 acc=0.9985
+[2026-06-04 16:32:53,210] 157 root - INFO -   [Client 23] loss=1.1108 acc=0.7525
+[2026-06-04 16:32:55,277] 157 root - INFO -   [Client 10] loss=0.0128 acc=0.9957
+[2026-06-04 16:33:02,292] 157 root - INFO -   [Client 38] loss=0.0161 acc=0.9947
+[2026-06-04 16:33:08,343] 157 root - INFO -   [Client 41] loss=0.0059 acc=0.9985
+[2026-06-04 16:33:09,162] 157 root - INFO -   [Client 49] loss=1.6064 acc=0.9127
+[2026-06-04 16:33:12,644] 157 root - INFO -   [Client 42] loss=0.0846 acc=0.9687
+[2026-06-04 16:33:25,317] 157 root - INFO -   [Client 19] loss=0.0126 acc=0.9959
+[2026-06-04 16:33:31,516] 157 root - INFO -   [Client 6] loss=0.0354 acc=0.9871
+[2026-06-04 16:33:32,810] 157 root - INFO -   [Client 1] loss=0.0362 acc=0.9867
+[2026-06-04 16:33:43,280] 157 root - INFO -   [Client 37] loss=0.0092 acc=0.9972
+[2026-06-04 16:33:49,510] 157 root - INFO -   [Client 24] loss=0.0115 acc=0.9965
+[2026-06-04 16:33:52,445] 157 root - INFO -   [Client 25] loss=0.0530 acc=0.9778
+[2026-06-04 16:33:55,921] 157 root - INFO -   [Client 12] loss=0.0397 acc=0.9833
+[2026-06-04 16:34:09,919] 157 root - INFO -   [Client 2] loss=0.0064 acc=0.9975
+[2026-06-04 16:34:09,974] 188 root - INFO - [Aggregator] Round 35: 2/20 clients flagged by MAD.
+[2026-06-04 16:34:09,976] 201 root - INFO - [Aggregator] Round 35: trust_weights min=0.0181 max=0.0714 zero_count=0
+[2026-06-04 16:34:09,992] 175 root - INFO - [Pipeline] Round 35 aggregated — flagged=2, min_trust=0.0181, max_trust=0.0714
+[2026-06-04 16:34:11,448] 82 root - INFO - [Server] Round 35 — loss=0.0184, macro_f1=0.5428, acc=0.9928
+[2026-06-04 16:34:11,550] 190 root - INFO - [Pipeline] Round 35 eval — macro_f1=0.5428, acc=0.9928, loss=0.0184
+[2026-06-04 16:34:11,551] 130 root - INFO - 
+[Pipeline] ===== Round 36/50 =====
+[2026-06-04 16:34:22,265] 157 root - INFO -   [Client 37] loss=0.0090 acc=0.9975
+[2026-06-04 16:34:23,560] 157 root - INFO -   [Client 44] loss=0.1097 acc=0.9588
+[2026-06-04 16:34:28,670] 157 root - INFO -   [Client 40] loss=0.0146 acc=0.9943
+[2026-06-04 16:34:33,992] 157 root - INFO -   [Client 15] loss=0.0590 acc=0.9847
+[2026-06-04 16:34:39,590] 157 root - INFO -   [Client 6] loss=0.0357 acc=0.9868
+[2026-06-04 16:34:43,337] 157 root - INFO -   [Client 48] loss=0.0217 acc=0.9920
+[2026-06-04 16:34:56,552] 157 root - INFO -   [Client 19] loss=0.0134 acc=0.9960
+[2026-06-04 16:35:03,502] 157 root - INFO -   [Client 38] loss=0.0192 acc=0.9940
+[2026-06-04 16:35:50,317] 157 root - INFO -   [Client 7] loss=0.0085 acc=0.9972
+[2026-06-04 16:35:52,722] 157 root - INFO -   [Client 36] loss=0.0898 acc=0.9739
+[2026-06-04 16:36:07,705] 157 root - INFO -   [Client 2] loss=0.0060 acc=0.9978
+[2026-06-04 16:36:15,296] 157 root - INFO -   [Client 22] loss=0.0114 acc=0.9959
+[2026-06-04 16:36:18,825] 157 root - INFO -   [Client 34] loss=0.0276 acc=0.9921
+[2026-06-04 16:36:25,117] 157 root - INFO -   [Client 27] loss=0.0140 acc=0.9958
+[2026-06-04 16:36:26,650] 157 root - INFO -   [Client 23] loss=0.9584 acc=0.7777
+[2026-06-04 16:36:33,299] 157 root - INFO -   [Client 4] loss=0.0092 acc=0.9972
+[2026-06-04 16:37:02,043] 157 root - INFO -   [Client 32] loss=0.0072 acc=0.9981
+[2026-06-04 16:37:10,163] 157 root - INFO -   [Client 21] loss=0.0069 acc=0.9983
+[2026-06-04 16:37:23,380] 157 root - INFO -   [Client 0] loss=0.0056 acc=0.9983
+[2026-06-04 16:37:29,300] 157 root - INFO -   [Client 47] loss=0.2445 acc=0.9493
+[2026-06-04 16:37:29,360] 188 root - INFO - [Aggregator] Round 36: 2/20 clients flagged by MAD.
+[2026-06-04 16:37:29,361] 201 root - INFO - [Aggregator] Round 36: trust_weights min=0.0195 max=0.0714 zero_count=0
+[2026-06-04 16:37:29,377] 175 root - INFO - [Pipeline] Round 36 aggregated — flagged=2, min_trust=0.0195, max_trust=0.0714
+[2026-06-04 16:37:31,031] 82 root - INFO - [Server] Round 36 — loss=0.0196, macro_f1=0.5393, acc=0.9928
+[2026-06-04 16:37:31,150] 190 root - INFO - [Pipeline] Round 36 eval — macro_f1=0.5393, acc=0.9928, loss=0.0196
+[2026-06-04 16:37:31,152] 130 root - INFO - 
+[Pipeline] ===== Round 37/50 =====
+[2026-06-04 16:37:41,205] 157 root - INFO -   [Client 26] loss=0.0305 acc=0.9885
+[2026-06-04 16:37:43,315] 157 root - INFO -   [Client 31] loss=0.0189 acc=0.9942
+[2026-06-04 16:37:49,248] 157 root - INFO -   [Client 6] loss=0.0349 acc=0.9869
+[2026-06-04 16:37:55,710] 157 root - INFO -   [Client 27] loss=0.0145 acc=0.9952
+[2026-06-04 16:37:56,788] 157 root - INFO -   [Client 23] loss=0.7769 acc=0.8060
+[2026-06-04 16:38:01,999] 157 root - INFO -   [Client 40] loss=0.0133 acc=0.9951
+[2026-06-04 16:38:08,658] 157 root - INFO -   [Client 29] loss=0.0330 acc=0.9865
+[2026-06-04 16:38:10,893] 157 root - INFO -   [Client 9] loss=0.0164 acc=0.9958
+[2026-06-04 16:38:11,717] 157 root - INFO -   [Client 46] loss=0.0605 acc=0.9784
+[2026-06-04 16:38:16,813] 157 root - INFO -   [Client 11] loss=0.0239 acc=0.9916
+[2026-06-04 16:38:22,681] 157 root - INFO -   [Client 33] loss=0.0076 acc=0.9981
+[2026-06-04 16:38:48,879] 157 root - INFO -   [Client 17] loss=0.0105 acc=0.9963
+[2026-06-04 16:38:52,057] 157 root - INFO -   [Client 34] loss=0.0271 acc=0.9921
+[2026-06-04 16:39:48,839] 157 root - INFO -   [Client 30] loss=0.0037 acc=0.9991
+[2026-06-04 16:39:50,449] 157 root - INFO -   [Client 43] loss=0.1284 acc=0.9604
+[2026-06-04 16:39:56,989] 157 root - INFO -   [Client 41] loss=0.0071 acc=0.9983
+[2026-06-04 16:40:03,786] 157 root - INFO -   [Client 38] loss=0.0186 acc=0.9945
+[2026-06-04 16:40:07,390] 157 root - INFO -   [Client 20] loss=0.0110 acc=0.9963
+[2026-06-04 16:40:13,465] 157 root - INFO -   [Client 15] loss=0.0523 acc=0.9865
+[2026-06-04 16:40:14,505] 157 root - INFO -   [Client 49] loss=1.6922 acc=0.9144
+[2026-06-04 16:40:14,572] 188 root - INFO - [Aggregator] Round 37: 2/20 clients flagged by MAD.
+[2026-06-04 16:40:14,574] 201 root - INFO - [Aggregator] Round 37: trust_weights min=0.0148 max=0.0714 zero_count=0
+[2026-06-04 16:40:14,587] 175 root - INFO - [Pipeline] Round 37 aggregated — flagged=2, min_trust=0.0148, max_trust=0.0714
+[2026-06-04 16:40:16,057] 82 root - INFO - [Server] Round 37 — loss=0.0206, macro_f1=0.5429, acc=0.9924
+[2026-06-04 16:40:16,064] 190 root - INFO - [Pipeline] Round 37 eval — macro_f1=0.5429, acc=0.9924, loss=0.0206
+[2026-06-04 16:40:16,065] 130 root - INFO - 
+[Pipeline] ===== Round 38/50 =====
+[2026-06-04 16:40:23,202] 157 root - INFO -   [Client 5] loss=0.0113 acc=0.9960
+[2026-06-04 16:40:49,427] 157 root - INFO -   [Client 17] loss=0.0103 acc=0.9965
+[2026-06-04 16:40:54,349] 157 root - INFO -   [Client 28] loss=0.0450 acc=0.9818
+[2026-06-04 16:41:00,291] 157 root - INFO -   [Client 15] loss=0.0505 acc=0.9873
+[2026-06-04 16:41:06,565] 157 root - INFO -   [Client 29] loss=0.0330 acc=0.9867
+[2026-06-04 16:41:08,776] 157 root - INFO -   [Client 36] loss=0.0897 acc=0.9746
+[2026-06-04 16:41:32,984] 157 root - INFO -   [Client 39] loss=0.0023 acc=0.9994
+[2026-06-04 16:41:37,036] 157 root - INFO -   [Client 42] loss=0.0742 acc=0.9708
+[2026-06-04 16:41:43,536] 157 root - INFO -   [Client 24] loss=0.0105 acc=0.9970
+[2026-06-04 16:41:52,321] 157 root - INFO -   [Client 21] loss=0.0058 acc=0.9987
+[2026-06-04 16:41:53,725] 157 root - INFO -   [Client 1] loss=0.0381 acc=0.9860
+[2026-06-04 16:41:55,903] 157 root - INFO -   [Client 31] loss=0.0149 acc=0.9956
+[2026-06-04 16:41:59,929] 157 root - INFO -   [Client 20] loss=0.0124 acc=0.9959
+[2026-06-04 16:42:05,112] 157 root - INFO -   [Client 11] loss=0.0238 acc=0.9921
+[2026-06-04 16:42:12,303] 157 root - INFO -   [Client 38] loss=0.0178 acc=0.9943
+[2026-06-04 16:42:13,599] 157 root - INFO -   [Client 13] loss=0.0388 acc=0.9864
+[2026-06-04 16:42:21,010] 157 root - INFO -   [Client 22] loss=0.0102 acc=0.9964
+[2026-06-04 16:42:45,466] 157 root - INFO -   [Client 16] loss=0.0067 acc=0.9984
+[2026-06-04 16:42:50,280] 157 root - INFO -   [Client 40] loss=0.0138 acc=0.9947
+[2026-06-04 16:42:58,571] 157 root - INFO -   [Client 8] loss=0.0345 acc=0.9849
+[2026-06-04 16:42:58,626] 188 root - INFO - [Aggregator] Round 38: 3/20 clients flagged by MAD.
+[2026-06-04 16:42:58,628] 201 root - INFO - [Aggregator] Round 38: trust_weights min=0.0186 max=0.0714 zero_count=0
+[2026-06-04 16:42:58,644] 175 root - INFO - [Pipeline] Round 38 aggregated — flagged=3, min_trust=0.0186, max_trust=0.0714
+[2026-06-04 16:43:00,122] 82 root - INFO - [Server] Round 38 — loss=0.0187, macro_f1=0.5455, acc=0.9925
+[2026-06-04 16:43:00,127] 190 root - INFO - [Pipeline] Round 38 eval — macro_f1=0.5455, acc=0.9925, loss=0.0187
+[2026-06-04 16:43:00,128] 130 root - INFO - 
+[Pipeline] ===== Round 39/50 =====
+[2026-06-04 16:43:06,040] 157 root - INFO -   [Client 38] loss=0.0170 acc=0.9947
+[2026-06-04 16:43:07,593] 157 root - INFO -   [Client 44] loss=0.1240 acc=0.9550
+[2026-06-04 16:43:31,883] 157 root - INFO -   [Client 17] loss=0.0107 acc=0.9963
+[2026-06-04 16:43:36,067] 157 root - INFO -   [Client 35] loss=0.0580 acc=0.9778
+[2026-06-04 16:43:48,470] 157 root - INFO -   [Client 0] loss=0.0058 acc=0.9982
+[2026-06-04 16:43:54,150] 157 root - INFO -   [Client 33] loss=0.0063 acc=0.9985
+[2026-06-04 16:43:57,354] 157 root - INFO -   [Client 12] loss=0.0384 acc=0.9839
+[2026-06-04 16:44:04,026] 157 root - INFO -   [Client 5] loss=0.0114 acc=0.9959
+[2026-06-04 16:44:09,500] 157 root - INFO -   [Client 15] loss=0.0522 acc=0.9870
+[2026-06-04 16:44:17,683] 157 root - INFO -   [Client 26] loss=0.0292 acc=0.9885
+[2026-06-04 16:44:20,010] 157 root - INFO -   [Client 31] loss=0.0171 acc=0.9944
+[2026-06-04 16:44:20,892] 157 root - INFO -   [Client 46] loss=0.0581 acc=0.9794
+[2026-06-04 16:44:26,328] 157 root - INFO -   [Client 41] loss=0.0056 acc=0.9987
+[2026-06-04 16:45:17,549] 157 root - INFO -   [Client 30] loss=0.0037 acc=0.9991
+[2026-06-04 16:45:40,319] 157 root - INFO -   [Client 39] loss=0.0027 acc=0.9993
+[2026-06-04 16:45:45,078] 157 root - INFO -   [Client 28] loss=0.0439 acc=0.9817
+[2026-06-04 16:45:46,610] 157 root - INFO -   [Client 1] loss=0.0372 acc=0.9866
+[2026-06-04 16:45:50,012] 157 root - INFO -   [Client 42] loss=0.0790 acc=0.9699
+[2026-06-04 16:45:51,218] 157 root - INFO -   [Client 18] loss=0.0767 acc=0.9711
+[2026-06-04 16:46:32,979] 157 root - INFO -   [Client 7] loss=0.0084 acc=0.9972
+[2026-06-04 16:46:33,038] 188 root - INFO - [Aggregator] Round 39: 3/20 clients flagged by MAD.
+[2026-06-04 16:46:33,040] 201 root - INFO - [Aggregator] Round 39: trust_weights min=0.0219 max=0.0714 zero_count=0
+[2026-06-04 16:46:33,055] 175 root - INFO - [Pipeline] Round 39 aggregated — flagged=3, min_trust=0.0219, max_trust=0.0714
+[2026-06-04 16:46:34,347] 82 root - INFO - [Server] Round 39 — loss=0.0195, macro_f1=0.5418, acc=0.9924
+[2026-06-04 16:46:34,459] 190 root - INFO - [Pipeline] Round 39 eval — macro_f1=0.5418, acc=0.9924, loss=0.0195
+[2026-06-04 16:46:34,461] 130 root - INFO - 
+[Pipeline] ===== Round 40/50 =====
+[2026-06-04 16:46:37,014] 157 root - INFO -   [Client 25] loss=0.0553 acc=0.9788
+[2026-06-04 16:46:38,531] 157 root - INFO -   [Client 44] loss=0.1075 acc=0.9615
+[2026-06-04 16:46:43,710] 157 root - INFO -   [Client 15] loss=0.0487 acc=0.9875
+[2026-06-04 16:46:55,314] 157 root - INFO -   [Client 19] loss=0.0122 acc=0.9959
+[2026-06-04 16:46:58,178] 157 root - INFO -   [Client 42] loss=0.0788 acc=0.9700
+[2026-06-04 16:47:07,196] 157 root - INFO -   [Client 37] loss=0.0093 acc=0.9971
+[2026-06-04 16:47:08,387] 157 root - INFO -   [Client 23] loss=0.8721 acc=0.7976
+[2026-06-04 16:48:09,317] 157 root - INFO -   [Client 30] loss=0.0037 acc=0.9991
+[2026-06-04 16:48:13,620] 157 root - INFO -   [Client 35] loss=0.0566 acc=0.9786
+[2026-06-04 16:48:19,022] 157 root - INFO -   [Client 33] loss=0.0068 acc=0.9983
+[2026-06-04 16:48:25,742] 157 root - INFO -   [Client 22] loss=0.0116 acc=0.9960
+[2026-06-04 16:48:31,692] 157 root - INFO -   [Client 27] loss=0.0141 acc=0.9954
+[2026-06-04 16:48:36,845] 157 root - INFO -   [Client 41] loss=0.0068 acc=0.9983
+[2026-06-04 16:48:44,062] 157 root - INFO -   [Client 21] loss=0.0065 acc=0.9985
+[2026-06-04 16:49:07,454] 157 root - INFO -   [Client 39] loss=0.0027 acc=0.9993
+[2026-06-04 16:49:13,589] 157 root - INFO -   [Client 29] loss=0.0325 acc=0.9867
+[2026-06-04 16:49:38,632] 157 root - INFO -   [Client 17] loss=0.0103 acc=0.9965
+[2026-06-04 16:49:39,835] 157 root - INFO -   [Client 46] loss=0.0583 acc=0.9800
+[2026-06-04 16:50:01,733] 157 root - INFO -   [Client 16] loss=0.0064 acc=0.9984
+[2026-06-04 16:50:42,632] 157 root - INFO -   [Client 7] loss=0.0087 acc=0.9971
+[2026-06-04 16:50:42,714] 188 root - INFO - [Aggregator] Round 40: 2/20 clients flagged by MAD.
+[2026-06-04 16:50:42,717] 201 root - INFO - [Aggregator] Round 40: trust_weights min=0.0255 max=0.0714 zero_count=0
+[2026-06-04 16:50:42,737] 175 root - INFO - [Pipeline] Round 40 aggregated — flagged=2, min_trust=0.0255, max_trust=0.0714
+[2026-06-04 16:50:44,410] 82 root - INFO - [Server] Round 40 — loss=0.0175, macro_f1=0.5438, acc=0.9934
+[2026-06-04 16:50:44,522] 190 root - INFO - [Pipeline] Round 40 eval — macro_f1=0.5438, acc=0.9934, loss=0.0175
+[2026-06-04 16:50:44,523] 130 root - INFO - 
+[Pipeline] ===== Round 41/50 =====
+[2026-06-04 16:51:26,759] 157 root - INFO -   [Client 7] loss=0.0084 acc=0.9971
+[2026-06-04 16:51:27,711] 157 root - INFO -   [Client 46] loss=0.0692 acc=0.9768
+[2026-06-04 16:51:31,389] 157 root - INFO -   [Client 12] loss=0.0396 acc=0.9837
+[2026-06-04 16:51:35,453] 157 root - INFO -   [Client 20] loss=0.0127 acc=0.9960
+[2026-06-04 16:51:36,302] 157 root - INFO -   [Client 49] loss=1.6307 acc=0.9167
+[2026-06-04 16:51:39,566] 157 root - INFO -   [Client 34] loss=0.0246 acc=0.9928
+[2026-06-04 16:51:43,759] 157 root - INFO -   [Client 11] loss=0.0243 acc=0.9916
+[2026-06-04 16:51:49,957] 157 root - INFO -   [Client 47] loss=0.2718 acc=0.9467
+[2026-06-04 16:51:51,488] 157 root - INFO -   [Client 13] loss=0.0683 acc=0.9777
+[2026-06-04 16:52:45,597] 157 root - INFO -   [Client 30] loss=0.0038 acc=0.9990
+[2026-06-04 16:53:10,608] 157 root - INFO -   [Client 17] loss=0.0104 acc=0.9964
+[2026-06-04 16:53:20,694] 157 root - INFO -   [Client 37] loss=0.0089 acc=0.9973
+[2026-06-04 16:53:26,409] 157 root - INFO -   [Client 33] loss=0.0058 acc=0.9985
+[2026-06-04 16:53:27,820] 157 root - INFO -   [Client 18] loss=0.0670 acc=0.9722
+[2026-06-04 16:53:34,243] 157 root - INFO -   [Client 6] loss=0.0329 acc=0.9874
+[2026-06-04 16:53:38,095] 157 root - INFO -   [Client 42] loss=0.0757 acc=0.9705
+[2026-06-04 16:53:40,447] 157 root - INFO -   [Client 36] loss=0.1349 acc=0.9631
+[2026-06-04 16:53:46,639] 157 root - INFO -   [Client 14] loss=0.0272 acc=0.9899
+[2026-06-04 16:53:48,237] 157 root - INFO -   [Client 23] loss=0.8965 acc=0.7858
+[2026-06-04 16:53:55,537] 157 root - INFO -   [Client 5] loss=0.0107 acc=0.9963
+[2026-06-04 16:53:55,591] 188 root - INFO - [Aggregator] Round 41: 2/20 clients flagged by MAD.
+[2026-06-04 16:53:55,593] 201 root - INFO - [Aggregator] Round 41: trust_weights min=0.0197 max=0.0714 zero_count=0
+[2026-06-04 16:53:55,608] 175 root - INFO - [Pipeline] Round 41 aggregated — flagged=2, min_trust=0.0197, max_trust=0.0714
+[2026-06-04 16:53:57,040] 82 root - INFO - [Server] Round 41 — loss=0.0205, macro_f1=0.5381, acc=0.9925
+[2026-06-04 16:53:57,163] 190 root - INFO - [Pipeline] Round 41 eval — macro_f1=0.5381, acc=0.9925, loss=0.0205
+[2026-06-04 16:53:57,165] 130 root - INFO - 
+[Pipeline] ===== Round 42/50 =====
+[2026-06-04 16:54:09,385] 157 root - INFO -   [Client 19] loss=0.0135 acc=0.9958
+[2026-06-04 16:54:20,995] 157 root - INFO -   [Client 0] loss=0.0059 acc=0.9982
+[2026-06-04 16:54:29,095] 157 root - INFO -   [Client 45] loss=0.0140 acc=0.9949
+[2026-06-04 16:54:32,139] 157 root - INFO -   [Client 34] loss=0.0270 acc=0.9923
+[2026-06-04 16:54:41,146] 157 root - INFO -   [Client 8] loss=0.0357 acc=0.9846
+[2026-06-04 16:55:04,815] 157 root - INFO -   [Client 17] loss=0.0108 acc=0.9962
+[2026-06-04 16:55:18,204] 157 root - INFO -   [Client 2] loss=0.0065 acc=0.9976
+[2026-06-04 16:55:32,619] 157 root - INFO -   [Client 3] loss=0.0031 acc=0.9993
+[2026-06-04 16:55:36,934] 157 root - INFO -   [Client 35] loss=0.0555 acc=0.9781
+[2026-06-04 16:55:38,489] 157 root - INFO -   [Client 18] loss=0.0741 acc=0.9728
+[2026-06-04 16:55:44,369] 157 root - INFO -   [Client 47] loss=0.1639 acc=0.9641
+[2026-06-04 16:55:46,459] 157 root - INFO -   [Client 31] loss=0.0169 acc=0.9950
+[2026-06-04 16:55:52,236] 157 root - INFO -   [Client 6] loss=0.0376 acc=0.9856
+[2026-06-04 16:55:56,095] 157 root - INFO -   [Client 48] loss=0.0188 acc=0.9934
+[2026-06-04 16:56:00,723] 157 root - INFO -   [Client 40] loss=0.0146 acc=0.9944
+[2026-06-04 16:56:52,904] 157 root - INFO -   [Client 30] loss=0.0036 acc=0.9991
+[2026-06-04 16:56:53,635] 157 root - INFO -   [Client 46] loss=0.0536 acc=0.9818
+[2026-06-04 16:56:58,611] 157 root - INFO -   [Client 28] loss=0.0438 acc=0.9821
+[2026-06-04 16:57:05,845] 157 root - INFO -   [Client 21] loss=0.0060 acc=0.9986
+[2026-06-04 16:57:12,850] 157 root - INFO -   [Client 5] loss=0.0104 acc=0.9962
+[2026-06-04 16:57:12,908] 188 root - INFO - [Aggregator] Round 42: 2/20 clients flagged by MAD.
+[2026-06-04 16:57:12,909] 201 root - INFO - [Aggregator] Round 42: trust_weights min=0.0227 max=0.0714 zero_count=0
+[2026-06-04 16:57:12,923] 175 root - INFO - [Pipeline] Round 42 aggregated — flagged=2, min_trust=0.0227, max_trust=0.0714
+[2026-06-04 16:57:14,266] 82 root - INFO - [Server] Round 42 — loss=0.0174, macro_f1=0.5474, acc=0.9934
+[2026-06-04 16:57:14,379] 190 root - INFO - [Pipeline] Round 42 eval — macro_f1=0.5474, acc=0.9934, loss=0.0174
+[2026-06-04 16:57:14,380] 130 root - INFO - 
+[Pipeline] ===== Round 43/50 =====
+[2026-06-04 16:57:29,402] 157 root - INFO -   [Client 3] loss=0.0033 acc=0.9992
+[2026-06-04 16:57:53,464] 157 root - INFO -   [Client 16] loss=0.0065 acc=0.9984
+[2026-06-04 16:58:44,901] 157 root - INFO -   [Client 30] loss=0.0037 acc=0.9991
+[2026-06-04 16:59:25,955] 157 root - INFO -   [Client 7] loss=0.0086 acc=0.9971
+[2026-06-04 16:59:31,907] 157 root - INFO -   [Client 4] loss=0.0089 acc=0.9971
+[2026-06-04 16:59:34,636] 157 root - INFO -   [Client 25] loss=0.0520 acc=0.9782
+[2026-06-04 16:59:36,259] 157 root - INFO -   [Client 31] loss=0.0162 acc=0.9951
+[2026-06-04 16:59:45,197] 157 root - INFO -   [Client 45] loss=0.0146 acc=0.9947
+[2026-06-04 16:59:47,250] 157 root - INFO -   [Client 36] loss=0.0776 acc=0.9781
+[2026-06-04 16:59:52,081] 157 root - INFO -   [Client 40] loss=0.0149 acc=0.9948
+[2026-06-04 16:59:53,352] 157 root - INFO -   [Client 49] loss=1.5620 acc=0.9153
+[2026-06-04 16:59:55,445] 157 root - INFO -   [Client 9] loss=0.0174 acc=0.9958
+[2026-06-04 17:00:01,575] 157 root - INFO -   [Client 38] loss=0.0179 acc=0.9945
+[2026-06-04 17:00:06,964] 157 root - INFO -   [Client 41] loss=0.0068 acc=0.9983
+[2026-06-04 17:00:18,437] 157 root - INFO -   [Client 19] loss=0.0133 acc=0.9959
+[2026-06-04 17:00:24,991] 157 root - INFO -   [Client 5] loss=0.0104 acc=0.9964
+[2026-06-04 17:00:30,834] 157 root - INFO -   [Client 15] loss=0.0517 acc=0.9867
+[2026-06-04 17:00:31,586] 157 root - INFO -   [Client 46] loss=0.0570 acc=0.9798
+[2026-06-04 17:00:40,300] 157 root - INFO -   [Client 26] loss=0.0308 acc=0.9883
+[2026-06-04 17:00:44,681] 157 root - INFO -   [Client 35] loss=0.0563 acc=0.9773
+[2026-06-04 17:00:44,737] 188 root - INFO - [Aggregator] Round 43: 4/20 clients flagged by MAD.
+[2026-06-04 17:00:44,739] 201 root - INFO - [Aggregator] Round 43: trust_weights min=0.0209 max=0.0714 zero_count=0
+[2026-06-04 17:00:44,753] 175 root - INFO - [Pipeline] Round 43 aggregated — flagged=4, min_trust=0.0209, max_trust=0.0714
+[2026-06-04 17:00:46,080] 82 root - INFO - [Server] Round 43 — loss=0.0194, macro_f1=0.5388, acc=0.9928
+[2026-06-04 17:00:46,190] 190 root - INFO - [Pipeline] Round 43 eval — macro_f1=0.5388, acc=0.9928, loss=0.0194
+[2026-06-04 17:00:46,191] 130 root - INFO - 
+[Pipeline] ===== Round 44/50 =====
+[2026-06-04 17:00:53,154] 157 root - INFO -   [Client 38] loss=0.0173 acc=0.9948
+[2026-06-04 17:01:15,415] 157 root - INFO -   [Client 39] loss=0.0029 acc=0.9993
+[2026-06-04 17:01:20,890] 157 root - INFO -   [Client 14] loss=0.0267 acc=0.9905
+[2026-06-04 17:01:26,063] 157 root - INFO -   [Client 33] loss=0.0057 acc=0.9985
+[2026-06-04 17:01:32,836] 157 root - INFO -   [Client 24] loss=0.0100 acc=0.9969
+[2026-06-04 17:01:37,416] 157 root - INFO -   [Client 28] loss=0.0457 acc=0.9817
+[2026-06-04 17:01:39,146] 157 root - INFO -   [Client 44] loss=0.1185 acc=0.9579
+[2026-06-04 17:01:51,202] 157 root - INFO -   [Client 19] loss=0.0140 acc=0.9958
+[2026-06-04 17:02:00,693] 157 root - INFO -   [Client 37] loss=0.0095 acc=0.9972
+[2026-06-04 17:02:06,041] 157 root - INFO -   [Client 27] loss=0.0133 acc=0.9957
+[2026-06-04 17:02:09,357] 157 root - INFO -   [Client 42] loss=0.0799 acc=0.9702
+[2026-06-04 17:02:11,538] 157 root - INFO -   [Client 36] loss=0.0797 acc=0.9775
+[2026-06-04 17:02:25,913] 157 root - INFO -   [Client 3] loss=0.0033 acc=0.9992
+[2026-06-04 17:02:31,375] 157 root - INFO -   [Client 6] loss=0.0341 acc=0.9871
+[2026-06-04 17:02:32,568] 157 root - INFO -   [Client 13] loss=0.0464 acc=0.9844
+[2026-06-04 17:02:36,706] 157 root - INFO -   [Client 35] loss=0.0581 acc=0.9768
+[2026-06-04 17:02:57,349] 157 root - INFO -   [Client 16] loss=0.0067 acc=0.9985
+[2026-06-04 17:03:03,870] 157 root - INFO -   [Client 5] loss=0.0097 acc=0.9962
+[2026-06-04 17:03:05,836] 157 root - INFO -   [Client 10] loss=0.0130 acc=0.9953
+[2026-06-04 17:03:49,520] 157 root - INFO -   [Client 7] loss=0.0084 acc=0.9972
+[2026-06-04 17:03:49,585] 188 root - INFO - [Aggregator] Round 44: 3/20 clients flagged by MAD.
+[2026-06-04 17:03:49,586] 201 root - INFO - [Aggregator] Round 44: trust_weights min=0.0245 max=0.0714 zero_count=0
+[2026-06-04 17:03:49,601] 175 root - INFO - [Pipeline] Round 44 aggregated — flagged=3, min_trust=0.0245, max_trust=0.0714
+[2026-06-04 17:03:50,923] 82 root - INFO - [Server] Round 44 — loss=0.0190, macro_f1=0.5742, acc=0.9933
+[2026-06-04 17:03:51,033] 190 root - INFO - [Pipeline] Round 44 eval — macro_f1=0.5742, acc=0.9933, loss=0.0190
+[2026-06-04 17:03:51,034] 130 root - INFO - 
+[Pipeline] ===== Round 45/50 =====
+[2026-06-04 17:03:56,243] 157 root - INFO -   [Client 11] loss=0.0248 acc=0.9913
+[2026-06-04 17:04:00,275] 157 root - INFO -   [Client 35] loss=0.0576 acc=0.9778
+[2026-06-04 17:04:06,193] 157 root - INFO -   [Client 4] loss=0.0097 acc=0.9972
+[2026-06-04 17:04:08,244] 157 root - INFO -   [Client 10] loss=0.0115 acc=0.9955
+[2026-06-04 17:04:20,153] 157 root - INFO -   [Client 0] loss=0.0055 acc=0.9983
+[2026-06-04 17:04:28,530] 157 root - INFO -   [Client 26] loss=0.0314 acc=0.9881
+[2026-06-04 17:04:32,904] 157 root - INFO -   [Client 28] loss=0.0435 acc=0.9827
+[2026-06-04 17:04:39,073] 157 root - INFO -   [Client 38] loss=0.0176 acc=0.9948
+[2026-06-04 17:05:35,340] 157 root - INFO -   [Client 30] loss=0.0037 acc=0.9991
+[2026-06-04 17:05:36,365] 157 root - INFO -   [Client 18] loss=0.0735 acc=0.9709
+[2026-06-04 17:05:53,338] 157 root - INFO -   [Client 2] loss=0.0057 acc=0.9978
+[2026-06-04 17:06:00,112] 157 root - INFO -   [Client 14] loss=0.0276 acc=0.9896
+[2026-06-04 17:06:05,729] 157 root - INFO -   [Client 40] loss=0.0129 acc=0.9950
+[2026-06-04 17:06:16,831] 157 root - INFO -   [Client 37] loss=0.0089 acc=0.9975
+[2026-06-04 17:06:23,803] 157 root - INFO -   [Client 29] loss=0.0331 acc=0.9866
+[2026-06-04 17:06:30,250] 157 root - INFO -   [Client 47] loss=0.2246 acc=0.9528
+[2026-06-04 17:06:34,541] 157 root - INFO -   [Client 42] loss=0.0783 acc=0.9699
+[2026-06-04 17:06:58,294] 157 root - INFO -   [Client 16] loss=0.0063 acc=0.9985
+[2026-06-04 17:07:01,565] 157 root - INFO -   [Client 12] loss=0.0383 acc=0.9845
+[2026-06-04 17:07:03,195] 157 root - INFO -   [Client 13] loss=0.0377 acc=0.9876
+[2026-06-04 17:07:03,260] 188 root - INFO - [Aggregator] Round 45: 1/20 clients flagged by MAD.
+[2026-06-04 17:07:03,262] 201 root - INFO - [Aggregator] Round 45: trust_weights min=0.0205 max=0.0714 zero_count=0
+[2026-06-04 17:07:03,281] 175 root - INFO - [Pipeline] Round 45 aggregated — flagged=1, min_trust=0.0205, max_trust=0.0714
+[2026-06-04 17:07:04,667] 82 root - INFO - [Server] Round 45 — loss=0.0183, macro_f1=0.5786, acc=0.9928
+[2026-06-04 17:07:04,777] 190 root - INFO - [Pipeline] Round 45 eval — macro_f1=0.5786, acc=0.9928, loss=0.0183
+[2026-06-04 17:07:04,778] 130 root - INFO - 
+[Pipeline] ===== Round 46/50 =====
+[2026-06-04 17:07:54,600] 157 root - INFO -   [Client 7] loss=0.0087 acc=0.9971
+[2026-06-04 17:07:58,402] 157 root - INFO -   [Client 34] loss=0.0276 acc=0.9912
+[2026-06-04 17:08:05,100] 157 root - INFO -   [Client 14] loss=0.0276 acc=0.9902
+[2026-06-04 17:08:11,075] 157 root - INFO -   [Client 41] loss=0.0069 acc=0.9981
+[2026-06-04 17:08:13,386] 157 root - INFO -   [Client 9] loss=0.0155 acc=0.9961
+[2026-06-04 17:08:40,943] 157 root - INFO -   [Client 17] loss=0.0107 acc=0.9962
+[2026-06-04 17:08:50,502] 157 root - INFO -   [Client 45] loss=0.0138 acc=0.9951
+[2026-06-04 17:08:57,679] 157 root - INFO -   [Client 4] loss=0.0086 acc=0.9973
+[2026-06-04 17:09:13,982] 157 root - INFO -   [Client 3] loss=0.0033 acc=0.9993
+[2026-06-04 17:09:16,314] 157 root - INFO -   [Client 10] loss=0.0128 acc=0.9951
+[2026-06-04 17:09:28,612] 157 root - INFO -   [Client 19] loss=0.0126 acc=0.9961
+[2026-06-04 17:09:35,121] 157 root - INFO -   [Client 38] loss=0.0176 acc=0.9947
+[2026-06-04 17:09:37,655] 157 root - INFO -   [Client 36] loss=0.0846 acc=0.9759
+[2026-06-04 17:09:38,654] 157 root - INFO -   [Client 18] loss=0.0803 acc=0.9705
+[2026-06-04 17:09:44,022] 157 root - INFO -   [Client 28] loss=0.0448 acc=0.9819
+[2026-06-04 17:09:45,103] 157 root - INFO -   [Client 49] loss=1.5756 acc=0.9104
+[2026-06-04 17:09:51,520] 157 root - INFO -   [Client 29] loss=0.0314 acc=0.9872
+[2026-06-04 17:10:14,630] 157 root - INFO -   [Client 39] loss=0.0023 acc=0.9994
+[2026-06-04 17:10:16,903] 157 root - INFO -   [Client 25] loss=0.0534 acc=0.9784
+[2026-06-04 17:11:16,185] 157 root - INFO -   [Client 30] loss=0.0035 acc=0.9991
+[2026-06-04 17:11:16,242] 188 root - INFO - [Aggregator] Round 46: 4/20 clients flagged by MAD.
+[2026-06-04 17:11:16,243] 201 root - INFO - [Aggregator] Round 46: trust_weights min=0.0205 max=0.0714 zero_count=0
+[2026-06-04 17:11:16,258] 175 root - INFO - [Pipeline] Round 46 aggregated — flagged=4, min_trust=0.0205, max_trust=0.0714
+[2026-06-04 17:11:17,992] 82 root - INFO - [Server] Round 46 — loss=0.0215, macro_f1=0.5729, acc=0.9924
+[2026-06-04 17:11:18,101] 190 root - INFO - [Pipeline] Round 46 eval — macro_f1=0.5729, acc=0.9924, loss=0.0215
+[2026-06-04 17:11:18,103] 130 root - INFO - 
+[Pipeline] ===== Round 47/50 =====
+[2026-06-04 17:11:48,830] 157 root - INFO -   [Client 17] loss=0.0110 acc=0.9962
+[2026-06-04 17:12:17,007] 157 root - INFO -   [Client 32] loss=0.0076 acc=0.9981
+[2026-06-04 17:12:19,953] 157 root - INFO -   [Client 34] loss=0.0282 acc=0.9913
+[2026-06-04 17:12:21,650] 157 root - INFO -   [Client 31] loss=0.0161 acc=0.9954
+[2026-06-04 17:12:26,817] 157 root - INFO -   [Client 28] loss=0.0437 acc=0.9826
+[2026-06-04 17:12:33,921] 157 root - INFO -   [Client 5] loss=0.0108 acc=0.9961
+[2026-06-04 17:12:40,494] 157 root - INFO -   [Client 38] loss=0.0186 acc=0.9942
+[2026-06-04 17:12:53,792] 157 root - INFO -   [Client 2] loss=0.0058 acc=0.9979
+[2026-06-04 17:12:59,531] 157 root - INFO -   [Client 27] loss=0.0153 acc=0.9951
+[2026-06-04 17:13:03,222] 157 root - INFO -   [Client 20] loss=0.0113 acc=0.9965
+[2026-06-04 17:13:04,840] 157 root - INFO -   [Client 43] loss=0.1379 acc=0.9601
+[2026-06-04 17:13:27,190] 157 root - INFO -   [Client 16] loss=0.0063 acc=0.9985
+[2026-06-04 17:13:29,308] 157 root - INFO -   [Client 1] loss=0.0382 acc=0.9852
+[2026-06-04 17:13:31,285] 157 root - INFO -   [Client 44] loss=0.1187 acc=0.9564
+[2026-06-04 17:13:38,313] 157 root - INFO -   [Client 14] loss=0.0271 acc=0.9898
+[2026-06-04 17:13:50,339] 157 root - INFO -   [Client 37] loss=0.0086 acc=0.9974
+[2026-06-04 17:13:51,725] 157 root - INFO -   [Client 49] loss=1.4638 acc=0.9082
+[2026-06-04 17:13:55,716] 157 root - INFO -   [Client 42] loss=0.0775 acc=0.9706
+[2026-06-04 17:14:00,242] 157 root - INFO -   [Client 11] loss=0.0234 acc=0.9921
+[2026-06-04 17:14:05,725] 157 root - INFO -   [Client 15] loss=0.0678 acc=0.9826
+[2026-06-04 17:14:05,792] 188 root - INFO - [Aggregator] Round 47: 2/20 clients flagged by MAD.
+[2026-06-04 17:14:05,794] 201 root - INFO - [Aggregator] Round 47: trust_weights min=0.0197 max=0.0714 zero_count=0
+[2026-06-04 17:14:05,810] 175 root - INFO - [Pipeline] Round 47 aggregated — flagged=2, min_trust=0.0197, max_trust=0.0714
+[2026-06-04 17:14:07,626] 82 root - INFO - [Server] Round 47 — loss=0.0214, macro_f1=0.5722, acc=0.9919
+[2026-06-04 17:14:07,707] 190 root - INFO - [Pipeline] Round 47 eval — macro_f1=0.5722, acc=0.9919, loss=0.0214
+[2026-06-04 17:14:07,708] 130 root - INFO - 
+[Pipeline] ===== Round 48/50 =====
+[2026-06-04 17:14:13,987] 157 root - INFO -   [Client 33] loss=0.0064 acc=0.9985
+[2026-06-04 17:14:20,467] 157 root - INFO -   [Client 41] loss=0.0073 acc=0.9981
+[2026-06-04 17:14:26,072] 157 root - INFO -   [Client 28] loss=0.0443 acc=0.9820
+[2026-06-04 17:14:54,141] 157 root - INFO -   [Client 17] loss=0.0104 acc=0.9963
+[2026-06-04 17:14:59,245] 157 root - INFO -   [Client 11] loss=0.0211 acc=0.9925
+[2026-06-04 17:15:09,368] 157 root - INFO -   [Client 37] loss=0.0092 acc=0.9973
+[2026-06-04 17:15:15,779] 157 root - INFO -   [Client 27] loss=0.0132 acc=0.9956
+[2026-06-04 17:15:20,833] 157 root - INFO -   [Client 40] loss=0.0139 acc=0.9946
+[2026-06-04 17:15:22,852] 157 root - INFO -   [Client 31] loss=0.0182 acc=0.9948
+[2026-06-04 17:15:31,128] 157 root - INFO -   [Client 5] loss=0.0105 acc=0.9962
+[2026-06-04 17:16:34,532] 157 root - INFO -   [Client 30] loss=0.0036 acc=0.9991
+[2026-06-04 17:16:43,208] 157 root - INFO -   [Client 22] loss=0.0109 acc=0.9963
+[2026-06-04 17:16:52,545] 157 root - INFO -   [Client 26] loss=0.0304 acc=0.9882
+[2026-06-04 17:17:00,344] 157 root - INFO -   [Client 21] loss=0.0064 acc=0.9985
+[2026-06-04 17:17:04,450] 157 root - INFO -   [Client 20] loss=0.0108 acc=0.9965
+[2026-06-04 17:17:10,743] 157 root - INFO -   [Client 6] loss=0.0334 acc=0.9873
+[2026-06-04 17:17:12,858] 157 root - INFO -   [Client 10] loss=0.0135 acc=0.9952
+[2026-06-04 17:17:15,270] 157 root - INFO -   [Client 36] loss=0.0768 acc=0.9784
+[2026-06-04 17:17:16,586] 157 root - INFO -   [Client 44] loss=0.0926 acc=0.9632
+[2026-06-04 17:17:23,728] 157 root - INFO -   [Client 38] loss=0.0176 acc=0.9946
+[2026-06-04 17:17:23,802] 188 root - INFO - [Aggregator] Round 48: 2/20 clients flagged by MAD.
+[2026-06-04 17:17:23,804] 201 root - INFO - [Aggregator] Round 48: trust_weights min=0.0182 max=0.0714 zero_count=0
+[2026-06-04 17:17:23,822] 175 root - INFO - [Pipeline] Round 48 aggregated — flagged=2, min_trust=0.0182, max_trust=0.0714
+[2026-06-04 17:17:25,261] 82 root - INFO - [Server] Round 48 — loss=0.0178, macro_f1=0.5776, acc=0.9930
+[2026-06-04 17:17:25,383] 190 root - INFO - [Pipeline] Round 48 eval — macro_f1=0.5776, acc=0.9930, loss=0.0178
+[2026-06-04 17:17:25,384] 130 root - INFO - 
+[Pipeline] ===== Round 49/50 =====
+[2026-06-04 17:17:27,918] 157 root - INFO -   [Client 31] loss=0.0154 acc=0.9956
+[2026-06-04 17:17:29,248] 157 root - INFO -   [Client 18] loss=0.0872 acc=0.9677
+[2026-06-04 17:17:33,366] 157 root - INFO -   [Client 42] loss=0.0758 acc=0.9712
+[2026-06-04 17:17:36,706] 157 root - INFO -   [Client 25] loss=0.0543 acc=0.9787
+[2026-06-04 17:17:42,778] 157 root - INFO -   [Client 35] loss=0.0578 acc=0.9780
+[2026-06-04 17:17:58,566] 157 root - INFO -   [Client 2] loss=0.0060 acc=0.9978
+[2026-06-04 17:18:05,107] 157 root - INFO -   [Client 29] loss=0.0323 acc=0.9876
+[2026-06-04 17:18:12,445] 157 root - INFO -   [Client 5] loss=0.0105 acc=0.9960
+[2026-06-04 17:18:16,705] 157 root - INFO -   [Client 20] loss=0.0113 acc=0.9965
+[2026-06-04 17:18:40,357] 157 root - INFO -   [Client 16] loss=0.0067 acc=0.9984
+[2026-06-04 17:18:46,359] 157 root - INFO -   [Client 41] loss=0.0049 acc=0.9987
+[2026-06-04 17:19:33,089] 157 root - INFO -   [Client 7] loss=0.0086 acc=0.9971
+[2026-06-04 17:19:34,045] 157 root - INFO -   [Client 46] loss=0.0581 acc=0.9815
+[2026-06-04 17:20:04,833] 157 root - INFO -   [Client 32] loss=0.0074 acc=0.9980
+[2026-06-04 17:20:15,039] 157 root - INFO -   [Client 0] loss=0.0053 acc=0.9983
+[2026-06-04 17:20:16,143] 157 root - INFO -   [Client 34] loss=0.0247 acc=0.9932
+[2026-06-04 17:20:16,676] 157 root - INFO -   [Client 43] loss=0.1320 acc=0.9625
+[2026-06-04 17:20:19,871] 157 root - INFO -   [Client 26] loss=0.0305 acc=0.9885
+[2026-06-04 17:20:25,422] 157 root - INFO -   [Client 3] loss=0.0030 acc=0.9993
+[2026-06-04 17:20:31,920] 157 root - INFO -   [Client 6] loss=0.0328 acc=0.9873
+[2026-06-04 17:20:31,982] 188 root - INFO - [Aggregator] Round 49: 4/20 clients flagged by MAD.
+[2026-06-04 17:20:31,983] 201 root - INFO - [Aggregator] Round 49: trust_weights min=0.0219 max=0.0714 zero_count=0
+[2026-06-04 17:20:32,001] 175 root - INFO - [Pipeline] Round 49 aggregated — flagged=4, min_trust=0.0219, max_trust=0.0714
+[2026-06-04 17:20:33,591] 82 root - INFO - [Server] Round 49 — loss=0.0263, macro_f1=0.5682, acc=0.9915
+[2026-06-04 17:20:33,598] 190 root - INFO - [Pipeline] Round 49 eval — macro_f1=0.5682, acc=0.9915, loss=0.0263
+[2026-06-04 17:20:33,599] 130 root - INFO - 
+[Pipeline] ===== Round 50/50 =====
+[2026-06-04 17:20:42,242] 157 root - INFO -   [Client 33] loss=0.0061 acc=0.9984
+[2026-06-04 17:20:43,397] 157 root - INFO -   [Client 23] loss=0.9433 acc=0.7868
+[2026-06-04 17:21:10,745] 157 root - INFO -   [Client 39] loss=0.0028 acc=0.9993
+[2026-06-04 17:21:13,070] 157 root - INFO -   [Client 31] loss=0.0175 acc=0.9949
+[2026-06-04 17:21:17,715] 157 root - INFO -   [Client 40] loss=0.0137 acc=0.9949
+[2026-06-04 17:21:23,437] 157 root - INFO -   [Client 28] loss=0.0444 acc=0.9822
+[2026-06-04 17:21:40,593] 157 root - INFO -   [Client 3] loss=0.0028 acc=0.9993
+[2026-06-04 17:21:42,330] 157 root - INFO -   [Client 13] loss=0.0461 acc=0.9848
+[2026-06-04 17:22:09,588] 157 root - INFO -   [Client 17] loss=0.0108 acc=0.9963
+[2026-06-04 17:22:14,108] 157 root - INFO -   [Client 35] loss=0.0584 acc=0.9771
+[2026-06-04 17:22:23,652] 157 root - INFO -   [Client 8] loss=0.0362 acc=0.9839
+[2026-06-04 17:22:24,803] 157 root - INFO -   [Client 18] loss=0.0769 acc=0.9706
+[2026-06-04 17:22:26,693] 157 root - INFO -   [Client 44] loss=0.1103 acc=0.9597
+[2026-06-04 17:22:27,763] 157 root - INFO -   [Client 46] loss=0.0564 acc=0.9811
+[2026-06-04 17:23:12,289] 157 root - INFO -   [Client 7] loss=0.0084 acc=0.9971
+[2026-06-04 17:23:13,658] 157 root - INFO -   [Client 1] loss=0.0392 acc=0.9860
+[2026-06-04 17:23:19,390] 157 root - INFO -   [Client 15] loss=0.0529 acc=0.9863
+[2026-06-04 17:23:21,231] 157 root - INFO -   [Client 10] loss=0.0133 acc=0.9952
+[2026-06-04 17:23:34,647] 157 root - INFO -   [Client 19] loss=0.0119 acc=0.9962
+[2026-06-04 17:23:40,870] 157 root - INFO -   [Client 41] loss=0.0066 acc=0.9982
+[2026-06-04 17:23:40,928] 188 root - INFO - [Aggregator] Round 50: 4/20 clients flagged by MAD.
+[2026-06-04 17:23:40,934] 201 root - INFO - [Aggregator] Round 50: trust_weights min=0.0216 max=0.0714 zero_count=0
+[2026-06-04 17:23:40,948] 175 root - INFO - [Pipeline] Round 50 aggregated — flagged=4, min_trust=0.0216, max_trust=0.0714
+[2026-06-04 17:23:42,332] 82 root - INFO - [Server] Round 50 — loss=0.0195, macro_f1=0.5717, acc=0.9926
+[2026-06-04 17:23:42,445] 190 root - INFO - [Pipeline] Round 50 eval — macro_f1=0.5717, acc=0.9926, loss=0.0195
+[2026-06-04 17:23:42,481] 208 root - INFO - [Pipeline] Final global model saved to C:\Users\rauna\Videos\FL IDS\artifacts\models\fl_global_model_weighted_v2.pth
