@@ -15,8 +15,8 @@ model:
 federated:
   num_clients: 50             # Total simulated IoT edge gateways
   clients_per_round: 20       # Clients sampled per round (40% of 50)
-  num_rounds: 30              # Total FL communication rounds
-  local_epochs: 3             # Local training epochs per client per round
+  num_rounds: 50              # Increased from 30 — more rounds for rare-class convergence
+  local_epochs: 5             # Increased from 3 — more local training to learn minority classes
   learning_rate: 0.001        # Adam default; matches centralized baseline
   batch_size: 256             # Large enough to sample minority classes per batch
   optimizer: "adam"
@@ -72,7 +72,7 @@ evaluation:
 # ─── Experiment Phases ────────────────────────────────────────────
 experiment:
   phase1_clean_rounds: 10     # Rounds 1-10:  no attackers (baseline convergence + AE warm-up)
-  phase2_attack_rounds: 20    # Rounds 11-30: attackers active at configured attacker_ratio
+  phase2_attack_rounds: 40    # Rounds 11-50: attackers active at configured attacker_ratio
   attacker_ratios: [0.10, 0.30, 0.50]   # Run full sweep for paper results
   baseline_strategies: ["fedavg", "trimmed_mean", "krum"]
 

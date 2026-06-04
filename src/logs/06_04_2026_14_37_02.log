@@ -1,0 +1,7 @@
+[2026-06-04 14:37:04,306] 112 root - INFO - [Pipeline] Phase 1 — no malicious clients (attacker_ratio=0.0).
+[2026-06-04 14:37:04,341] 33 root - INFO - [Server] Loaded baseline checkpoint from C:\Users\rauna\Videos\FL IDS\artifacts\models\baseline_mlp.pth
+[2026-06-04 14:37:04,343] 117 root - INFO - [Aggregator] AL-CMT initialized — cap_t=0.0714, temperature=2.0, ema_momentum=0.9
+[2026-06-04 14:37:04,343] 116 root - INFO - [Pipeline] Strategy: robust
+[2026-06-04 14:37:04,345] 122 root - INFO - [Pipeline] Starting FL loop — 50 clients, 20 per round, 50 rounds.
+[2026-06-04 14:37:04,345] 130 root - INFO - 
+[Pipeline] ===== Round 1/50 =====

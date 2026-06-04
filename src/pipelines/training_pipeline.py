@@ -57,6 +57,8 @@ def _make_client(cid: int, is_poisoned: bool, model_cfg: dict, fed_cfg: dict, at
         "local_epochs": fed_cfg["local_epochs"],
         "lr": fed_cfg["learning_rate"],
         "weight_decay": 1e-5,
+        "num_classes": model_cfg["num_classes"],
+        "weight_cap": 10.0,
         "is_poisoned": is_poisoned,
         "attack_type": attack_cfg["attack_type"],
         "attack_start_round": attack_cfg["attack_start_round"],
@@ -75,8 +77,8 @@ def _make_client(cid: int, is_poisoned: bool, model_cfg: dict, fed_cfg: dict, at
         val_loader=val_loader,
         model=model,
         config=client_config,
-        X_train_raw=X_train if is_poisoned else None,
-        y_train_raw=y_train if is_poisoned else None,
+        X_train_raw=X_train,
+        y_train_raw=y_train,
     )
 
 

@@ -6,6 +6,7 @@ import flwr as fl
 import numpy as np
 import torch
 import torch.nn as nn
+from sklearn.utils.class_weight import compute_class_weight
 from torch.utils.data import DataLoader, TensorDataset
 
 from src.logging.logger import logging
@@ -67,6 +68,8 @@ class FLIDSClient(fl.client.NumPyClient):
         self.weight_decay = float(self.config.get("weight_decay", 0.0))
 
         self.is_poisoned = bool(self.config.get("is_poisoned", False))
+        self.weight_cap = float(self.config.get("weight_cap", 10.0))
+        self.num_classes = int(self.config.get("num_classes", 27))
 
     def get_parameters(self, config) -> List[np.ndarray]:
         return get_model_parameters(self.model)
@@ -122,7 +125,24 @@ class FLIDSClient(fl.client.NumPyClient):
             lr=self.lr,
             weight_decay=self.weight_decay,
         )
-        loss_fn = nn.CrossEntropyLoss()
+
+        # Weighted loss: matches centralized baseline — boosts rare attack classes
+        if self.y_train_raw is not None:
+            y_for_weights = self.y_train_raw
+        else:
+            y_for_weights = np.concatenate(
+                [y_batch.numpy() for _, y_batch in active_loader]
+            )
+        classes = np.arange(self.num_classes)
+        try:
+            raw_w = compute_class_weight(
+                class_weight="balanced", classes=classes, y=y_for_weights
+            )
+        except Exception:
+            raw_w = np.ones(self.num_classes)
+        capped_w = np.clip(raw_w, None, self.weight_cap)
+        weight_tensor = torch.tensor(capped_w, dtype=torch.float32).to(self.device)
+        loss_fn = nn.CrossEntropyLoss(weight=weight_tensor)
 
         total_loss = 0.0
         total_examples = 0
