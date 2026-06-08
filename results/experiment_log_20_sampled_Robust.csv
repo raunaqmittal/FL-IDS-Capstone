@@ -1,0 +1,7 @@
+experiment,strategy,total_clients,clients_per_round,attack,poison_fraction,round,loss,flagged_clients,min_trust,max_trust
+baseline_robust,AL-CMT,50,20,None,0.0,1,0.3878878445,4,0.0292934345,0.0714285714
+baseline_robust,AL-CMT,50,20,None,0.0,2,0.0847838421,2,0.0183897243,0.0714285714
+baseline_robust,AL-CMT,50,20,None,0.0,3,0.0372608275,0,0.0190936831,0.0714285714
+label_flip_10pct_robust,AL-CMT,50,20,label_flip,0.10,5,1,0.2731293491,2,0.0272069831,0.0658409732
+label_flip_10pct_robust,AL-CMT,50,20,label_flip,0.10,5,2,0.0789205253,0,0.0220594183,0.0714285714
+label_flip_10pct_robust,AL-CMT,50,20,label_flip,0.10,5,3,0.0495378739,2,0.0199989984,0.0714285714

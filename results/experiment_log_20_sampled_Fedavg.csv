@@ -1,0 +1,7 @@
+experiment,strategy,total_clients,clients_per_round,attack,poison_fraction,round,loss,val_accuracy
+baseline_fedavg,FedAvg,50,20,None,0.0,1,0.2000327385,0.9713961810
+baseline_fedavg,FedAvg,50,20,None,0.0,2,0.0846358641,0.9762020326
+baseline_fedavg,FedAvg,50,20,None,0.0,3,0.0410521553,0.9856476217
+label_flip_10pct_fedavg,FedAvg,50,20,label_flip,0.10,5,1,0.2735860591,0.9785599979
+label_flip_10pct_fedavg,FedAvg,50,20,label_flip,0.10,5,2,0.0579822911,0.9835584457
+label_flip_10pct_fedavg,FedAvg,50,20,label_flip,0.10,5,3,0.0566664203,0.9824312219
