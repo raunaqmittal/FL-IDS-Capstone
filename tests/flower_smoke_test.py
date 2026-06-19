@@ -15,6 +15,7 @@ BATCH_SIZE   = 8
 
 def client_fn(cid: str):
     cid_int = int(cid)
+    is_poisoned = cid_int == 0
 
     train_loader, val_loader = load_partition_dataloaders(
         client_id=cid_int,
@@ -36,7 +37,14 @@ def client_fn(cid: str):
             "local_epochs": 1,
             "lr": 1e-3,
             "device": "cpu",
-        },
+            "num_classes": NUM_CLASSES,
+
+            "is_poisoned": is_poisoned,
+            "attack_start_round": 1,
+            "attack_type": "label_flip",
+            "source_class": 1,
+            "target_class": 0,
+        }
     )
 
     return client.to_client()
