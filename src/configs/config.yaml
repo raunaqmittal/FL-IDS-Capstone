@@ -17,7 +17,7 @@ federated:
   clients_per_round: 20       # Clients sampled per round (40% of 50)
   num_rounds: 50              # Increased from 30 — more rounds for rare-class convergence
   local_epochs: 5             # Increased from 3 — more local training to learn minority classes
-  learning_rate: 0.001        # Adam default; matches centralized baseline
+  learning_rate: 0.001      # Adam default 0.001; matches centralized baseline (changed to 0.0003 for FL stability)
   batch_size: 256             # Large enough to sample minority classes per batch
   optimizer: "adam"
 

@@ -46,7 +46,7 @@ def make_model():
 
 def client_fn(cid: str):
     cid_int = int(cid)
-    is_poisoned = cid_int < 5
+    is_poisoned = False
 
     train_loader, val_loader = load_partition_dataloaders(
         client_id=cid_int,
