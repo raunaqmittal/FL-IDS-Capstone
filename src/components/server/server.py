@@ -5,7 +5,7 @@ import flwr as fl
 import numpy as np
 import torch
 from flwr.common import Parameters, Scalar, ndarrays_to_parameters, parameters_to_ndarrays
-from sklearn.metrics import f1_score
+from src.components.evaluation.evaluator import compute_metrics
 
 from src.configs.config import CONFIG
 from src.configs.paths import PREPROCESSED_DIR, MODELS_DIR
@@ -76,14 +76,22 @@ def server_evaluate_fn(
             ).item()
         )
 
-        macro_f1 = float(f1_score(y_test, preds, average="macro", zero_division=0))
-        accuracy = float((preds == y_test).mean())
+        metrics = compute_metrics(y_test, preds)
 
         logging.info(
-            f"[Server] Round {server_round} — loss={loss:.4f}, macro_f1={macro_f1:.4f}, acc={accuracy:.4f}"
+            f"[Server] Round {server_round} — loss={loss:.4f}, "
+            f"macro_f1={metrics['macro_f1']:.4f}, "
+            f"acc={metrics['accuracy']:.4f}, "
+            f"fpr={metrics['fpr']:.4f}"
         )
 
-        return loss, {"macro_f1": macro_f1, "accuracy": accuracy, "round": server_round}
+        return loss, {
+            "macro_f1":    metrics["macro_f1"],
+            "weighted_f1": metrics["weighted_f1"],
+            "accuracy":    metrics["accuracy"],
+            "fpr":         metrics["fpr"],
+            "round":       server_round,
+        }
 
     except Exception as e:
         raise FLIDSException(e, sys)
